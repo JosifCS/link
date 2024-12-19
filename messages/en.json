@@ -8,6 +8,15 @@
 			"help": "Help",
 			"settings": "Settings",
 			"about": "About"
+		},
+		"LoginForm": {
+			"dontHave": "Don't have an account?",
+			"email": "Email",
+			"login": "Login",
+			"password": "Password",
+			"signup": "Sign up",
+			"title": "Welcome back",
+			"description": "Logging in to your Link account"
 		}
 	},
 	"Index": {

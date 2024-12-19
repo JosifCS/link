@@ -8,6 +8,15 @@
 			"help": "Nápověda",
 			"about": "O aplikaci",
 			"settings": "Nastavení"
+		},
+		"LoginForm": {
+			"title": "Vítejte zpět",
+			"login": "Přihlásit",
+			"email": "Email",
+			"password": "Heslo",
+			"dontHave": "Ještě nemáte účet?",
+			"signup": "Ragistrovat",
+			"description": "Přihlášení k vašemu Link účtu"
 		}
 	}
 }
