@@ -1,0 +1,13 @@
+{
+	"Components": {
+		"TopMenu": {
+			"file": "Soubor",
+			"locale": "Jazyk",
+			"import": "Importovat",
+			"new": "Vytvořit nový",
+			"help": "Nápověda",
+			"about": "O aplikaci",
+			"settings": "Nastavení"
+		}
+	}
+}

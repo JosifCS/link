@@ -1,0 +1,17 @@
+{
+	"Components": {
+		"TopMenu": {
+			"file": "File",
+			"import": "Import",
+			"new": "Create new",
+			"locale": "Language",
+			"help": "Help",
+			"settings": "Settings",
+			"about": "About"
+		}
+	},
+	"Index": {
+		"title": "Link",
+		"description": "Logika interakcí a navazujících konverzací"
+	}
+}
