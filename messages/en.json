@@ -17,6 +17,17 @@
 			"signup": "Sign up",
 			"title": "Welcome back",
 			"description": "Logging in to your Link account"
+		},
+		"SignupForm": {
+			"description": "Creating a new account in Link",
+			"email": "E-mail",
+			"have": "Already have an account?",
+			"login": "Login",
+			"name": "Name",
+			"password": "Password",
+			"signup": "Register",
+			"title": "Signup",
+			"password2": "Password confirmation"
 		}
 	},
 	"Index": {

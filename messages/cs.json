@@ -17,6 +17,17 @@
 			"dontHave": "Ještě nemáte účet?",
 			"signup": "Ragistrovat",
 			"description": "Přihlášení k vašemu Link účtu"
+		},
+		"SignupForm": {
+			"title": "Registrace",
+			"description": "Vytvoření nového účtu v Link",
+			"signup": "Registrovat",
+			"have": "Už máte účet?",
+			"login": "Přihlásit",
+			"name": "Jméno",
+			"email": "Email",
+			"password": "Heslo",
+			"password2": "Potvrzení hesla"
 		}
 	}
 }
