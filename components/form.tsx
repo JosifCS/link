@@ -1,10 +1,10 @@
 "use client"
 
-import { createContext, useContext, useEffect } from "react"
+import { createContext, useActionState, useContext, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { useAction } from "next-safe-action/hooks"
 import { cn } from "@/lib/utils"
 import { toast } from "@/hooks/use-toast"
+import { ActionResult } from "@/modules/safe-action"
 
 type FormWrapper = {
 	action: any
@@ -12,79 +12,77 @@ type FormWrapper = {
 	className?: string
 }
 
-type ActionResult = {
-	success: boolean
-	message?: string
-	redirect?: string
+type FormResult = ActionResult & {
+	prevState: any | null
+	validationErrors: Record<string, string>
 }
 
-type FormResult = {
-	validationErrors?: unknown
-}
-
-const FormContext = createContext<FormResult>({})
+const FormContext = createContext<FormResult>({
+	prevState: null,
+	validationErrors: {},
+	success: true,
+})
 
 export const useFormContext = () => useContext(FormContext)
 
 export function Form({ action, children, className }: FormWrapper) {
 	const router = useRouter()
-	const { execute, result, hasSucceeded } = useAction(action)
+	const [state, formAction, isPending] = useActionState<FormResult>(action, {
+		prevState: null,
+		validationErrors: {},
+		success: true,
+	})
 
 	useEffect(() => {
-		if (hasSucceeded) {
-			const data = result.data as ActionResult
+		if (state.success) {
+			if (state.message) {
+				toast({
+					title: "Success",
+					description: state.message,
+				})
 
-			if (data.message) {
-				if (data.success) {
-					toast({
-						title: "Success",
-						description: data.message,
-					})
-				} else {
+				/*else {
 					toast({
 						variant: "error",
 						title: "Error",
 						description: data.message,
 					})
-				}
+				}*/
 			}
 
-			if (data.redirect) {
-				router.push(data.redirect)
-			} else {
+			if (state.redirect) {
+				router.push(state.redirect)
+			} /*else {
 				router.back()
-			}
-		} else if (typeof result.serverError === "string") {
+			}*/
+		} /*else if (typeof result.serverError === "string") {
 			toast({
 				variant: "error",
 				title: "Server error",
 				description: result.serverError,
 			})
-		} else if (result.validationErrors) {
+		}*/ else if (state.validationErrors) {
 			toast({
 				variant: "error",
 				title: "Validation error",
 				description: "Invalid form",
 			})
 		}
-	}, [result])
-
-	// Dřív mám pocit, že hodnota ve formuláři po submit zůstávala. Teď mizí.
-	// https://github.com/vercel/next.js/issues/72949#issuecomment-2490103881
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
-		const formData = new FormData(e.currentTarget)
-		execute(formData)
-	}
+	}, [state])
 
 	return (
 		<form
-			//action={handleSubmit}
-			onSubmit={handleSubmit}
+			action={formAction}
 			className={cn("flex flex-col gap-4", className)}
 			autoComplete="off"
 		>
-			<FormContext.Provider value={{ validationErrors: result }}>
+			<FormContext.Provider
+				value={{
+					prevState: state.prevState,
+					validationErrors: state.validationErrors,
+					success: state.success,
+				}}
+			>
 				{children}
 			</FormContext.Provider>
 		</form>
