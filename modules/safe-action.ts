@@ -13,9 +13,9 @@ export type ActionResult = {
 	redirect?: string
 }
 
-export function safeAction<S extends object, T extends z.ZodTypeAny>(
-	schema: z.ZodEffects<T>,
-	action: (data: any) => Promise<ActionResult>
+export function safeAction<S extends object, SchemaType extends z.ZodTypeAny>(
+	schema: z.ZodEffects<SchemaType>,
+	action: (data: z.output<SchemaType>) => Promise<ActionResult>
 ) {
 	return async function handler(currentState: S, formData: FormData) {
 		console.log(currentState, formData)
