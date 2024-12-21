@@ -69,9 +69,18 @@ export function Form({ action, children, className }: FormWrapper) {
 		}
 	}, [result])
 
+	// Dřív mám pocit, že hodnota ve formuláři po submit zůstávala. Teď mizí.
+	// https://github.com/vercel/next.js/issues/72949#issuecomment-2490103881
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		const formData = new FormData(e.currentTarget)
+		execute(formData)
+	}
+
 	return (
 		<form
-			action={execute}
+			//action={handleSubmit}
+			onSubmit={handleSubmit}
 			className={cn("flex flex-col gap-4", className)}
 			autoComplete="off"
 		>
