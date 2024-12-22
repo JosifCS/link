@@ -24,7 +24,11 @@ export function FormInput({
 			<Input
 				id={id}
 				name={name}
-				defaultValue={form.prevState?.[name ?? "x"] ?? defaultValue}
+				defaultValue={
+					props.type == "file"
+						? undefined
+						: (form.prevState?.[name ?? "x"] ?? defaultValue)
+				}
 				{...props}
 			/>
 			{name && form.validationErrors?.[name] && (
