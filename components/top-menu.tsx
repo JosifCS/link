@@ -23,6 +23,11 @@ export function TopMenu() {
 				<MenubarTrigger className="font-bold" asChild>
 					<Link href={"/"}>Link</Link>
 				</MenubarTrigger>
+				<MenubarContent>
+					<MenubarItem asChild>
+						<a href="/api/auth/logout">{t("logout")}</a>
+					</MenubarItem>
+				</MenubarContent>
 			</MenubarMenu>
 			<MenubarMenu>
 				<MenubarTrigger>{t("file")}</MenubarTrigger>
