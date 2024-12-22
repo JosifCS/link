@@ -25,7 +25,7 @@ export function TopMenu() {
 				</MenubarTrigger>
 				<MenubarContent>
 					<MenubarItem asChild>
-						<a href="/api/auth/logout">{t("logout")}</a>
+						<Link href="/auth/logout">{t("logout")}</Link>
 					</MenubarItem>
 				</MenubarContent>
 			</MenubarMenu>
