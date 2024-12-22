@@ -8,10 +8,12 @@ import * as fs from "fs"
 const ociConfigContent = process.env.OCI_CONFIG
 const ociCertContent = process.env.OCI_CERT
 
-const certPath = "./.next/oci-cert.pem"
+if (!fs.existsSync("/temp")) fs.mkdirSync("/temp")
+
+const certPath = "/temp/oci-cert.pem"
 fs.writeFileSync(certPath, ociCertContent!)
 
-const configPath = "./.next/oci-config"
+const configPath = "/temp/oci-config"
 fs.writeFileSync(configPath, ociConfigContent!)
 
 const provider: common.ConfigFileAuthenticationDetailsProvider =
