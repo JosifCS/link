@@ -5,6 +5,7 @@ import path from "path"
 import fs from "fs"
 import { z } from "zod"
 import { safeAction } from "@/modules/safe-action"
+import { saveFile } from "@/modules/file-api"
 
 const schema = zfd.formData({
 	schema: zfd.file(),
@@ -18,8 +19,8 @@ const schema1 = zfd
 		message: "Passwords do not match",
 	})
 
-export const importSchema = safeAction(schema, async function (data) {
-	//await saveFile(report)
+export const importSchema = safeAction(schema, async function ({ schema }) {
+	await saveFile(schema)
 
 	/*const json = broker == "portu" ? await csvToJson(report) : null
 
