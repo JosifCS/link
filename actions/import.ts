@@ -1,21 +1,27 @@
 "use server"
 
 import { zfd } from "zod-form-data"
-import { authActionClient } from "@/modules/safe-action"
 import path from "path"
 import fs from "fs"
 import { z } from "zod"
+import { safeAction } from "@/modules/safe-action"
 
 const schema = zfd.formData({
 	schema: zfd.file(),
 })
 
-export const importSchema = authActionClient
-	.schema(schema)
-	.action(async function ({ parsedInput: { schema } }) {
-		//await saveFile(report)
+const schema1 = zfd
+	.formData({
+		schema: zfd.file(),
+	})
+	.refine((data) => data.schema, {
+		message: "Passwords do not match",
+	})
 
-		/*const json = broker == "portu" ? await csvToJson(report) : null
+export const importSchema = safeAction(schema, async function (data) {
+	//await saveFile(report)
+
+	/*const json = broker == "portu" ? await csvToJson(report) : null
 
 		if (json == null) throw new NotImplementedError("Broker.")
 
@@ -25,9 +31,9 @@ export const importSchema = authActionClient
 		const filePath = path.join(process.cwd(), "data", "data.json")
 		fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8")*/
 
-		return {
-			success: true,
-			message: "ok",
-			//redirect: `/dashboard/reports`, // TODO reálně se můžu vracet na různé stránky, protože dialog je přístupný všude
-		}
-	})
+	return {
+		success: true,
+		message: "ok",
+		//redirect: `/dashboard/reports`, // TODO reálně se můžu vracet na různé stránky, protože dialog je přístupný všude
+	}
+})

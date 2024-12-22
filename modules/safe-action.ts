@@ -14,7 +14,7 @@ export type ActionResult = {
 }
 
 export function safeAction<S extends object, SchemaType extends z.ZodTypeAny>(
-	schema: z.ZodEffects<SchemaType>,
+	schema: z.ZodEffects<SchemaType, any, any>,
 	action: (data: z.output<SchemaType>) => Promise<ActionResult>
 ) {
 	return async function handler(currentState: S, formData: FormData) {
