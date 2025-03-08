@@ -14,26 +14,11 @@ datasource db {
 }
 
 model User {
-  id          Int      @id @default(autoincrement())
-  name        String   @db.VarChar(255)
-  hash        String   @db.VarChar(127)
   email       String   @unique @db.VarChar(255)
-  token       Token?
   files       File[]
   stories     Story[]
 
   @@map("users")
-}
-
-model Token {
-    id         Int      @id @default(autoincrement())
-    createdAt  DateTime @default(now())
-    valid      Boolean  @default(true)
-    expiration DateTime
-    user       User     @relation(fields: [userId], references: [id])
-    userId     Int      @unique
-
-    @@map("tokens")
 }
 
 model File {
@@ -43,23 +28,23 @@ model File {
     type        String
     path        String
     createdAt   DateTime  @default(now())
-    createdBy   User      @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-    userId      Int
+    createdBy   User      @relation(fields: [createdByEmail], references: [email], onDelete: NoAction, onUpdate: NoAction)
+    createdByEmail   String
     
     @@map("files")
 }
 
 model Story {
-  id          Int @id @default(autoincrement())
-  uuid        String
-  name        String
-  description String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  createdBy   User?      @relation(fields: [createdById], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  createdById Int?
-  characters  Character[]
-  chapters    Chapter[]
+  id             Int @id @default(autoincrement())
+  uuid           String
+  name           String
+  description    String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  createdBy      User?     @relation(fields: [createdByEmail], references: [email], onDelete: Cascade, onUpdate: Cascade)
+  createdByEmail String?
+  characters     Character[]
+  chapters       Chapter[]
 
   @@map("stories")
 }
