@@ -30,5 +30,18 @@
 			"password": "Heslo",
 			"password2": "Potvrzení hesla"
 		}
+	},
+	"Welcome": {
+		"login": "Přihlásit se",
+		"title": "Vytvářejte úžasné příběhy",
+		"description": "Nástroj pro tvorbu kreativních příběhů. Jednoduše začněte psát nebo importujte svůj vlastní příběh.",
+		"create": "Vytvořit nový příběh",
+		"import": "Importovat příběh",
+		"simple": "Jednoduchá tvorba",
+		"simpleDesc": "Editor pro snadné psaní a členění vašich příběhů.",
+		"export": "Exportujte svůj příběh",
+		"exportDesc": "Svůj vytvořený příběh exportuje do JSON souboru a použijte ve ho ve vašem projektu.",
+		"more": "Více možností s přihlášením",
+		"moreDesc": "Registrovaní uživatel mají přístup ke všem svým příběhům."
 	}
 }
