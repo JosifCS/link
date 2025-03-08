@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { PenLine, Upload, LogIn } from "lucide-react"
 import { getTranslations } from "next-intl/server"
+import { newStory } from "@/actions/newStory"
 
 export default async function Home() {
 	const t = await getTranslations("Welcome")
@@ -37,11 +38,9 @@ export default async function Home() {
 								</p>
 							</div>
 							<div className="flex flex-col gap-2 min-[400px]:flex-row">
-								<Button className="gap-2" asChild>
-									<Link href={"/story"}>
-										<PenLine className="h-4 w-4" />
-										<span>{t("create")}</span>
-									</Link>
+								<Button className="gap-2" onClick={newStory}>
+									<PenLine className="h-4 w-4" />
+									<span>{t("create")}</span>
 								</Button>
 								<Button
 									variant="outline"
