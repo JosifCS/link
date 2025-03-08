@@ -6,10 +6,9 @@ import {
 	CardTitle,
 } from "@/components/ui/card"
 import { getTranslations } from "next-intl/server"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
+import { StoryForm } from "./story-form"
 
 type StoryInfoProps = {
 	uuid: string
@@ -31,25 +30,10 @@ export async function StoryInfo({ uuid }: StoryInfoProps) {
 				<CardDescription>{t("basicDesc")}</CardDescription>
 			</CardHeader>
 			<CardContent className="space-y-4">
-				<div className="space-y-2">
-					<label htmlFor="title" className="text-sm font-medium">
-						{t("name")}
-					</label>
-					<Input id="title" defaultValue={story.name} />
-				</div>
-				<div className="space-y-2">
-					<label
-						htmlFor="description"
-						className="text-sm font-medium"
-					>
-						{t("description")}
-					</label>
-					<Textarea
-						id="description"
-						defaultValue={story.description}
-						rows={3}
-					/>
-				</div>
+				<StoryForm
+					t={{ name: t("name"), description: t("description") }}
+					value={story}
+				/>
 			</CardContent>
 		</Card>
 	)
