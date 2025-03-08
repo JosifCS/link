@@ -24,8 +24,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
 	title: "Link",
-	description:
-		"Logika interakcí a navazujících konverzací",
+	description: "Logika interakcí a navazujících konverzací",
 }
 
 export default async function RootLayout({
