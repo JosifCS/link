@@ -47,5 +47,21 @@
 		"exportDesc": "Export your created story to a JSON file and use it in your project.",
 		"more": "More options with login",
 		"moreDesc": "Registered users have access to all their stories."
+	},
+	"Story": {
+		"title": "Story setting",
+		"export": "Export story",
+		"stories": "List of stories",
+		"basic": "Basic information",
+		"basicDesc": "Edit basic information about your story",
+		"name": "Story title",
+		"description": "Short description",
+		"chapters": "Chapters",
+		"newChapter": "New chapter",
+		"chaptersDesc": "List of chapters in your story",
+		"dialogsCount": "{count} dialogues",
+		"characters": "Characters",
+		"charectersDesc": "List of characters in your story",
+		"newCharacter": "New character"
 	}
 }

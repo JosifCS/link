@@ -43,5 +43,21 @@
 		"exportDesc": "Svůj vytvořený příběh exportuje do JSON souboru a použijte ve ho ve vašem projektu.",
 		"more": "Více možností s přihlášením",
 		"moreDesc": "Registrovaní uživatel mají přístup ke všem svým příběhům."
+	},
+	"Story": {
+		"title": "Nastavení příběhu",
+		"export": "Exportovat příběh",
+		"stories": "Seznam příběhů",
+		"basic": "Základní informace",
+		"basicDesc": "Upravte základní informace o vašem příběhu",
+		"name": "Název příběhu",
+		"description": "Krátký popis",
+		"chapters": "Kapitoly",
+		"newChapter": "Nová kapitola",
+		"chaptersDesc": "Seznam kapitol vašeho příběhu",
+		"dialogsCount": "{count} dialogů",
+		"characters": "Postavy",
+		"charectersDesc": "Seznam postav ve vašem příběhu",
+		"newCharacter": "Nová postava"
 	}
 }
