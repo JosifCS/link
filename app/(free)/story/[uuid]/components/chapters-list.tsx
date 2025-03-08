@@ -10,14 +10,26 @@ import {
 } from "@/components/ui/card"
 import { PlusCircle } from "lucide-react"
 import { getTranslations } from "next-intl/server"
-import { GetStoryQuery } from "@/actions/get"
+import prisma from "@/lib/prisma"
+import { notFound } from "next/navigation"
 
 type ChaptersListProps = {
-	chapters: GetStoryQuery["chapters"]
+	uuid: string
 }
 
-export async function ChaptersList({ chapters }: ChaptersListProps) {
+export async function ChaptersList({ uuid }: ChaptersListProps) {
 	const t = await getTranslations("Story")
+
+	const story = await prisma.story.findFirst({
+		where: { uuid: { equals: uuid } },
+		include: {
+			chapters: {
+				include: { dialogs: { include: { character: true } } },
+			},
+		},
+	})
+
+	if (story == null) return notFound()
 
 	return (
 		<Card>
@@ -33,7 +45,7 @@ export async function ChaptersList({ chapters }: ChaptersListProps) {
 			</CardHeader>
 			<CardContent>
 				<div className="space-y-4">
-					{chapters.map((chapter) => (
+					{story.chapters.map((chapter) => (
 						<div key={chapter.id} className="rounded-lg border p-4">
 							<div className="flex justify-between items-start">
 								<h3 className="font-medium">{chapter.title}</h3>

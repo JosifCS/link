@@ -10,14 +10,26 @@ import {
 } from "@/components/ui/card"
 import { PlusCircle } from "lucide-react"
 import { getTranslations } from "next-intl/server"
-import { GetStoryQuery } from "@/actions/get"
+import prisma from "@/lib/prisma"
+import { notFound } from "next/navigation"
 
 type CharactersListProps = {
-	characters: GetStoryQuery["characters"]
+	uuid: string
 }
 
-export async function CharactersList({ characters }: CharactersListProps) {
+export async function CharactersList({ uuid }: CharactersListProps) {
 	const t = await getTranslations("Story")
+
+	const story = await prisma.story.findFirst({
+		where: { uuid: { equals: uuid } },
+		include: {
+			characters: {
+				include: { dialogs: { include: { chapter: true } } },
+			},
+		},
+	})
+
+	if (story == null) return notFound()
 
 	return (
 		<Card>
@@ -33,7 +45,7 @@ export async function CharactersList({ characters }: CharactersListProps) {
 			</CardHeader>
 			<CardContent>
 				<div className="space-y-4">
-					{characters.map((character) => (
+					{story.characters.map((character) => (
 						<div
 							key={character.id}
 							className="rounded-lg border p-4"

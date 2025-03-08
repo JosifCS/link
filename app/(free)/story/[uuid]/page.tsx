@@ -2,22 +2,15 @@ import Link from "next/link"
 import { Download, BookOpen } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { getTranslations } from "next-intl/server"
 import { PageProps } from "@/types/global"
 import { notFound, redirect } from "next/navigation"
 import { auth0 } from "@/lib/auth0"
-import { getStory } from "@/actions/get"
 import { CharactersList } from "./components/characters-list"
 import { ChaptersList } from "./components/chapters-list"
+import { StoryInfo } from "./components/story-info"
+import prisma from "@/lib/prisma"
+import { Suspense } from "react"
 
 export default async function Story({ params }: PageProps<"uuid">) {
 	const session = await auth0.getSession()
@@ -25,7 +18,11 @@ export default async function Story({ params }: PageProps<"uuid">) {
 
 	const uuid = (await params).uuid
 
-	const story = await getStory(uuid)
+	const story = await prisma.story.findFirst({
+		where: { uuid: { equals: uuid } },
+	})
+
+	if (story == null) return notFound()
 
 	if (story == null) return notFound()
 
@@ -51,37 +48,18 @@ export default async function Story({ params }: PageProps<"uuid">) {
 				</div>
 			</div>
 
-			<Card>
-				<CardHeader>
-					<CardTitle>{t("basic")}</CardTitle>
-					<CardDescription>{t("basicDesc")}</CardDescription>
-				</CardHeader>
-				<CardContent className="space-y-4">
-					<div className="space-y-2">
-						<label htmlFor="title" className="text-sm font-medium">
-							{t("name")}
-						</label>
-						<Input id="title" defaultValue={story.name} />
-					</div>
-					<div className="space-y-2">
-						<label
-							htmlFor="description"
-							className="text-sm font-medium"
-						>
-							{t("description")}
-						</label>
-						<Textarea
-							id="description"
-							defaultValue={story.description}
-							rows={3}
-						/>
-					</div>
-				</CardContent>
-			</Card>
+			<Suspense fallback={"Loading..."}>
+				<StoryInfo uuid={story.uuid} />
+			</Suspense>
 
 			<div className="grid gap-6 md:grid-cols-2">
-				<ChaptersList chapters={story.chapters} />
-				<CharactersList characters={story.characters} />
+				<Suspense fallback={"Loading..."}>
+					<ChaptersList uuid={story.uuid} />
+				</Suspense>
+
+				<Suspense fallback={"Loading..."}>
+					<CharactersList uuid={story.uuid} />
+				</Suspense>
 			</div>
 		</div>
 	)
