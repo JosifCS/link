@@ -34,7 +34,7 @@ export async function ChaptersList({ uuid }: ChaptersListProps) {
 	return (
 		<Card>
 			<CardHeader className="flex flex-row items-center justify-between">
-				<div>
+				<div className="space-y-1.5">
 					<CardTitle>{t("chapters")}</CardTitle>
 					<CardDescription>{t("chaptersDesc")}</CardDescription>
 				</div>
