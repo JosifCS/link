@@ -29,10 +29,12 @@
 			"email": "Email",
 			"password": "Heslo",
 			"password2": "Potvrzení hesla"
+		},
+		"SiteHeader": {
+			"login": "Přihlásit se"
 		}
 	},
 	"Welcome": {
-		"login": "Přihlásit se",
 		"title": "Vytvářejte úžasné příběhy",
 		"description": "Nástroj pro tvorbu kreativních příběhů. Jednoduše začněte psát nebo importujte svůj vlastní příběh.",
 		"create": "Vytvořit nový příběh",

@@ -29,6 +29,9 @@
 			"signup": "Register",
 			"title": "Signup",
 			"password2": "Password confirmation"
+		},
+		"SiteHeader": {
+			"login": "Log"
 		}
 	},
 	"Index": {
@@ -36,7 +39,6 @@
 		"description": "Logika interakcí a navazujících konverzací"
 	},
 	"Welcome": {
-		"login": "Log in",
 		"title": "Create amazing stories",
 		"description": "A creative storytelling tool. Simply start writing or import your own story.",
 		"create": "Create a new story",
