@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { PenLine, Upload, LogIn } from "lucide-react"
 import { getTranslations } from "next-intl/server"
-import { newStory } from "@/actions/newStory"
+import { newStory } from "@/actions/story/new-story"
 
 export default async function Home() {
 	const t = await getTranslations("Welcome")

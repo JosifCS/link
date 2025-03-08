@@ -53,12 +53,12 @@ export async function CharactersList({ uuid }: CharactersListProps) {
 							<div className="flex gap-3 items-start">
 								<Avatar className="h-10 w-10">
 									<AvatarFallback className="bg-primary/10 text-primary">
-										{character.title.charAt(0)}
+										{character.name.charAt(0)}
 									</AvatarFallback>
 								</Avatar>
 								<div className="flex-1">
 									<h3 className="font-medium">
-										{character.title}
+										{character.name}
 									</h3>
 									<p className="text-sm text-muted-foreground">
 										{character.description}
@@ -66,7 +66,7 @@ export async function CharactersList({ uuid }: CharactersListProps) {
 
 									<div className="flex flex-wrap gap-1 mt-2">
 										{character.dialogs
-											.map((x) => x.chapter.title)
+											.map((x) => x.chapter.name)
 											.filter(
 												(value, index, array) =>
 													array.indexOf(value) ===

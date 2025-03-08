@@ -48,7 +48,7 @@ export async function ChaptersList({ uuid }: ChaptersListProps) {
 					{story.chapters.map((chapter) => (
 						<div key={chapter.id} className="rounded-lg border p-4">
 							<div className="flex justify-between items-start">
-								<h3 className="font-medium">{chapter.title}</h3>
+								<h3 className="font-medium">{chapter.name}</h3>
 								<Badge variant="outline">
 									{t("dialogsCount", {
 										count: chapter.dialogs.length,
@@ -60,7 +60,7 @@ export async function ChaptersList({ uuid }: ChaptersListProps) {
 							</p>
 							<div className="flex flex-wrap gap-2 mt-2">
 								{chapter.dialogs
-									.map((x) => x.character.title)
+									.map((x) => x.character.name)
 									.filter(
 										(value, index, array) =>
 											array.indexOf(value) === index
