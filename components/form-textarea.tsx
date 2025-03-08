@@ -4,24 +4,26 @@ import { useId } from "react"
 import { useFormContext } from "./form"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
+import { Textarea } from "./ui/textarea"
 
-type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+type FormTextAreaProps = React.InputHTMLAttributes<HTMLTextAreaElement> & {
 	label?: string
+	rows?: number
 }
 
-export function FormInput({
+export function FormTextArea({
 	label,
 	defaultValue,
 	name,
 	...props
-}: FormInputProps) {
+}: FormTextAreaProps) {
 	const form = useFormContext()
 	const id = useId()
 
 	return (
 		<div className="grid w-full items-center gap-1.5">
 			{label && <Label htmlFor={id}>{label}</Label>}
-			<Input
+			<Textarea
 				id={id}
 				name={name}
 				defaultValue={

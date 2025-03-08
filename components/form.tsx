@@ -1,15 +1,25 @@
 "use client"
 
-import { createContext, useActionState, useContext, useEffect } from "react"
+import {
+	createContext,
+	useActionState,
+	useCallback,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from "react"
 import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { toast } from "@/hooks/use-toast"
 import { ActionResult } from "@/modules/safe-action"
+import { useDebounce, useDebouncedCallback } from "use-debounce"
 
 type FormWrapper = {
 	action: any
 	children: React.ReactNode
 	className?: string
+	autoSave?: boolean
 }
 
 type FormResult = ActionResult & {
@@ -17,21 +27,41 @@ type FormResult = ActionResult & {
 	validationErrors: Record<string, string>
 }
 
-const FormContext = createContext<FormResult>({
+const FormContext = createContext<FormResult & { onChange: () => void }>({
 	prevState: null,
 	validationErrors: {},
 	success: true,
+	onChange: () => {},
 })
 
 export const useFormContext = () => useContext(FormContext)
 
-export function Form({ action, children, className }: FormWrapper) {
+export function Form({
+	action,
+	children,
+	className,
+	autoSave = false,
+}: FormWrapper) {
+	const ref = useRef<HTMLFormElement>(null)
 	const router = useRouter()
+
+	const debounced = useDebouncedCallback(() => {
+		ref.current!.requestSubmit()
+	}, 3000)
+
+	const [unsaved, setUnsaved] = useState(false)
 	const [state, formAction, isPending] = useActionState<FormResult>(action, {
 		prevState: null,
 		validationErrors: {},
 		success: true,
 	})
+
+	const handleChange = useCallback(() => {
+		if (autoSave) {
+			setUnsaved(true)
+			debounced()
+		}
+	}, [autoSave])
 
 	useEffect(() => {
 		if (state.success) {
@@ -72,6 +102,7 @@ export function Form({ action, children, className }: FormWrapper) {
 
 	return (
 		<form
+			ref={ref}
 			action={formAction}
 			className={cn("flex flex-col gap-4", className)}
 			autoComplete="off"
@@ -81,10 +112,20 @@ export function Form({ action, children, className }: FormWrapper) {
 					prevState: state.prevState,
 					validationErrors: state.validationErrors,
 					success: state.success,
+					onChange: handleChange,
 				}}
 			>
 				{children}
 			</FormContext.Provider>
+			{autoSave && (
+				<p className="text-sm text-muted-foreground text-end mb-0">
+					{isPending
+						? "Saving..."
+						: unsaved
+							? "Unsaved changes"
+							: "Saved"}
+				</p>
+			)}
 		</form>
 	)
 }
