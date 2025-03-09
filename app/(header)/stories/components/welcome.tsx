@@ -1,12 +1,11 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { PenLine, Upload, LogIn } from "lucide-react"
-import { getTranslations } from "next-intl/server"
 import { newStory } from "@/actions/story/new-story"
-import { SiteHeader } from "@/components/site-header"
+import { Button } from "@/components/ui/button"
+import { PenLine, Upload } from "lucide-react"
+import { getTranslations } from "next-intl/server"
+import Link from "next/link"
 
-export default async function Home() {
-	const t = await getTranslations("Welcome")
+export async function Welcome() {
+	const t = await getTranslations("Story.Welcome")
 	return (
 		<>
 			<section className="w-full py-12 md:py-24 lg:py-32">

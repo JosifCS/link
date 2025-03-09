@@ -35,6 +35,7 @@ import {
 	TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 type DataTableProps<TRow> = {
 	data: TRow[]
@@ -70,8 +71,8 @@ export function DataTable<TRow>({ columns, data }: DataTableProps<TRow>) {
 
 	return (
 		<div className="w-full">
-			<div className="flex items-center py-4">
-				{/* 
+			{/* <div className="flex items-center py-4">
+				
 				
 				<Input
 					placeholder="Filter emails..."
@@ -88,8 +89,7 @@ export function DataTable<TRow>({ columns, data }: DataTableProps<TRow>) {
 					className="max-w-sm"
 				/>
 				
-				*/}
-				{/*
+			
 		<DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
@@ -117,8 +117,8 @@ export function DataTable<TRow>({ columns, data }: DataTableProps<TRow>) {
           </DropdownMenuContent>
         </DropdownMenu>
 		
-		*/}
-			</div>
+		
+			</div> */}
 			<div className="rounded-md border">
 				<Table>
 					<TableHeader>
@@ -126,7 +126,10 @@ export function DataTable<TRow>({ columns, data }: DataTableProps<TRow>) {
 							<TableRow key={headerGroup.id}>
 								{headerGroup.headers.map((header) => {
 									return (
-										<TableHead key={header.id}>
+										<TableHead
+											key={header.id}
+											className="p-2"
+										>
 											{header.isPlaceholder
 												? null
 												: flexRender(
@@ -150,7 +153,14 @@ export function DataTable<TRow>({ columns, data }: DataTableProps<TRow>) {
 									}
 								>
 									{row.getVisibleCells().map((cell) => (
-										<TableCell key={cell.id}>
+										<TableCell
+											key={cell.id}
+											className={cn(
+												"p-2",
+												cell.column.columnDef.meta
+													?.className
+											)}
+										>
 											{flexRender(
 												cell.column.columnDef.cell,
 												cell.getContext()
@@ -163,7 +173,7 @@ export function DataTable<TRow>({ columns, data }: DataTableProps<TRow>) {
 							<TableRow>
 								<TableCell
 									colSpan={columns.length}
-									className="h-24 text-center"
+									className="h-24 text-center "
 								>
 									No results.
 								</TableCell>

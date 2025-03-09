@@ -38,18 +38,6 @@
 		"title": "Link",
 		"description": "Logika interakcí a navazujících konverzací"
 	},
-	"Welcome": {
-		"title": "Create amazing stories",
-		"description": "A creative storytelling tool. Simply start writing or import your own story.",
-		"create": "Create a new story",
-		"import": "Import story",
-		"simple": "Simple creation",
-		"simpleDesc": "An editor for easy writing and structuring of your stories.",
-		"export": "Export your story",
-		"exportDesc": "Export your created story to a JSON file and use it in your project.",
-		"more": "More options with login",
-		"moreDesc": "Registered users have access to all their stories."
-	},
 	"Story": {
 		"title": "Story setting",
 		"export": "Export story",
@@ -63,6 +51,18 @@
 		"dialogsCount": "{count} dialogues",
 		"characters": "Characters",
 		"charectersDesc": "List of characters in your story",
-		"newCharacter": "New character"
+		"newCharacter": "New character",
+		"Welcome": {
+			"title": "Create amazing stories",
+			"description": "A creative storytelling tool. Simply start writing or import your own story.",
+			"create": "Create a new story",
+			"import": "Import story",
+			"simple": "Simple creation",
+			"simpleDesc": "An editor for easy writing and structuring of your stories.",
+			"export": "Export your story",
+			"exportDesc": "Export your created story to a JSON file and use it in your project.",
+			"more": "More options with login",
+			"moreDesc": "Registered users have access to all their stories."
+		}
 	}
 }
