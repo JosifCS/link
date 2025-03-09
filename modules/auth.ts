@@ -3,20 +3,41 @@ import prisma from "@/lib/prisma"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
+type Return = Promise<
+	| { email: string; nickname: string; id: number; storyAuthorized: boolean }
+	| { email: null; nickname: null; id: null; storyAuthorized: boolean }
+>
+export async function authorize(allowAnonymous?: boolean): Return
+export async function authorize(story: {
+	createdById: number | null
+	uuid: string
+}): Return
 export async function authorize(
-	redirectToLogin: boolean = true
-): Promise<
-	| { email: string; nickname: string; id: number; story: null }
-	| { email: null; nickname: null; id: null; story: string | null }
-> {
+	param1?: { createdById: number | null; uuid: string } | boolean
+): Return {
 	const session = await auth0.getSession()
 
-	if (redirectToLogin && session == null) return redirect("/auth/login")
-
 	if (session == null) {
-		const c = await cookies()
-		const story = c.get("story")?.value ?? null // nepřihlášený uživatel může mít v cookies uuid pro jeden příběh
-		return { email: null, nickname: null, id: null, story }
+		if (typeof param1 == "object") {
+			const c = await cookies()
+			const storyUuid = c.get("story")?.value ?? null // nepřihlášený uživatel může mít v cookies uuid pro jeden příběh
+			return {
+				email: null,
+				nickname: null,
+				id: null,
+				storyAuthorized: storyUuid == param1.uuid, // jako nepřihlášený uživatel jsem autorizovaný pro tento příběh
+			}
+		}
+		if (param1) {
+			return {
+				email: null,
+				nickname: null,
+				id: null,
+				storyAuthorized: false, // v parametru nebyl příběh, takže pro příběh jsem neautorizovaný
+			}
+		}
+
+		return redirect("/auth/login")
 	}
 
 	let user = await prisma.user.findFirst({
@@ -30,10 +51,19 @@ export async function authorize(
 			select: { id: true, email: true },
 		})
 
+	if (typeof param1 == "object") {
+		return {
+			email: session.user.email!,
+			nickname: session.user.nickname ?? "N/A",
+			id: user.id,
+			storyAuthorized: param1.createdById == user.id, // můžu zobrazit pouze svůj příběh
+		}
+	}
+
 	return {
 		email: session.user.email!,
 		nickname: session.user.nickname ?? "N/A",
 		id: user.id,
-		story: null,
+		storyAuthorized: false, // v parametru nebyl příběh, takže pro příběh jsem neautorizovaný
 	}
 }

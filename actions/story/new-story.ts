@@ -7,7 +7,7 @@ import { authorize } from "@/modules/auth"
 import { cookies } from "next/headers"
 
 export async function newStory() {
-	const user = await authorize(false)
+	const user = await authorize(true)
 
 	const { uuid, id } = await prisma.story.create({
 		data: {
@@ -22,7 +22,7 @@ export async function newStory() {
 	// nepřihlášenému uživateli se do cookies na sedm dní uloží uuid právě vytvořeného příběhu
 	if (user.id == null) {
 		const c = await cookies()
-		c.set("story", uuid, { expires: 1000 * 60 * 60 * 25 * 7 })
+		c.set("story", uuid, { maxAge: 60 * 60 * 24 * 7 })
 	}
 
 	redirect(`/stories/${id}`)

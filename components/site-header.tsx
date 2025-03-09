@@ -6,7 +6,7 @@ import { authorize } from "@/modules/auth"
 import { UserMenu } from "./user-menu"
 
 export async function SiteHeader() {
-	const { nickname } = await authorize(false)
+	const { nickname } = await authorize(true)
 
 	const t = await getTranslations("Components.SiteHeader")
 

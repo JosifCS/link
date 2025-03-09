@@ -21,7 +21,7 @@ import { LogIn, User } from "lucide-react"
 import { setLocale } from "@/actions/set-locale"
 
 export async function UserMenu() {
-	const { nickname } = await authorize(false)
+	const { nickname } = await authorize(true)
 	const t = await getTranslations("Components.UserMenu")
 	const locale = await getLocale()
 

@@ -7,14 +7,17 @@ import { newStory } from "@/actions/story/new-story"
 import { PlusCircle, Upload } from "lucide-react"
 import Link from "next/link"
 import { getTranslations } from "next-intl/server"
+import TempStory from "./components/temp-story"
+import { cookies } from "next/headers"
 
 export default async function Page() {
-	const { email } = await authorize(false)
+	const { id } = await authorize(true)
 
 	const t = await getTranslations("Stories")
 
-	if (email) {
-		const stories = await getStories(email)
+	// přihlášený uživatel
+	if (id) {
+		const stories = await getStories(id)
 		return (
 			<div className="container mx-auto py-6 space-y-6">
 				<div className="flex items-center justify-between">
@@ -22,7 +25,6 @@ export default async function Page() {
 						<h1 className="text-2xl font-bold">Příběhy</h1>
 					</div>
 					<div className="flex gap-2">
-						,
 						<Button variant="outline" className="gap-2" asChild>
 							<Link href={"/dialog/import-story"}>
 								<Upload className="h-4 w-4" />
@@ -45,5 +47,12 @@ export default async function Page() {
 		)
 	}
 
+	const c = await cookies()
+	const storyUuid = c.get("story")?.value
+
+	// nepřihlášený uživatel, který má story v cookies
+	if (storyUuid) return <TempStory uuid={storyUuid} />
+
+	// nepřihlášený uživatel, který nemá sni story v cookies
 	return <Welcome />
 }

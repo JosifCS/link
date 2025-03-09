@@ -3,28 +3,31 @@ import { Button } from "@/components/ui/button"
 import { getTranslations } from "next-intl/server"
 import { PageProps } from "@/types/global"
 import { notFound, redirect } from "next/navigation"
-import { auth0 } from "@/lib/auth0"
 import { CharactersList } from "./components/characters-list"
 import { ChaptersList } from "./components/chapters-list"
 import { StoryInfo, StoryInfoSkeleton } from "./components/story-info"
 import prisma from "@/lib/prisma"
 import { Suspense } from "react"
+import { authorize } from "@/modules/auth"
 
-export default async function Page({ params }: PageProps<"uuid">) {
-	const session = await auth0.getSession()
+export default async function Page({ params }: PageProps<"id">) {
+	const id = (await params).id
+
 	const t = await getTranslations("Story")
 
-	const uuid = (await params).uuid
-
 	const story = await prisma.story.findFirst({
-		where: { uuid: { equals: uuid } },
+		where: { id: { equals: +id } },
 	})
 
+	// příběh s tímto id neexistuhe
 	if (story == null) return notFound()
 
-	if (story == null) return notFound()
+	const user = await authorize(story)
 
-	if (story.createdById && session == null) return redirect("/login")
+	// pokouším se zobrazit příběh nějakého uživatele, ale nejsem přihlášený
+	if (story.createdById && user.id == null) return redirect("/login")
+
+	if (!user.storyAuthorized) return notFound()
 
 	return (
 		<div className="container mx-auto py-6 space-y-6">
