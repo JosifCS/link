@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@auth0/nextjs-auth0':
-        specifier: 4.0.0-beta.13
-        version: 4.0.0-beta.13(next@15.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 4.0.2
+        version: 4.0.2(next@15.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@prisma/client':
         specifier: ^6.4.1
         version: 6.4.1(prisma@6.1.0)(typescript@5.7.2)
@@ -130,8 +130,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@auth0/nextjs-auth0@4.0.0-beta.13':
-    resolution: {integrity: sha512-BwlZzMJv80eqwveFeKC4EhNOXHWpvo2CJxFfkC0HlLKMqUe6Z9UkfHWDzoXeI+Q6+CM12FcfTRQJUi263h34Jw==}
+  '@auth0/nextjs-auth0@4.0.2':
+    resolution: {integrity: sha512-vi2hE3OaFz2KzR/VFwC8VVzbfqmyoTMYpjM9gjGg2jFKGzHnE6T6+7T0ecv3XBpF5NeO9CE36V3d5Xgn2HedhQ==}
     peerDependencies:
       next: ^14.0.0 || ^15.0.0
       react: ^18.0.0 || ^19.0.0 || ^19.0.0-0
@@ -2623,7 +2623,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@auth0/nextjs-auth0@4.0.0-beta.13(next@15.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@auth0/nextjs-auth0@4.0.2(next@15.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@edge-runtime/cookies': 5.0.2
       '@panva/hkdf': 1.2.1
