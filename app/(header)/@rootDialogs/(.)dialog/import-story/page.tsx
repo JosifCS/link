@@ -1,4 +1,4 @@
-import { importSchema } from "@/actions/import"
+import { importStory } from "@/actions/import"
 import { Dialog } from "@/components/dialog"
 import { Form } from "@/components/form"
 import { FormInput } from "@/components/form-input"
@@ -9,10 +9,10 @@ import { DialogFooter } from "@/components/ui/dialog"
 
 export default async function Page() {
 	return (
-		<Dialog title={"import"} description="Import stromu konverzací.">
-			<Form action={importSchema}>
+		<Dialog title={"Import příběhu"} description="JSON soubor.">
+			<Form action={importStory}>
 				<FormInput
-					title="Strom konverzací"
+					title="Příběh"
 					name="schema"
 					type="file"
 					accept="application/json"
