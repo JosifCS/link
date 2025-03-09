@@ -8,7 +8,7 @@ import { notFound, redirect } from "next/navigation"
 import { auth0 } from "@/lib/auth0"
 import { CharactersList } from "./components/characters-list"
 import { ChaptersList } from "./components/chapters-list"
-import { StoryInfo } from "./components/story-info"
+import { StoryInfo, StoryInfoSkeleton } from "./components/story-info"
 import prisma from "@/lib/prisma"
 import { Suspense } from "react"
 
@@ -42,7 +42,7 @@ export default async function Page({ params }: PageProps<"uuid">) {
 				</div>
 			</div>
 
-			<Suspense fallback={"Loading..."}>
+			<Suspense fallback={<StoryInfoSkeleton />}>
 				<StoryInfo uuid={story.uuid} />
 			</Suspense>
 
