@@ -1,4 +1,5 @@
 import en from "./messages/en.json"
+import "@tanstack/react-table"
 
 type Messages = typeof en
 
@@ -15,5 +16,11 @@ declare global {
 		LF: string
 		/** *r\n* */
 		CRLF: string
+	}
+}
+
+declare module "@tanstack/react-table" {
+	interface ColumnMeta<TData extends RowData, TValue> {
+		className?: string
 	}
 }
