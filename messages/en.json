@@ -53,7 +53,6 @@
 	"Story": {
 		"title": "Story setting",
 		"export": "Export story",
-		"stories": "List of stories",
 		"basic": "Basic information",
 		"basicDesc": "Edit basic information about your story",
 		"name": "Story title",

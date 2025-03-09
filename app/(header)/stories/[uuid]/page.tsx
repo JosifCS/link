@@ -39,12 +39,6 @@ export default async function Page({ params }: PageProps<"uuid">) {
 						<Download className="mr-2 h-4 w-4" />
 						{t("export")}
 					</Button>
-					<Button variant="outline" size="sm" asChild>
-						<Link href="/stories">
-							<BookOpen className="mr-2 h-4 w-4" />
-							{t("stories")}
-						</Link>
-					</Button>
 				</div>
 			</div>
 
