@@ -1,4 +1,4 @@
-import { Download } from "lucide-react"
+import { Clock, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getTranslations } from "next-intl/server"
 import { PageProps } from "@/types/global"
@@ -43,8 +43,18 @@ export default async function Page({ params }: PageProps<"id">) {
 				</div>
 			</div>
 
+			{story.createdById == null && (
+				<div className="flex items-center gap-2 text-amber-600 bg-amber-50 p-3 rounded-md">
+					<Clock className="h-5 w-5" />
+					<p className="text-sm">
+						Nejste přihlášený. Tento příběh bude uložen pouze do
+						cc.cc.cccc.
+					</p>
+				</div>
+			)}
+
 			<Suspense fallback={<StoryInfoSkeleton />}>
-				<StoryInfo uuid={story.uuid} />
+				<StoryInfo id={story.id} />
 			</Suspense>
 
 			<div className="grid gap-6 md:grid-cols-2">

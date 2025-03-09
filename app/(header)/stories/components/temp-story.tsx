@@ -40,7 +40,8 @@ export default async function TempStory({ uuid }: { uuid: string }) {
 				<div className="flex items-center gap-2 text-amber-600 bg-amber-50 p-3 rounded-md">
 					<Clock className="h-5 w-5" />
 					<p className="text-sm">
-						Tento příběh bude uložen pouze po omezenou dobu (7 dní).
+						Nejste přihlášený. Tento příběh bude uložen pouze do
+						cc.cc.cccc.
 					</p>
 				</div>
 			</CardContent>

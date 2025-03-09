@@ -12,14 +12,14 @@ import { StoryForm } from "./story-form"
 import { Skeleton } from "@/components/ui/skeleton"
 
 type StoryInfoProps = {
-	uuid: string
+	id: number
 }
 
-export async function StoryInfo({ uuid }: StoryInfoProps) {
+export async function StoryInfo({ id }: StoryInfoProps) {
 	const t = await getTranslations("Story")
 
 	const story = await prisma.story.findFirst({
-		where: { uuid: { equals: uuid } },
+		where: { id: { equals: id } },
 	})
 
 	if (story == null) return notFound()
