@@ -65,6 +65,7 @@ export function Form({
 
 	useEffect(() => {
 		if (state.success) {
+			setUnsaved(false)
 			if (state.message) {
 				toast({
 					title: "Success",
