@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "./ui/button"
 import { getTranslations } from "next-intl/server"
 import { authorize } from "@/modules/auth"
+import { UserMenu } from "./user-menu"
 
 export async function SiteHeader() {
 	const { nickname } = await authorize(false)
@@ -34,21 +35,7 @@ export async function SiteHeader() {
 						</Button>
 					</div>
 				)}
-				{nickname ? (
-					<Button variant="ghost" size="sm" className="gap-2" asChild>
-						<Link href="/">
-							<User className="h-4 w-4" />
-							<span>{nickname}</span>
-						</Link>
-					</Button>
-				) : (
-					<Button variant="ghost" size="sm" className="gap-2" asChild>
-						<Link href="/auth/login">
-							<LogIn className="h-4 w-4" />
-							<span>{t("login")}</span>
-						</Link>
-					</Button>
-				)}
+				<UserMenu />
 			</div>
 		</header>
 	)

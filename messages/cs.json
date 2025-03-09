@@ -30,8 +30,13 @@
 			"password": "Heslo",
 			"password2": "Potvrzení hesla"
 		},
-		"SiteHeader": {
-			"login": "Přihlásit se"
+		"SiteHeader": {},
+		"UserMenu": {
+			"login": "Přihlásit se",
+			"language": "Jazyk",
+			"profile": "Profil",
+			"logout": "Odhlásit se",
+			"myAccount": "Můj účet"
 		}
 	},
 	"Story": {

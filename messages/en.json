@@ -30,8 +30,13 @@
 			"title": "Signup",
 			"password2": "Password confirmation"
 		},
-		"SiteHeader": {
-			"login": "Log"
+		"SiteHeader": {},
+		"UserMenu": {
+			"login": "Log in",
+			"language": "Language",
+			"profile": "Profile",
+			"logout": "Log out",
+			"myAccount": "My account"
 		}
 	},
 	"Index": {
