@@ -1,4 +1,4 @@
-import { BookOpen, LogIn, PenLine, User } from "lucide-react"
+import { BookOpen, PenLine } from "lucide-react"
 import Link from "next/link"
 import { Button } from "./ui/button"
 import { getTranslations } from "next-intl/server"
@@ -30,7 +30,7 @@ export async function SiteHeader() {
 						>
 							<Link href="/stories">
 								<BookOpen className="mr-2 h-4 w-4" />
-								<span>Příběhy</span>
+								<span>{t("stories")}</span>
 							</Link>
 						</Button>
 					</div>

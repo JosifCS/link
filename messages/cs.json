@@ -1,42 +1,14 @@
 {
 	"Components": {
-		"TopMenu": {
-			"file": "Soubor",
-			"locale": "Jazyk",
-			"import": "Importovat",
-			"new": "Vytvořit nový",
-			"help": "Nápověda",
-			"about": "O aplikaci",
-			"settings": "Nastavení",
-			"logout": "Odhlásit se"
-		},
-		"LoginForm": {
-			"title": "Vítejte zpět",
-			"login": "Přihlásit",
-			"email": "Email",
-			"password": "Heslo",
-			"dontHave": "Ještě nemáte účet?",
-			"signup": "Ragistrovat",
-			"description": "Přihlášení k vašemu Link účtu"
-		},
-		"SignupForm": {
-			"title": "Registrace",
-			"description": "Vytvoření nového účtu v Link",
-			"signup": "Registrovat",
-			"have": "Už máte účet?",
-			"login": "Přihlásit",
-			"name": "Jméno",
-			"email": "Email",
-			"password": "Heslo",
-			"password2": "Potvrzení hesla"
-		},
-		"SiteHeader": {},
 		"UserMenu": {
 			"login": "Přihlásit se",
 			"language": "Jazyk",
 			"profile": "Profil",
 			"logout": "Odhlásit se",
 			"myAccount": "Můj účet"
+		},
+		"SiteHeader": {
+			"stories": "Příběhy"
 		}
 	},
 	"Story": {
