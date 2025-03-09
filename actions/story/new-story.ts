@@ -15,5 +15,5 @@ export async function newStory(/*email?: string*/) {
 		select: { uuid: true },
 	})
 
-	redirect(`/story/${uuid}`)
+	redirect(`/stories/${uuid}`)
 }
