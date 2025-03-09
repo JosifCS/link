@@ -1,16 +1,28 @@
+import { auth0 } from "@/lib/auth0"
+import prisma from "@/lib/prisma"
 import { redirect } from "next/navigation"
 
-// TODO Ověřování přihlášeního uživatele
-/**
- * Ověřování přihlášeního uživatele.
- * @todo **Teď je to jen nicnedělající funkce!** Přidat logiku na ověřování. Nějaký jednoduchý systém pro správu uživatelů.
- */
-export async function getUser() {
-	const access_token = "DEMO TOKEN"
+export async function authorize(
+	redirectToLogin: boolean = true
+): Promise<
+	{ email: string; nickname: string } | { email: null; nickname: null }
+> {
+	const session = await auth0.getSession()
 
-	if (access_token == null) return redirect("/login")
+	if (redirectToLogin && session == null) return redirect("/auth/login")
 
-	if (access_token != "DEMO TOKEN") return redirect("/login")
+	if (session == null) return { email: null, nickname: null }
 
-	return { id: 1, neme: "Demo User" }
+	const user = await prisma.user.findFirst({
+		where: { email: session.user.email },
+	})
+
+	// pokud se uživatel zrovna zaregistorval, tak si ho potřebuju přidat do vlastní databáze
+	if (user == null)
+		await prisma.user.create({ data: { email: session.user.email! } })
+
+	return {
+		email: session.user.email!,
+		nickname: session.user.nickname ?? "N/A",
+	}
 }
