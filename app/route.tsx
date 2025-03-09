@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation"
 
 export async function GET() {
-	return redirect("/welcome")
+	return redirect("/stories")
 }

@@ -39,7 +39,9 @@ export async function UserMenu() {
 					<DropdownMenuSeparator />
 					<DropdownMenuGroup>
 						<DropdownMenuItem>{t("profile")}</DropdownMenuItem>
-						<DropdownMenuItem>{t("logout")}</DropdownMenuItem>
+						<DropdownMenuItem asChild>
+							<Link href="/auth/logout">{t("logout")}</Link>
+						</DropdownMenuItem>
 					</DropdownMenuGroup>
 					<DropdownMenuSeparator />
 					<DropdownMenuGroup>
