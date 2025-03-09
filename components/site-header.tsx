@@ -27,7 +27,7 @@ export async function SiteHeader() {
 							className="gap-2"
 							asChild
 						>
-							<Link href="/login">
+							<Link href="/stories">
 								<BookOpen className="mr-2 h-4 w-4" />
 								<span>Příběhy</span>
 							</Link>
