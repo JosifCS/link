@@ -37,5 +37,9 @@
 			"more": "Více možností s přihlášením",
 			"moreDesc": "Registrovaní uživatel mají přístup ke všem svým příběhům."
 		}
+	},
+	"Stories": {
+		"new": "Nový příběh",
+		"import": "Importovat"
 	}
 }

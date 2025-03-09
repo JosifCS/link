@@ -41,5 +41,9 @@
 			"more": "More options with login",
 			"moreDesc": "Registered users have access to all their stories."
 		}
+	},
+	"Stories": {
+		"new": "New story",
+		"import": "Import"
 	}
 }

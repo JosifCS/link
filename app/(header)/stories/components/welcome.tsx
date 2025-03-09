@@ -25,7 +25,7 @@ export async function Welcome() {
 								<span>{t("create")}</span>
 							</Button>
 							<Button variant="outline" className="gap-2" asChild>
-								<Link href={"/import"}>
+								<Link href={"/dialog/import-story"}>
 									<Upload className="h-4 w-4" />
 									<span>{t("import")}</span>
 								</Link>
