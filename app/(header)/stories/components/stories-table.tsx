@@ -13,7 +13,7 @@ export function StoriesTable({ data }: { data: GetStoriesQuery }) {
 		() => [
 			{ accessorKey: "name", meta: { className: "w-full" } },
 			{
-				accessorKey: "uuid",
+				accessorKey: "id",
 				cell: ({ getValue }) => (
 					<Button variant="ghost" className="h-8 w-8 p-0" asChild>
 						<Link href={`/stories/${getValue()}`}>
