@@ -12,7 +12,7 @@ import { StoryInfo } from "./components/story-info"
 import prisma from "@/lib/prisma"
 import { Suspense } from "react"
 
-export default async function Story({ params }: PageProps<"uuid">) {
+export default async function Page({ params }: PageProps<"uuid">) {
 	const session = await auth0.getSession()
 	const t = await getTranslations("Story")
 
