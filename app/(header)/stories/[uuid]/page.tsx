@@ -1,6 +1,4 @@
-import Link from "next/link"
-import { Download, BookOpen } from "lucide-react"
-
+import { Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getTranslations } from "next-intl/server"
 import { PageProps } from "@/types/global"
@@ -26,7 +24,7 @@ export default async function Page({ params }: PageProps<"uuid">) {
 
 	if (story == null) return notFound()
 
-	if (story.createdByEmail && session == null) return redirect("/login")
+	if (story.createdById && session == null) return redirect("/login")
 
 	return (
 		<div className="container mx-auto py-6 space-y-6">

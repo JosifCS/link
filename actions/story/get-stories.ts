@@ -4,8 +4,8 @@ import prisma from "@/lib/prisma"
 
 export type GetStoriesQuery = Awaited<ReturnType<typeof getStories>>
 
-export async function getStories(email: string) {
+export async function getStories(userId: number) {
 	return prisma.story.findMany({
-		where: { createdByEmail: { equals: email } },
+		where: { createdById: { equals: userId } },
 	})
 }

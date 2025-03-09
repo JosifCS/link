@@ -3,17 +3,17 @@
 import { v4 as uuidv4 } from "uuid"
 import prisma from "@/lib/prisma"
 import { redirect } from "next/navigation"
-import { auth0 } from "@/lib/auth0"
+import { authorize } from "@/modules/auth"
 
 export async function newStory() {
-	const session = await auth0.getSession()
+	const { id } = await authorize(false)
 
 	const { uuid } = await prisma.story.create({
 		data: {
 			description: "",
 			name: "New story",
 			uuid: uuidv4(),
-			createdByEmail: session?.user.email,
+			createdById: id,
 		},
 		select: { uuid: true },
 	})

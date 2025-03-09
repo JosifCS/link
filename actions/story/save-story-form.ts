@@ -6,7 +6,7 @@ import { z } from "zod"
 import prisma from "@/lib/prisma"
 
 const schema = zfd.formData({
-	uuid: z.string(),
+	id: z.number(),
 	name: z
 		.string()
 		.min(2, { message: "Name must be at least 2 characters long." })
@@ -15,9 +15,9 @@ const schema = zfd.formData({
 })
 export const saveStoryForm = safeAction(
 	schema,
-	async function ({ uuid, description, name }) {
+	async function ({ id, description, name }) {
 		await prisma.story.update({
-			where: { uuid: uuid },
+			where: { id: id },
 			data: { name, description },
 		})
 
