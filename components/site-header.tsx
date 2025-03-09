@@ -2,10 +2,10 @@ import { BookOpen, LogIn, PenLine, User } from "lucide-react"
 import Link from "next/link"
 import { Button } from "./ui/button"
 import { getTranslations } from "next-intl/server"
-import { auth0 } from "@/lib/auth0"
+import { authorize } from "@/modules/auth"
 
 export async function SiteHeader() {
-	const session = await auth0.getSession()
+	const { nickname } = await authorize(false)
 
 	const t = await getTranslations("Components.SiteHeader")
 
@@ -19,7 +19,7 @@ export async function SiteHeader() {
 					<PenLine className="h-6 w-6" />
 					<span>LINK</span>
 				</Link>
-				{session && (
+				{nickname && (
 					<div className="flex">
 						<Button
 							variant="ghost"
@@ -34,11 +34,11 @@ export async function SiteHeader() {
 						</Button>
 					</div>
 				)}
-				{session ? (
+				{nickname ? (
 					<Button variant="ghost" size="sm" className="gap-2" asChild>
-						<Link href="/l">
+						<Link href="/">
 							<User className="h-4 w-4" />
-							<span>Profil</span>
+							<span>{nickname}</span>
 						</Link>
 					</Button>
 				) : (
