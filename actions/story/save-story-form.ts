@@ -6,7 +6,7 @@ import { z } from "zod"
 import prisma from "@/lib/prisma"
 
 const schema = zfd.formData({
-	id: z.number(),
+	id: zfd.numeric(),
 	name: z
 		.string()
 		.min(2, { message: "Name must be at least 2 characters long." })
