@@ -43,7 +43,7 @@ export async function SiteHeader() {
 					</Button>
 				) : (
 					<Button variant="ghost" size="sm" className="gap-2" asChild>
-						<Link href="/login">
+						<Link href="/auth/login">
 							<LogIn className="h-4 w-4" />
 							<span>{t("login")}</span>
 						</Link>
