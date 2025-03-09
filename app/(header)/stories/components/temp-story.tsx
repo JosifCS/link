@@ -53,7 +53,7 @@ export default async function TempStory({ uuid }: { uuid: string }) {
 					Smazat
 				</Button>
 				<Button variant="default" asChild>
-					<Link href={`/story/${story.id}`}>
+					<Link href={`/stories/${story.id}`}>
 						<Edit className="h-4 w-4 mr-2" />
 						Upravit
 					</Link>
