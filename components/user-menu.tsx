@@ -23,7 +23,6 @@ import { setLocale } from "@/actions/set-locale"
 export async function UserMenu() {
 	const { nickname } = await authorize(true)
 	const t = await getTranslations("Components.UserMenu")
-	const locale = await getLocale()
 
 	if (nickname)
 		return (
@@ -51,17 +50,7 @@ export async function UserMenu() {
 							</DropdownMenuSubTrigger>
 							<DropdownMenuPortal>
 								<DropdownMenuSubContent>
-									<DropdownMenuRadioGroup
-										value={locale}
-										onValueChange={setLocale}
-									>
-										<DropdownMenuRadioItem value="cs">
-											Česky
-										</DropdownMenuRadioItem>
-										<DropdownMenuRadioItem value="en">
-											English
-										</DropdownMenuRadioItem>
-									</DropdownMenuRadioGroup>
+									<LanguageRadio />
 								</DropdownMenuSubContent>
 							</DropdownMenuPortal>
 						</DropdownMenuSub>
@@ -87,19 +76,20 @@ export async function UserMenu() {
 				<DropdownMenuContent className="w-20" align="end">
 					<DropdownMenuLabel>{t("language")}</DropdownMenuLabel>
 					<DropdownMenuSeparator />
-					<DropdownMenuRadioGroup
-						value={locale}
-						onValueChange={setLocale}
-					>
-						<DropdownMenuRadioItem value="cs">
-							Česky
-						</DropdownMenuRadioItem>
-						<DropdownMenuRadioItem value="en">
-							English
-						</DropdownMenuRadioItem>
-					</DropdownMenuRadioGroup>
+					<LanguageRadio />
 				</DropdownMenuContent>
 			</DropdownMenu>
 		</div>
+	)
+}
+
+async function LanguageRadio() {
+	const locale = await getLocale()
+
+	return (
+		<DropdownMenuRadioGroup value={locale} onValueChange={setLocale}>
+			<DropdownMenuRadioItem value="cs">Česky</DropdownMenuRadioItem>
+			<DropdownMenuRadioItem value="en">English</DropdownMenuRadioItem>
+		</DropdownMenuRadioGroup>
 	)
 }
