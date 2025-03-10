@@ -1,5 +1,7 @@
 import { ReactNode } from "react"
 import { DetailTabs } from "./components/detail-tabs"
+import { Button } from "@/components/ui/button"
+import { Download } from "lucide-react"
 
 export default async function Layout({ children }: { children: ReactNode }) {
 	return (

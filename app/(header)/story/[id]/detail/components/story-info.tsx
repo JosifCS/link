@@ -10,6 +10,8 @@ import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import { StoryForm } from "./story-form"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Button } from "@/components/ui/button"
+import { Download } from "lucide-react"
 
 type StoryInfoProps = {
 	id: number
@@ -26,10 +28,17 @@ export async function StoryInfo({ id }: StoryInfoProps) {
 
 	return (
 		<Card>
-			<CardHeader>
-				<CardTitle>{t("basic")}</CardTitle>
-				<CardDescription>{t("basicDesc")}</CardDescription>
+			<CardHeader className="flex flex-row items-center justify-between">
+				<div className="space-y-1.5">
+					<CardTitle>{t("basic")}</CardTitle>
+					<CardDescription>{t("basicDesc")}</CardDescription>
+				</div>
+				<Button variant="outline" size="sm">
+					<Download className="mr-2 h-4 w-4" />
+					{"export"}
+				</Button>
 			</CardHeader>
+			<CardHeader></CardHeader>
 			<CardContent className="space-y-4">
 				<StoryForm
 					t={{ name: t("name"), description: t("description") }}
