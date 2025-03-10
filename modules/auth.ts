@@ -1,6 +1,6 @@
+import { getStoryCookie } from "@/actions/story/story-cookies"
 import { auth0 } from "@/lib/auth0"
 import prisma from "@/lib/prisma"
-import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
 
 type Return = Promise<
@@ -46,9 +46,7 @@ async function authorizeStory(storyId: number): Return {
 	if (story == null) return notFound()
 
 	const session = await auth0.getSession()
-
-	const c = await cookies()
-	const storyUuid = c.get("story")?.value ?? null
+	const storyUuid = await getStoryCookie()
 
 	// nejsem přihlášený, příběh je anonymní a já mám v cookies jeho uuid
 	if (session == null && story.createdById == null && storyUuid == story.uuid)

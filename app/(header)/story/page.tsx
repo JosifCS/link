@@ -8,7 +8,7 @@ import { PlusCircle, Upload } from "lucide-react"
 import Link from "next/link"
 import { getTranslations } from "next-intl/server"
 import TempStory from "./components/temp-story"
-import { cookies } from "next/headers"
+import { getStoryCookie } from "@/actions/story/story-cookies"
 
 export default async function Page() {
 	const { id } = await authorize(true)
@@ -47,8 +47,7 @@ export default async function Page() {
 		)
 	}
 
-	const c = await cookies()
-	const storyUuid = c.get("story")?.value
+	const storyUuid = await getStoryCookie()
 
 	// nepřihlášený uživatel, který má story v cookies
 	if (storyUuid) return <TempStory uuid={storyUuid} />
