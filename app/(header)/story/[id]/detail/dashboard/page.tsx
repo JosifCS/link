@@ -4,8 +4,7 @@ import { Clock } from "lucide-react"
 import { PageProps } from "@/types/global"
 import { getTranslations } from "next-intl/server"
 import prisma from "@/lib/prisma"
-import { notFound, redirect } from "next/navigation"
-import { authorize } from "@/modules/auth"
+import { notFound } from "next/navigation"
 import { ChaptersCard } from "../components/chapters-card"
 import { CharactersCard } from "../components/characters-card"
 
@@ -18,15 +17,7 @@ export default async function Page({ params }: PageProps<"id">) {
 		where: { id: { equals: +id } },
 	})
 
-	// příběh s tímto id neexistuhe
 	if (story == null) return notFound()
-
-	const user = await authorize(story)
-
-	// pokouším se zobrazit příběh nějakého uživatele, ale nejsem přihlášený
-	if (story.createdById && user.id == null) return redirect("/login")
-
-	if (!user.storyAuthorized) return notFound()
 
 	return (
 		<>

@@ -25,5 +25,5 @@ export async function newStory() {
 		c.set("story", uuid, { maxAge: 60 * 60 * 24 * 7 })
 	}
 
-	redirect(`/stories/${id}`)
+	redirect(`/story/${id}/detail`)
 }
