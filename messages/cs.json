@@ -12,34 +12,50 @@
 		}
 	},
 	"Story": {
-		"title": "Nastavení příběhu",
-		"export": "Exportovat příběh",
-		"basic": "Základní informace",
-		"basicDesc": "Upravte základní informace o vašem příběhu",
-		"name": "Název příběhu",
-		"description": "Krátký popis",
-		"chapters": "Kapitoly",
-		"newChapter": "Nová kapitola",
-		"chaptersDesc": "Seznam kapitol vašeho příběhu",
-		"dialogsCount": "{count} dialogů",
-		"characters": "Postavy",
-		"charectersDesc": "Seznam postav ve vašem příběhu",
-		"newCharacter": "Nová postava",
-		"Welcome": {
-			"title": "Vytvářejte úžasné příběhy",
-			"description": "Nástroj pro tvorbu kreativních příběhů. Jednoduše začněte psát nebo importujte svůj vlastní příběh.",
-			"create": "Vytvořit nový příběh",
-			"import": "Importovat příběh",
-			"simple": "Jednoduchá tvorba",
-			"simpleDesc": "Editor pro snadné psaní a členění vašich příběhů.",
-			"export": "Exportujte svůj příběh",
-			"exportDesc": "Svůj vytvořený příběh exportuje do JSON souboru a použijte ve ho ve vašem projektu.",
-			"more": "Více možností s přihlášením",
-			"moreDesc": "Registrovaní uživatel mají přístup ke všem svým příběhům."
-		}
-	},
-	"Stories": {
+		"Components": {
+			"Welcome": {
+				"title": "Vytvářejte úžasné příběhy",
+				"description": "Nástroj pro tvorbu kreativních příběhů. Jednoduše začněte psát nebo importujte svůj vlastní příběh.",
+				"create": "Vytvořit nový příběh",
+				"import": "Importovat příběh",
+				"simple": "Jednoduchá tvorba",
+				"simpleDesc": "Editor pro snadné psaní a členění vašich příběhů.",
+				"export": "Exportujte svůj příběh",
+				"exportDesc": "Svůj vytvořený příběh exportuje do JSON souboru a použijte ve ho ve vašem projektu.",
+				"more": "Více možností s přihlášením",
+				"moreDesc": "Registrovaní uživatel mají přístup ke všem svým příběhům."
+			},
+			"TempStory": {
+				"charactersCount": "Počet postav {count}",
+				"chaptersCount": "Počet kapitol {count}",
+				"edit": "Upravit",
+				"remove": "Smazat",
+				"message": "Nejste přihlášený. Tento příběh bude uložen pouze do {date}."
+			}
+		},
+		"stories": "Příběhy",
 		"new": "Nový příběh",
-		"import": "Importovat"
+		"import": "Importovat",
+		"Detail": {
+			"Components": {
+				"ChaptersCard": {
+					"title": "Kapitoly",
+					"new": "Nová kapitola",
+					"description": "Celkem kapitol: {count}"
+				},
+				"CharactersCard": {
+					"title": "Postavy",
+					"description": "Celkem postav: {count}",
+					"new": "Nová postava"
+				}
+			},
+			"StoryForm": {
+				"basic": "Základní informace",
+				"basicDesc": "Název a krátký popis příběhu.",
+				"name": "Název",
+				"description": "Popis",
+				"export": "Exportovat příběh"
+			}
+		}
 	}
 }

@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server"
 import Link from "next/link"
 
 export async function Welcome() {
-	const t = await getTranslations("Story.Welcome")
+	const t = await getTranslations("Story.Components.Welcome")
 	return (
 		<>
 			<section className="w-full py-12 md:py-24 lg:py-32">

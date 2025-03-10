@@ -18,7 +18,7 @@ type StoryInfoProps = {
 }
 
 export async function StoryInfo({ id }: StoryInfoProps) {
-	const t = await getTranslations("Story")
+	const t = await getTranslations("Story.Detail.StoryForm")
 
 	const story = await prisma.story.findFirst({
 		where: { id: { equals: id } },
@@ -35,7 +35,7 @@ export async function StoryInfo({ id }: StoryInfoProps) {
 				</div>
 				<Button variant="outline" size="sm">
 					<Download className="mr-2 h-4 w-4" />
-					{"export"}
+					{t("export")}
 				</Button>
 			</CardHeader>
 			<CardHeader></CardHeader>

@@ -1,18 +1,18 @@
 import { Suspense } from "react"
 import { StoryInfo, StoryInfoSkeleton } from "../components/story-info"
-import { ChaptersList } from "../components/chapters-list"
-import { CharactersList } from "../components/characters-list"
 import { Clock } from "lucide-react"
 import { PageProps } from "@/types/global"
 import { getTranslations } from "next-intl/server"
 import prisma from "@/lib/prisma"
 import { notFound, redirect } from "next/navigation"
 import { authorize } from "@/modules/auth"
+import { ChaptersCard } from "../components/chapters-card"
+import { CharactersCard } from "../components/characters-card"
 
 export default async function Page({ params }: PageProps<"id">) {
 	const id = (await params).id
 
-	const t = await getTranslations("Story")
+	const t = await getTranslations()
 
 	const story = await prisma.story.findFirst({
 		where: { id: { equals: +id } },
@@ -34,8 +34,9 @@ export default async function Page({ params }: PageProps<"id">) {
 				<div className="flex items-center gap-2 text-amber-600 bg-amber-50 p-3 rounded-md">
 					<Clock className="h-5 w-5" />
 					<p className="text-sm">
-						Nejste přihlášený. Tento příběh bude uložen pouze do
-						cc.cc.cccc.
+						{t("Story.Components.TempStory.message", {
+							date: "_DATE_",
+						})}
 					</p>
 				</div>
 			)}
@@ -46,11 +47,11 @@ export default async function Page({ params }: PageProps<"id">) {
 
 			<div className="grid gap-6 md:grid-cols-2">
 				<Suspense fallback={"Loading..."}>
-					<ChaptersList uuid={story.uuid} />
+					<ChaptersCard uuid={story.uuid} />
 				</Suspense>
 
 				<Suspense fallback={"Loading..."}>
-					<CharactersList uuid={story.uuid} />
+					<CharactersCard uuid={story.uuid} />
 				</Suspense>
 			</div>
 		</>

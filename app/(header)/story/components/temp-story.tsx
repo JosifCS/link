@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card"
 import prisma from "@/lib/prisma"
 import { Clock, Edit, FileText, Trash, Users } from "lucide-react"
+import { getTranslations } from "next-intl/server"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
@@ -20,6 +21,8 @@ export default async function TempStory({ uuid }: { uuid: string }) {
 
 	if (story == undefined) return notFound()
 
+	const t = await getTranslations("Story.Components.TempStory")
+
 	return (
 		<Card className="max-w-2xl mx-auto mt-12">
 			<CardHeader>
@@ -30,18 +33,25 @@ export default async function TempStory({ uuid }: { uuid: string }) {
 				<div className="grid grid-cols-2 gap-4">
 					<div className="flex items-center gap-2">
 						<Users className="h-5 w-5 text-muted-foreground" />
-						<span>Počet postav: {story.characters.length}</span>
+						<span>
+							{t("charactersCount", {
+								count: story.characters.length,
+							})}
+						</span>
 					</div>
 					<div className="flex items-center gap-2">
 						<FileText className="h-5 w-5 text-muted-foreground" />
-						<span>Počet kapitol: {story.chapters.length}</span>
+						<span>
+							{t("chaptersCount", {
+								count: story.chapters.length,
+							})}
+						</span>
 					</div>
 				</div>
 				<div className="flex items-center gap-2 text-amber-600 bg-amber-50 p-3 rounded-md">
 					<Clock className="h-5 w-5" />
 					<p className="text-sm">
-						Nejste přihlášený. Tento příběh bude uložen pouze do
-						cc.cc.cccc.
+						{t("message", { date: "_DATE_" })}
 					</p>
 				</div>
 			</CardContent>
@@ -51,12 +61,12 @@ export default async function TempStory({ uuid }: { uuid: string }) {
 					//onClick={() => setShowDeleteConfirmation(true)}
 				>
 					<Trash className="h-4 w-4 mr-2" />
-					Smazat
+					{t("remove")}
 				</Button>
 				<Button variant="default" asChild>
-					<Link href={`/stories/${story.id}`}>
+					<Link href={`/story/${story.id}/detail`}>
 						<Edit className="h-4 w-4 mr-2" />
-						Upravit
+						{t("edit")}
 					</Link>
 				</Button>
 			</CardFooter>
