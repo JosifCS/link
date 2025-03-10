@@ -22,21 +22,20 @@ export const saveCharacterForm = safeAction(
 		await authorize(true)
 
 		if (id) {
-			const character = await prisma.character.update({
+			await prisma.character.update({
 				where: { id: id },
 				data: { name, description },
+			})
+			return actionResponse(true, "saved") // TODO localize
+		} else {
+			const character = await prisma.character.create({
+				data: { name, description, storyId },
 			})
 			return actionResponse(
 				true,
 				"created", // TODO localize
 				`/story/${character.storyId}/character/${character.id}`
 			)
-		} else {
-			await prisma.character.create({
-				data: { name, description, storyId },
-			})
-
-			return actionResponse(true, "saved") // TODO localize
 		}
 	}
 )

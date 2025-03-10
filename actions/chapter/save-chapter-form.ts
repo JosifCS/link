@@ -22,20 +22,21 @@ export const saveChapterForm = safeAction(
 		await authorize(true)
 
 		if (id) {
-			const chapter = await prisma.chapter.update({
+			await prisma.chapter.update({
 				where: { id: id },
 				data: { name, description },
 			})
+			return actionResponse(true, "saved") // TODO localize
+		} else {
+			const chapter = await prisma.chapter.create({
+				data: { name, description, storyId },
+			})
+
 			return actionResponse(
 				true,
 				"created", // TODO localize
 				`/story/${chapter.storyId}/chapter/${chapter.id}`
 			)
-		} else {
-			await prisma.chapter.create({
-				data: { name, description, storyId },
-			})
-			return actionResponse(true, "saved") // TODO localize
 		}
 	}
 )
