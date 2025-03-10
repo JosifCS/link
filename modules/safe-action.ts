@@ -1,15 +1,10 @@
 import { z } from "zod"
+import { ActionResult } from "./actionResult"
 
-/*export const authActionClient = actionClient.use(
-	async ({ next, metadata }) => {
-		return next({ ctx: { user: await getUser() } })
-	}
-)*/
-
-export type ActionResult = {
-	success: boolean
-	message?: string
-	redirect?: string
+export type SafeActionResult = {
+	result: ActionResult
+	prevState: any | null
+	validationErrors: Record<string, string>
 }
 
 export function safeAction<S extends object, SchemaType extends z.ZodTypeAny>(
@@ -21,7 +16,13 @@ export function safeAction<S extends object, SchemaType extends z.ZodTypeAny>(
 		const { success, data, error } = schema.safeParse(formData)
 		console.log(error?.flatten())
 		try {
-			await action(data)
+			const result = await action(data)
+
+			return {
+				prevState: parseForm(formData),
+				validationErrors: formatError(error),
+				result,
+			}
 		} catch (e: unknown) {
 			console.log("ERRRROR-----------")
 		}
@@ -29,7 +30,9 @@ export function safeAction<S extends object, SchemaType extends z.ZodTypeAny>(
 		return {
 			prevState: parseForm(formData),
 			validationErrors: formatError(error),
-			success,
+			result: {
+				success,
+			},
 		}
 	}
 }

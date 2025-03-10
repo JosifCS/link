@@ -1,4 +1,10 @@
-export function actionResponse(
+export type ActionResult = {
+	success: boolean
+	message?: string
+	redirect?: string
+}
+
+export function actionResult(
 	success: boolean,
 	message?: string,
 	redirect?: string

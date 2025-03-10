@@ -12,8 +12,8 @@ import {
 import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { toast } from "@/hooks/use-toast"
-import { ActionResult } from "@/modules/safe-action"
-import { useDebounce, useDebouncedCallback } from "use-debounce"
+import { useDebouncedCallback } from "use-debounce"
+import { SafeActionResult } from "@/modules/safe-action"
 
 type FormWrapper = {
 	action: any
@@ -22,15 +22,12 @@ type FormWrapper = {
 	autoSave?: boolean
 }
 
-type FormResult = ActionResult & {
-	prevState: any | null
-	validationErrors: Record<string, string>
-}
-
-const FormContext = createContext<FormResult & { onChange: () => void }>({
+const FormContext = createContext<SafeActionResult & { onChange: () => void }>({
 	prevState: null,
 	validationErrors: {},
-	success: true,
+	result: {
+		success: true,
+	},
 	onChange: () => {},
 })
 
@@ -50,11 +47,16 @@ export function Form({
 	}, 3000)
 
 	const [unsaved, setUnsaved] = useState(false)
-	const [state, formAction, isPending] = useActionState<FormResult>(action, {
-		prevState: null,
-		validationErrors: {},
-		success: true,
-	})
+	const [state, formAction, isPending] = useActionState<SafeActionResult>(
+		action,
+		{
+			prevState: null,
+			validationErrors: {},
+			result: {
+				success: true,
+			},
+		}
+	)
 
 	const handleChange = useCallback(() => {
 		if (autoSave) {
@@ -64,12 +66,12 @@ export function Form({
 	}, [autoSave])
 
 	useEffect(() => {
-		if (state.success) {
+		if (state.result.success) {
 			setUnsaved(false)
-			if (state.message) {
+			if (state.result.message) {
 				toast({
 					title: "Success",
-					description: state.message,
+					description: state.result.message,
 				})
 
 				/*else {
@@ -81,8 +83,8 @@ export function Form({
 				}*/
 			}
 
-			if (state.redirect) {
-				router.push(state.redirect)
+			if (state.result.redirect) {
+				router.push(state.result.redirect)
 			} /*else {
 				router.back()
 			}*/
@@ -112,7 +114,7 @@ export function Form({
 				value={{
 					prevState: state.prevState,
 					validationErrors: state.validationErrors,
-					success: state.success,
+					result: state.result,
 					onChange: handleChange,
 				}}
 			>
