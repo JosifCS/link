@@ -8,21 +8,27 @@ import { authorize } from "@/modules/auth"
 
 const schema = zfd.formData({
 	id: zfd.numeric(),
+	storyId: zfd.numeric(),
 	name: z
 		.string()
 		.min(2, { message: "Name must be at least 2 characters long." })
 		.trim(),
 	description: z.string().trim(),
 })
-export const saveStoryForm = safeAction(
+export const saveCharacterForm = safeAction(
 	schema,
-	async function ({ id, description, name }) {
+	async function ({ id, storyId, description, name }) {
 		await authorize(true)
 
-		await prisma.story.update({
-			where: { id: id },
-			data: { name, description },
-		})
+		if (id)
+			await prisma.character.update({
+				where: { id: id },
+				data: { name, description },
+			})
+		else
+			await prisma.character.create({
+				data: { name, description, storyId },
+			})
 
 		return {
 			success: true,

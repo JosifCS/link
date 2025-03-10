@@ -8,23 +8,21 @@ import {
 import { getTranslations } from "next-intl/server"
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
-import { StoryForm } from "./story-form"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Button } from "@/components/ui/button"
-import { Download } from "lucide-react"
+import { ChapterForm } from "./chapter-form"
 
-type StoryInfoProps = {
-	id: number
+type ChapterInfoProps = {
+	chapterId: number
 }
 
-export async function StoryInfo({ id }: StoryInfoProps) {
+export async function ChapterInfo({ chapterId }: ChapterInfoProps) {
 	const t = await getTranslations("Story.Detail.StoryForm")
 
-	const story = await prisma.story.findFirst({
-		where: { id: { equals: id } },
+	const chapter = await prisma.chapter.findFirst({
+		where: { id: { equals: chapterId } },
 	})
 
-	if (story == null) return notFound()
+	if (chapter == null) return notFound()
 
 	return (
 		<Card>
@@ -33,22 +31,18 @@ export async function StoryInfo({ id }: StoryInfoProps) {
 					<CardTitle>{t("basic")}</CardTitle>
 					<CardDescription>{t("basicDesc")}</CardDescription>
 				</div>
-				<Button variant="outline" size="sm">
-					<Download className="mr-2 h-4 w-4" />
-					{t("export")}
-				</Button>
 			</CardHeader>
 			<CardContent className="space-y-4">
-				<StoryForm
+				<ChapterForm
 					t={{ name: t("name"), description: t("description") }}
-					value={story}
+					value={chapter}
 				/>
 			</CardContent>
 		</Card>
 	)
 }
 
-export function StoryInfoSkeleton() {
+export function ChapterInfoSkeleton() {
 	return (
 		<Card>
 			<CardHeader>
