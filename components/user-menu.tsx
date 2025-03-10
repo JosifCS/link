@@ -17,7 +17,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
-import { LogIn, User } from "lucide-react"
+import { Globe, LogIn, User } from "lucide-react"
 import { setLocale } from "@/actions/set-locale"
 
 export async function UserMenu() {
@@ -71,11 +71,35 @@ export async function UserMenu() {
 		)
 
 	return (
-		<Button variant="ghost" size="sm" className="gap-2" asChild>
-			<Link href="/auth/login">
-				<LogIn className="h-4 w-4" />
-				<span>{t("login")}</span>
-			</Link>
-		</Button>
+		<div className="flex gap-2">
+			<Button variant="ghost" size="sm" className="gap-2" asChild>
+				<Link href="/auth/login">
+					<LogIn className="h-4 w-4" />
+					<span>{t("login")}</span>
+				</Link>
+			</Button>
+			<DropdownMenu>
+				<DropdownMenuTrigger asChild>
+					<Button variant="ghost" size="sm">
+						<Globe className="h-4 w-4" />
+					</Button>
+				</DropdownMenuTrigger>
+				<DropdownMenuContent className="w-20" align="end">
+					<DropdownMenuLabel>{t("language")}</DropdownMenuLabel>
+					<DropdownMenuSeparator />
+					<DropdownMenuRadioGroup
+						value={locale}
+						onValueChange={setLocale}
+					>
+						<DropdownMenuRadioItem value="cs">
+							Česky
+						</DropdownMenuRadioItem>
+						<DropdownMenuRadioItem value="en">
+							English
+						</DropdownMenuRadioItem>
+					</DropdownMenuRadioGroup>
+				</DropdownMenuContent>
+			</DropdownMenu>
+		</div>
 	)
 }
