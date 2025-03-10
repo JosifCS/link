@@ -70,6 +70,22 @@
 				"name": "Název",
 				"create": "Vytvořit kapitolu"
 			}
+		},
+		"Chapter": {
+			"ChapterForm": {
+				"title": "Základní informace",
+				"description": "Popis",
+				"name": "Název",
+				"subTitle": "Příběh: {story}"
+			}
+		},
+		"Character": {
+			"CharacterForm": {
+				"title": "Základní informace",
+				"subTitle": "Příběh: {story}",
+				"name": "Jméno",
+				"description": "Popis"
+			}
 		}
 	}
 }

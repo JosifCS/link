@@ -74,6 +74,22 @@
 				"name": "Name",
 				"create": "Create a chapter"
 			}
+		},
+		"Chapter": {
+			"ChapterForm": {
+				"title": "Basic information",
+				"description": "Description",
+				"name": "Name",
+				"subTitle": "Story: {story}"
+			}
+		},
+		"Character": {
+			"CharacterForm": {
+				"title": "Basic information",
+				"subTitle": "Story: {story}",
+				"name": "Name",
+				"description": "Description"
+			}
 		}
 	}
 }

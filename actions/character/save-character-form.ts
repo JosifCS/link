@@ -5,6 +5,7 @@ import { safeAction } from "@/modules/safe-action"
 import { z } from "zod"
 import prisma from "@/lib/prisma"
 import { authorize } from "@/modules/auth"
+import { actionResponse } from "@/modules/actionResponse"
 
 const schema = zfd.formData({
 	id: zfd.numeric(),
@@ -20,20 +21,22 @@ export const saveCharacterForm = safeAction(
 	async function ({ id, storyId, description, name }) {
 		await authorize(true)
 
-		if (id)
-			await prisma.character.update({
+		if (id) {
+			const character = await prisma.character.update({
 				where: { id: id },
 				data: { name, description },
 			})
-		else
+			return actionResponse(
+				true,
+				"created", // TODO localize
+				`/story/${character.storyId}/character/${character.id}`
+			)
+		} else {
 			await prisma.character.create({
 				data: { name, description, storyId },
 			})
 
-		return {
-			success: true,
-			message: "ok",
-			//redirect: `/`,
+			return actionResponse(true, "saved") // TODO localize
 		}
 	}
 )

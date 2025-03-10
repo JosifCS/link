@@ -16,7 +16,7 @@ type ChapterInfoProps = {
 }
 
 export async function ChapterInfo({ chapterId }: ChapterInfoProps) {
-	const t = await getTranslations("Story.Detail.StoryForm")
+	const t = await getTranslations("Story.Chapter.ChapterForm")
 
 	const chapter = await prisma.chapter.findFirst({
 		where: { id: { equals: chapterId } },
@@ -28,8 +28,10 @@ export async function ChapterInfo({ chapterId }: ChapterInfoProps) {
 		<Card>
 			<CardHeader className="flex flex-row items-center justify-between">
 				<div className="space-y-1.5">
-					<CardTitle>{t("basic")}</CardTitle>
-					<CardDescription>{t("basicDesc")}</CardDescription>
+					<CardTitle>{t("title")}</CardTitle>
+					<CardDescription>
+						{t("subTitle", { story: "XXX" })}
+					</CardDescription>
 				</div>
 			</CardHeader>
 			<CardContent className="space-y-4">

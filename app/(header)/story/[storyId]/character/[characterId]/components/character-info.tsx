@@ -16,7 +16,7 @@ type CharacterInfoProps = {
 }
 
 export async function CharacterInfo({ characterId }: CharacterInfoProps) {
-	const t = await getTranslations("Story.Detail.StoryForm")
+	const t = await getTranslations("Story.Character.CharacterForm")
 
 	const character = await prisma.character.findFirst({
 		where: { id: { equals: characterId } },
@@ -28,8 +28,10 @@ export async function CharacterInfo({ characterId }: CharacterInfoProps) {
 		<Card>
 			<CardHeader className="flex flex-row items-center justify-between">
 				<div className="space-y-1.5">
-					<CardTitle>{t("basic")}</CardTitle>
-					<CardDescription>{t("basicDesc")}</CardDescription>
+					<CardTitle>{t("title")}</CardTitle>
+					<CardDescription>
+						{t("subTitle", { story: "XXX" })}
+					</CardDescription>
 				</div>
 			</CardHeader>
 			<CardContent className="space-y-4">
