@@ -16,6 +16,7 @@ export default async function Page({ params }: PageProps<"id">) {
 
 	const story = await prisma.story.findFirst({
 		where: { id: { equals: +id } },
+		include: { _count: true },
 	})
 
 	if (story == null) return notFound()
@@ -42,13 +43,14 @@ export default async function Page({ params }: PageProps<"id">) {
 			</Suspense>
 
 			<div className="grid gap-6 md:grid-cols-2">
-				<Suspense fallback={"Loading..."}>
-					<ChaptersCard uuid={story.uuid} />
-				</Suspense>
-
-				<Suspense fallback={"Loading..."}>
-					<CharactersCard uuid={story.uuid} />
-				</Suspense>
+				<ChaptersCard
+					storyId={story.id}
+					count={story._count.chapters}
+				/>
+				<CharactersCard
+					storyId={story.id}
+					count={story._count.characters}
+				/>
 			</div>
 		</>
 	)

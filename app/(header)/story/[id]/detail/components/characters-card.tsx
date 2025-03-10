@@ -7,26 +7,15 @@ import {
 } from "@/components/ui/card"
 import { PlusCircle } from "lucide-react"
 import { getTranslations } from "next-intl/server"
-import prisma from "@/lib/prisma"
-import { notFound } from "next/navigation"
+import Link from "next/link"
 
 type CharactersCardProps = {
-	uuid: string
+	storyId: number
+	count: number
 }
 
-export async function CharactersCard({ uuid }: CharactersCardProps) {
+export async function CharactersCard({ storyId, count }: CharactersCardProps) {
 	const t = await getTranslations("Story.Detail.Components.CharactersCard")
-
-	const story = await prisma.story.findFirst({
-		where: { uuid: { equals: uuid } },
-		include: {
-			characters: {
-				include: { dialogs: { include: { chapter: true } } },
-			},
-		},
-	})
-
-	if (story == null) return notFound()
 
 	return (
 		<Card>
@@ -34,12 +23,14 @@ export async function CharactersCard({ uuid }: CharactersCardProps) {
 				<div className="space-y-1.5">
 					<CardTitle>{t("title")}</CardTitle>
 					<CardDescription>
-						{t("description", { count: "_C_" })}
+						{t("description", { count })}
 					</CardDescription>
 				</div>
-				<Button size="sm">
-					<PlusCircle className="mr-2 h-4 w-4" />
-					{t("new")}
+				<Button size="sm" asChild>
+					<Link href={`/story/${storyId}/detail`}>
+						<PlusCircle className="mr-2 h-4 w-4" />
+						{t("new")}
+					</Link>
 				</Button>
 			</CardHeader>
 		</Card>
