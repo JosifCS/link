@@ -16,7 +16,7 @@ export function StoriesTable({ data }: { data: GetStoriesQuery }) {
 				accessorKey: "id",
 				cell: ({ getValue }) => (
 					<Button variant="ghost" className="h-8 w-8 p-0" asChild>
-						<Link href={`/stories/${getValue()}`}>
+						<Link href={`/story/${getValue()}/detail`}>
 							<span className="sr-only">Edit story</span>
 							<Edit />
 						</Link>

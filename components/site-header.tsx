@@ -28,7 +28,7 @@ export async function SiteHeader() {
 							className="gap-2"
 							asChild
 						>
-							<Link href="/stories">
+							<Link href="/story">
 								<BookOpen className="mr-2 h-4 w-4" />
 								<span>{t("stories")}</span>
 							</Link>
