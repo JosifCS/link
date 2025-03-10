@@ -84,7 +84,8 @@ export function Form({
 			}
 
 			if (state.result.redirect) {
-				router.push(state.result.redirect)
+				router.back()
+				//router.push(state.result.redirect)
 			} /*else {
 				router.back()
 			}*/
@@ -100,6 +101,10 @@ export function Form({
 				title: "Validation error",
 				description: "Invalid form",
 			})
+		}
+
+		return () => {
+			if (state.result.redirect) router.push(state.result.redirect)
 		}
 	}, [state])
 
