@@ -27,7 +27,7 @@ export async function CharactersCard({ storyId, count }: CharactersCardProps) {
 					</CardDescription>
 				</div>
 				<Button size="sm" asChild>
-					<Link href={`/story/${storyId}/detail`}>
+					<Link href={`/story/${storyId}/dialog/new-character`}>
 						<PlusCircle className="mr-2 h-4 w-4" />
 						{t("new")}
 					</Link>

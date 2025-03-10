@@ -60,6 +60,20 @@
 				"description": "Description",
 				"export": "Export story"
 			}
+		},
+		"Dialogs": {
+			"NewCharacter": {
+				"title": "New character",
+				"description": "Story: {story}",
+				"name": "Name",
+				"create": "Create a character"
+			},
+			"NewChapter": {
+				"title": "New chapter",
+				"description": "Story: {story}",
+				"name": "Name",
+				"create": "Create a chapter"
+			}
 		}
 	}
 }

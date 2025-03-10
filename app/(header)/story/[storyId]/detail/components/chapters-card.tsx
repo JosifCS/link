@@ -27,7 +27,7 @@ export async function ChaptersCard({ storyId, count }: ChaptersCardProps) {
 					</CardDescription>
 				</div>
 				<Button size="sm" asChild>
-					<Link href={`/story/${storyId}/detail`}>
+					<Link href={`/story/${storyId}/dialog/new-chapter`}>
 						<PlusCircle className="mr-2 h-4 w-4" />
 						{t("new")}
 					</Link>
