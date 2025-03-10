@@ -6,9 +6,9 @@ export default async function Layout({
 	params,
 }: {
 	children: ReactNode
-	params: Promise<{ id: string }>
+	params: Promise<{ storyId: string }>
 }) {
-	const id = (await params).id
+	const id = (await params).storyId
 
 	await authorize(+id)
 

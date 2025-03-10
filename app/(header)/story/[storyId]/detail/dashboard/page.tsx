@@ -9,8 +9,8 @@ import { ChaptersCard } from "../components/chapters-card"
 import { CharactersCard } from "../components/characters-card"
 import { getStoryCookie } from "@/actions/story/story-cookies"
 
-export default async function Page({ params }: PageProps<"id">) {
-	const id = (await params).id
+export default async function Page({ params }: PageProps<"storyId">) {
+	const id = (await params).storyId
 
 	const t = await getTranslations()
 
