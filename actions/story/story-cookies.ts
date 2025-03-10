@@ -15,10 +15,11 @@ export async function setStoryCookie(uuid: string) {
 export async function getStoryCookie() {
 	const c = await cookies()
 	const uuid = c.get("story")?.value
-	const expire = c.get("story-expire")?.value
+	const e = c.get("story-expire")?.value
 
-	if (uuid && expire) {
-		if (new Date() < new Date(expire)) return uuid
+	if (uuid && e) {
+		const expire = new Date(e)
+		if (new Date() < expire) return { uuid, expire }
 	}
 
 	return null

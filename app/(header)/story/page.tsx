@@ -47,10 +47,10 @@ export default async function Page() {
 		)
 	}
 
-	const storyUuid = await getStoryCookie()
+	const cookie = await getStoryCookie()
 
 	// nepřihlášený uživatel, který má story v cookies
-	if (storyUuid) return <TempStory uuid={storyUuid} />
+	if (cookie) return <TempStory uuid={cookie.uuid} expire={cookie.expire} />
 
 	// nepřihlášený uživatel, který nemá sni story v cookies
 	return <Welcome />

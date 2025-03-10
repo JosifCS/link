@@ -30,7 +30,7 @@
 				"chaptersCount": "Počet kapitol {count}",
 				"edit": "Upravit",
 				"remove": "Smazat",
-				"message": "Nejste přihlášený. Tento příběh bude uložen pouze do {date}."
+				"message": "Nejste přihlášený. Tento příběh bude uložen pouze do {expire, date, medium}."
 			}
 		},
 		"stories": "Příběhy",

@@ -1,3 +1,4 @@
+import { getStoryCookie } from "@/actions/story/story-cookies"
 import { Button } from "@/components/ui/button"
 import {
 	Card,
@@ -13,7 +14,13 @@ import { getTranslations } from "next-intl/server"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-export default async function TempStory({ uuid }: { uuid: string }) {
+export default async function TempStory({
+	uuid,
+	expire,
+}: {
+	uuid: string
+	expire: Date
+}) {
 	const story = await prisma.story.findFirst({
 		where: { uuid: { equals: uuid } },
 		include: { characters: true, chapters: true },
@@ -50,9 +57,7 @@ export default async function TempStory({ uuid }: { uuid: string }) {
 				</div>
 				<div className="flex items-center gap-2 text-amber-600 bg-amber-50 p-3 rounded-md">
 					<Clock className="h-5 w-5" />
-					<p className="text-sm">
-						{t("message", { date: "_DATE_" })}
-					</p>
+					<p className="text-sm">{t("message", { expire })}</p>
 				</div>
 			</CardContent>
 			<CardFooter className="flex justify-end gap-2">

@@ -46,10 +46,15 @@ async function authorizeStory(storyId: number): Return {
 	if (story == null) return notFound()
 
 	const session = await auth0.getSession()
-	const storyUuid = await getStoryCookie()
+	const cooike = await getStoryCookie()
 
 	// nejsem přihlášený, příběh je anonymní a já mám v cookies jeho uuid
-	if (session == null && story.createdById == null && storyUuid == story.uuid)
+	if (
+		session == null &&
+		story.createdById == null &&
+		cooike &&
+		cooike.uuid == story.uuid
+	)
 		return { email: null, id: null, nickname: null }
 
 	// jsem přihlášený

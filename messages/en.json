@@ -34,7 +34,7 @@
 				"chaptersCount": "Number of chapters {count}",
 				"edit": "Edit",
 				"remove": "Delete",
-				"message": "You are not logged in. This story will only be saved until {date}."
+				"message": "You are not logged in. This story will only be saved until {expire, date, medium}."
 			}
 		},
 		"stories": "Stories",
