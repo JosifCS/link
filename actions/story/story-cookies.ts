@@ -24,3 +24,9 @@ export async function getStoryCookie() {
 
 	return null
 }
+
+export async function deleteStoryCookie() {
+	const c = await cookies()
+	c.delete("story")
+	c.delete("story-expire")
+}

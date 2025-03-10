@@ -1,4 +1,7 @@
-import { getStoryCookie } from "@/actions/story/story-cookies"
+import {
+	deleteStoryCookie,
+	getStoryCookie,
+} from "@/actions/story/story-cookies"
 import { Button } from "@/components/ui/button"
 import {
 	Card,
@@ -61,10 +64,7 @@ export default async function TempStory({
 				</div>
 			</CardContent>
 			<CardFooter className="flex justify-end gap-2">
-				<Button
-					variant="destructive"
-					//onClick={() => setShowDeleteConfirmation(true)}
-				>
+				<Button variant="destructive" onClick={deleteStoryCookie}>
 					<Trash className="h-4 w-4 mr-2" />
 					{t("remove")}
 				</Button>
