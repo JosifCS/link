@@ -1,6 +1,6 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server"
 
-export type Translations = Awaited<ReturnType<typeof getTranslations>>;
+export type Translations = Awaited<ReturnType<typeof getTranslations>>
 
 /**
  * A type for easy definition of Page or Layout parameters. In the KEYS type parameter,
@@ -16,6 +16,8 @@ export type Translations = Awaited<ReturnType<typeof getTranslations>>;
  * // }
  */
 export type PageProps<KEYS extends keyof any = string> = {
-  params: Promise<{ [P in KEYS]: string }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-};
+	params: Promise<Readonly<{ [P in KEYS]: string }>>
+	searchParams: Promise<
+		Readonly<Record<string, string | string[] | undefined>>
+	>
+}
