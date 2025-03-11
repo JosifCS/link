@@ -1,6 +1,6 @@
 import { Suspense } from "react"
 import { StoryInfo, StoryInfoSkeleton } from "../components/story-info"
-import { Clock } from "lucide-react"
+import { Clock, Download } from "lucide-react"
 import { PageProps } from "@/types/global"
 import { getTranslations } from "next-intl/server"
 import prisma from "@/lib/prisma"
@@ -8,6 +8,8 @@ import { notFound } from "next/navigation"
 import { ChaptersCard } from "../components/chapters-card"
 import { CharactersCard } from "../components/characters-card"
 import { getStoryCookie } from "@/actions/story/story-cookies"
+import { DetailTabs } from "../components/detail-tabs"
+import { Button } from "@/components/ui/button"
 
 export default async function Page({ params }: PageProps<"storyId">) {
 	const id = (await params).storyId
@@ -24,7 +26,22 @@ export default async function Page({ params }: PageProps<"storyId">) {
 	const cookie = await getStoryCookie()
 
 	return (
-		<>
+		<div className="container mx-auto py-6 space-y-6">
+			<div className="flex items-center justify-between">
+				<div className="flex items-center gap-2">
+					<h1 className="text-2xl font-bold">{"Příběh_"}</h1>
+				</div>
+				<div className="rounded-xl border bg-card text-card-foreground shadow p-2">
+					<div className="flex items-center space-x-2">
+						<DetailTabs />
+						<Button variant="outline" size="sm">
+							<Download className="mr-2 h-4 w-4" />
+							{"_Export"}
+						</Button>
+					</div>
+				</div>
+			</div>
+
 			{story.createdById == null &&
 				cookie &&
 				cookie.uuid == story.uuid && (
@@ -52,6 +69,6 @@ export default async function Page({ params }: PageProps<"storyId">) {
 					count={story._count.characters}
 				/>
 			</div>
-		</>
+		</div>
 	)
 }

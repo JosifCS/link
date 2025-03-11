@@ -10,18 +10,24 @@ export function DetailTabs() {
 	const pathname = usePathname()
 
 	const storyId = pathname.split("/")[2]
-	const tab = pathname.split("/")[4]
+	const tab = pathname.split("/")[3]
 
-	function onNavigate(variant: string) {
-		return router.push(`/story/${storyId}/detail/${variant}`)
+	function onNavigate(tab: string) {
+		return router.push(`/story/${storyId}/${tab}`)
 	}
 
 	return (
 		<Tabs value={tab} onValueChange={onNavigate}>
-			<TabsList>
-				<TabsTrigger value="dashboard">{"Přehled"}</TabsTrigger>
-				<TabsTrigger value="chapters">{"Kapitoly"}</TabsTrigger>
-				<TabsTrigger value="characters">{"Postavy"}</TabsTrigger>
+			<TabsList className="h-9">
+				<TabsTrigger className="h-7" value="detail">
+					{"Přehled"}
+				</TabsTrigger>
+				<TabsTrigger className="h-7" value="chapters">
+					{"Kapitoly"}
+				</TabsTrigger>
+				<TabsTrigger className="h-7" value="characters">
+					{"Postavy"}
+				</TabsTrigger>
 			</TabsList>
 		</Tabs>
 	)
