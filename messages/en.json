@@ -91,5 +91,12 @@
 				"description": "Description"
 			}
 		}
+	},
+	"RootDialogs": {
+		"NewStory": {
+			"name": "Name",
+			"title": "New story",
+			"create": "Create a story"
+		}
 	}
 }

@@ -87,5 +87,12 @@
 				"description": "Popis"
 			}
 		}
+	},
+	"RootDialogs": {
+		"NewStory": {
+			"name": "Název",
+			"title": "Nový příběh",
+			"create": "Vytvořit příběh"
+		}
 	}
 }

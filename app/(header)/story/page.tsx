@@ -3,7 +3,6 @@ import { getStories } from "@/actions/story/get-stories"
 import { authorize } from "@/modules/auth"
 import { Welcome } from "./components/welcome"
 import { Button } from "@/components/ui/button"
-import { newStory } from "@/actions/story/new-story"
 import { PlusCircle, Upload } from "lucide-react"
 import Link from "next/link"
 import { getTranslations } from "next-intl/server"
@@ -31,13 +30,11 @@ export default async function Page() {
 								<span>{t("import")}</span>
 							</Link>
 						</Button>
-						<Button
-							variant={"outline"}
-							className="gap-2"
-							onClick={newStory}
-						>
-							<PlusCircle className="h-4 w-4" />
-							<span>{t("new")}</span>
+						<Button variant={"outline"} className="gap-2" asChild>
+							<Link href="/dialog/new-story">
+								<PlusCircle className="h-4 w-4" />
+								<span>{t("new")}</span>
+							</Link>
 						</Button>
 					</div>
 				</div>

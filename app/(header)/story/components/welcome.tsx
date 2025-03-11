@@ -1,4 +1,3 @@
-import { newStory } from "@/actions/story/new-story"
 import { Button } from "@/components/ui/button"
 import { PenLine, Upload } from "lucide-react"
 import { getTranslations } from "next-intl/server"
@@ -20,9 +19,11 @@ export async function Welcome() {
 							</p>
 						</div>
 						<div className="flex flex-col gap-2 min-[400px]:flex-row">
-							<Button className="gap-2" onClick={newStory}>
-								<PenLine className="h-4 w-4" />
-								<span>{t("create")}</span>
+							<Button className="gap-2" asChild>
+								<Link href="/dialog/new-story">
+									<PenLine className="h-4 w-4" />
+									<span>{t("create")}</span>
+								</Link>
 							</Button>
 							<Button variant="outline" className="gap-2" asChild>
 								<Link href={"/dialog/import-story"}>
