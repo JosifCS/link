@@ -16,14 +16,19 @@ export async function DetailTabs({
 		<Tabs defaultValue={value}>
 			<TabsList className="h-9">
 				<TabsTrigger className="h-7" value="detail" asChild>
-					<Link href={`/stories/${storyId}/detail`}></Link>
-					{t("detail")}
+					<Link href={`/stories/${storyId}/detail`}>
+						{t("detail")}
+					</Link>
 				</TabsTrigger>
-				<TabsTrigger className="h-7" value="chapters">
-					{t("chapters")}
+				<TabsTrigger className="h-7" value="chapters" asChild>
+					<Link href={`/stories/${storyId}/chapters`}>
+						{t("chapters")}
+					</Link>
 				</TabsTrigger>
-				<TabsTrigger className="h-7" value="characters">
-					{t("characters")}
+				<TabsTrigger className="h-7" value="characters" asChild>
+					<Link href={`/stories/${storyId}/characters`}>
+						{t("characters")}
+					</Link>
 				</TabsTrigger>
 			</TabsList>
 		</Tabs>
