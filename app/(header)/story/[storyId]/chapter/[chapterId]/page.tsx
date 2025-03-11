@@ -18,7 +18,7 @@ export default async function Page({
 		<div className="container mx-auto py-6 space-y-6">
 			<div className="flex items-center justify-between">
 				<div className="flex items-center gap-2">
-					<h1 className="text-2xl font-bold">{"Postava"}</h1>
+					<h1 className="text-2xl font-bold">{"Kapitola"}</h1>
 				</div>
 			</div>
 
