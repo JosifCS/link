@@ -95,6 +95,13 @@
 					"name": "Název",
 					"create": "Vytvořit kapitolu"
 				}
+			},
+			"Componetns": {
+				"DetailTabs": {
+					"detail": "Přehled",
+					"chapters": "Kapitoly",
+					"characters": "Postavy"
+				}
 			}
 		}
 	},

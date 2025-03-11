@@ -12,12 +12,12 @@ import { ChaptersCard } from "./components/chapters-card"
 import { CharactersCard } from "./components/characters-card"
 
 export default async function Page({ params }: PageProps<"storyId">) {
-	const id = (await params).storyId
+	const { storyId } = await params
 
 	const t = await getTranslations()
 
 	const story = await prisma.story.findFirst({
-		where: { id: { equals: +id } },
+		where: { id: { equals: +storyId } },
 		include: { _count: true },
 	})
 
@@ -33,7 +33,7 @@ export default async function Page({ params }: PageProps<"storyId">) {
 				</div>
 				<div className="rounded-xl border bg-card text-card-foreground shadow p-2">
 					<div className="flex items-center space-x-2">
-						<DetailTabs />
+						<DetailTabs storyId={+storyId} value="detail" />
 						<Button variant="outline" size="sm">
 							<Download className="mr-2 h-4 w-4" />
 							{"_Export"}
@@ -48,7 +48,7 @@ export default async function Page({ params }: PageProps<"storyId">) {
 					<div className="flex items-center gap-2 text-amber-600 bg-amber-50 p-3 rounded-md">
 						<Clock className="h-5 w-5" />
 						<p className="text-sm">
-							{t("Story.Components.TempStory.message", {
+							{t("Stories.Components.TempStory.message", {
 								expire: cookie.expire,
 							})}
 						</p>

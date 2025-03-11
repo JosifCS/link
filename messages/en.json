@@ -99,6 +99,13 @@
 					"name": "Name",
 					"create": "Create a chapter"
 				}
+			},
+			"Componetns": {
+				"DetailTabs": {
+					"detail": "Overview",
+					"chapters": "Chapters",
+					"characters": "Characters"
+				}
 			}
 		}
 	},

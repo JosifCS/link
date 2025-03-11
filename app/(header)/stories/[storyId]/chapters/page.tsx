@@ -17,7 +17,7 @@ export default async function Page({ params }: PageProps<"storyId">) {
 				</div>
 				<div className="rounded-xl border bg-card text-card-foreground shadow p-2">
 					<div className="flex items-center space-x-2">
-						<DetailTabs />
+						<DetailTabs storyId={+storyId} value="chapters" />
 						<Button variant="outline" size="sm">
 							<PlusCircle className="mr-2 h-4 w-4" />
 							{"_Nová kapitola"}
