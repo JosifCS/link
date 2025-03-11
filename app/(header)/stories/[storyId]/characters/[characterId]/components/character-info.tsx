@@ -17,7 +17,7 @@ type CharacterInfoProps = {
 
 export async function CharacterInfo({ characterId }: CharacterInfoProps) {
 	const t = await getTranslations(
-		"Story.Characters.Character.Components.CharacterForm"
+		"Stories.Story.Characters.Character.Components.CharacterForm"
 	)
 
 	const character = await prisma.character.findFirst({
