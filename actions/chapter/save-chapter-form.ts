@@ -35,7 +35,7 @@ export const saveChapterForm = safeAction(
 			return actionResult(
 				true,
 				"created", // TODO localize
-				`/story/${chapter.storyId}/chapter/${chapter.id}`
+				`/story/${chapter.storyId}/chapters/${chapter.id}`
 			)
 		}
 	}

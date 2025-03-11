@@ -23,7 +23,7 @@ export function CharactersTable({
 				cell: ({ getValue }) => (
 					<Button variant="ghost" className="h-8 w-8 p-0" asChild>
 						<Link
-							href={`/story/${storyId}/character/${getValue()}`}
+							href={`/story/${storyId}/characters/${getValue()}`}
 						>
 							<span className="sr-only">Edit character</span>
 							<Edit />
