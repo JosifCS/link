@@ -11,7 +11,7 @@
 			"stories": "Příběhy"
 		}
 	},
-	"Story": {
+	"Stories": {
 		"Components": {
 			"Welcome": {
 				"title": "Vytvářejte úžasné příběhy",

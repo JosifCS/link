@@ -34,7 +34,7 @@ export const saveStoryForm = safeAction(
 			return actionResult(
 				true,
 				"created", // TODO localize
-				`/story/${story.id}/detail`
+				`/stories/${story.id}/detail`
 			)
 		}
 	}

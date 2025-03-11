@@ -22,7 +22,9 @@ export function ChaptersTable({
 				accessorKey: "id",
 				cell: ({ getValue }) => (
 					<Button variant="ghost" className="h-8 w-8 p-0" asChild>
-						<Link href={`/story/${storyId}/chapters/${getValue()}`}>
+						<Link
+							href={`/stories/${storyId}/chapters/${getValue()}`}
+						>
 							<span className="sr-only">Edit chapter</span>
 							<Edit />
 						</Link>

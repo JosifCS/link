@@ -1,7 +1,4 @@
-import {
-	deleteStoryCookie,
-	getStoryCookie,
-} from "@/actions/story/story-cookies"
+import { deleteStoryCookie } from "@/actions/story/story-cookies"
 import { Button } from "@/components/ui/button"
 import {
 	Card,
@@ -31,7 +28,7 @@ export default async function TempStory({
 
 	if (story == undefined) return notFound()
 
-	const t = await getTranslations("Story.Components.TempStory")
+	const t = await getTranslations("Stories.Components.TempStory")
 
 	return (
 		<Card className="max-w-2xl mx-auto mt-12">
@@ -69,7 +66,7 @@ export default async function TempStory({
 					{t("remove")}
 				</Button>
 				<Button variant="default" asChild>
-					<Link href={`/story/${story.id}/detail`}>
+					<Link href={`/stories/${story.id}/detail`}>
 						<Edit className="h-4 w-4 mr-2" />
 						{t("edit")}
 					</Link>

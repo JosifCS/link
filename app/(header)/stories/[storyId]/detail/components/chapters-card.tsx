@@ -15,7 +15,7 @@ type ChaptersCardProps = {
 }
 
 export async function ChaptersCard({ storyId, count }: ChaptersCardProps) {
-	const t = await getTranslations("Story.Detail.Components.ChaptersCard")
+	const t = await getTranslations("Stories.Detail.Components.ChaptersCard")
 
 	return (
 		<Card>
@@ -27,7 +27,7 @@ export async function ChaptersCard({ storyId, count }: ChaptersCardProps) {
 					</CardDescription>
 				</div>
 				<Button size="sm" asChild>
-					<Link href={`/story/${storyId}/dialog/new-chapter`}>
+					<Link href={`/stories/${storyId}/dialog/new-chapter`}>
 						<PlusCircle className="mr-2 h-4 w-4" />
 						{t("new")}
 					</Link>

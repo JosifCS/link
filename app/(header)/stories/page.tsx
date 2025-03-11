@@ -12,7 +12,7 @@ import { getStoryCookie } from "@/actions/story/story-cookies"
 export default async function Page() {
 	const { id } = await authorize(true)
 
-	const t = await getTranslations("Story")
+	const t = await getTranslations("Stories")
 
 	// přihlášený uživatel
 	if (id) {
