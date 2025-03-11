@@ -1,9 +1,9 @@
 import { getChapters } from "@/actions/chapter/get-chapters"
-import { ChaptersTable } from "../components/chapters-table"
 import { PageProps } from "@/types/global"
 import { DetailTabs } from "../components/detail-tabs"
 import { Button } from "@/components/ui/button"
 import { PlusCircle } from "lucide-react"
+import { ChaptersTable } from "./components/chapters-table"
 
 export default async function Page({ params }: PageProps<"storyId">) {
 	const { storyId } = await params

@@ -51,14 +51,14 @@
 					"title": "Characters",
 					"description": "Total characters: {count}",
 					"new": "New character"
+				},
+				"StoryForm": {
+					"basic": "Basic information",
+					"basicDesc": "Title and short description of the story.",
+					"name": "Name",
+					"description": "Description",
+					"export": "Export story"
 				}
-			},
-			"StoryForm": {
-				"basic": "Basic information",
-				"basicDesc": "Title and short description of the story.",
-				"name": "Name",
-				"description": "Description",
-				"export": "Export story"
 			}
 		},
 		"Dialogs": {
@@ -75,20 +75,28 @@
 				"create": "Create a chapter"
 			}
 		},
-		"Chapter": {
-			"ChapterForm": {
-				"title": "Basic information",
-				"description": "Description",
-				"name": "Name",
-				"subTitle": "Story: {story}"
+		"Chapters": {
+			"Chapter": {
+				"Components": {
+					"ChapterForm": {
+						"title": "Basic information",
+						"description": "Description",
+						"name": "Name",
+						"subTitle": "Story: {story}"
+					}
+				}
 			}
 		},
-		"Character": {
-			"CharacterForm": {
-				"title": "Basic information",
-				"subTitle": "Story: {story}",
-				"name": "Name",
-				"description": "Description"
+		"Characters": {
+			"Character": {
+				"Components": {
+					"CharacterForm": {
+						"title": "Basic information",
+						"subTitle": "Story: {story}",
+						"name": "Name",
+						"description": "Description"
+					}
+				}
 			}
 		}
 	},

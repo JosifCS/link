@@ -16,7 +16,9 @@ type ChapterInfoProps = {
 }
 
 export async function ChapterInfo({ chapterId }: ChapterInfoProps) {
-	const t = await getTranslations("Story.Chapter.ChapterForm")
+	const t = await getTranslations(
+		"Story.Chapters.Chapter.Components.ChapterForm"
+	)
 
 	const chapter = await prisma.chapter.findFirst({
 		where: { id: { equals: chapterId } },

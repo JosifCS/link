@@ -18,7 +18,7 @@ type StoryInfoProps = {
 }
 
 export async function StoryInfo({ id }: StoryInfoProps) {
-	const t = await getTranslations("Story.Detail.StoryForm")
+	const t = await getTranslations("Story.Detail.Components.StoryForm")
 
 	const story = await prisma.story.findFirst({
 		where: { id: { equals: id } },

@@ -1,5 +1,5 @@
 import { PageProps } from "@/types/global"
-import { CharactersTable } from "../components/characters-table"
+import { CharactersTable } from "./components/characters-table"
 import { getCharacters } from "@/actions/character/get-characters"
 import { DetailTabs } from "../components/detail-tabs"
 import { PlusCircle } from "lucide-react"

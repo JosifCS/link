@@ -20,13 +20,13 @@ export function DetailTabs() {
 		<Tabs value={tab} onValueChange={onNavigate}>
 			<TabsList className="h-9">
 				<TabsTrigger className="h-7" value="detail">
-					{"Přehled"}
+					{"Přehled_"}
 				</TabsTrigger>
 				<TabsTrigger className="h-7" value="chapters">
-					{"Kapitoly"}
+					{"Kapitoly_"}
 				</TabsTrigger>
 				<TabsTrigger className="h-7" value="characters">
-					{"Postavy"}
+					{"Postavy_"}
 				</TabsTrigger>
 			</TabsList>
 		</Tabs>

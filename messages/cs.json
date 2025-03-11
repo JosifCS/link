@@ -47,14 +47,14 @@
 					"title": "Postavy",
 					"description": "Celkem postav: {count}",
 					"new": "Nová postava"
+				},
+				"StoryForm": {
+					"basic": "Základní informace",
+					"basicDesc": "Název a krátký popis příběhu.",
+					"name": "Název",
+					"description": "Popis",
+					"export": "Exportovat příběh"
 				}
-			},
-			"StoryForm": {
-				"basic": "Základní informace",
-				"basicDesc": "Název a krátký popis příběhu.",
-				"name": "Název",
-				"description": "Popis",
-				"export": "Exportovat příběh"
 			}
 		},
 		"Dialogs": {
@@ -71,20 +71,28 @@
 				"create": "Vytvořit kapitolu"
 			}
 		},
-		"Chapter": {
-			"ChapterForm": {
-				"title": "Základní informace",
-				"description": "Popis",
-				"name": "Název",
-				"subTitle": "Příběh: {story}"
+		"Chapters": {
+			"Chapter": {
+				"Components": {
+					"ChapterForm": {
+						"title": "Základní informace",
+						"description": "Popis",
+						"name": "Název",
+						"subTitle": "Příběh: {story}"
+					}
+				}
 			}
 		},
-		"Character": {
-			"CharacterForm": {
-				"title": "Základní informace",
-				"subTitle": "Příběh: {story}",
-				"name": "Jméno",
-				"description": "Popis"
+		"Characters": {
+			"Characters": {
+				"Components": {
+					"CharacterForm": {
+						"title": "Základní informace",
+						"subTitle": "Příběh: {story}",
+						"name": "Jméno",
+						"description": "Popis"
+					}
+				}
 			}
 		}
 	},

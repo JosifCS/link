@@ -1,15 +1,15 @@
 import { Suspense } from "react"
-import { StoryInfo, StoryInfoSkeleton } from "../components/story-info"
 import { Clock, Download } from "lucide-react"
 import { PageProps } from "@/types/global"
 import { getTranslations } from "next-intl/server"
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
-import { ChaptersCard } from "../components/chapters-card"
-import { CharactersCard } from "../components/characters-card"
 import { getStoryCookie } from "@/actions/story/story-cookies"
 import { DetailTabs } from "../components/detail-tabs"
 import { Button } from "@/components/ui/button"
+import { StoryInfo, StoryInfoSkeleton } from "./components/story-info"
+import { ChaptersCard } from "./components/chapters-card"
+import { CharactersCard } from "./components/characters-card"
 
 export default async function Page({ params }: PageProps<"storyId">) {
 	const id = (await params).storyId
