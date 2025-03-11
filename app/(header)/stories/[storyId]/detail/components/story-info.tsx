@@ -33,10 +33,6 @@ export async function StoryInfo({ id }: StoryInfoProps) {
 					<CardTitle>{t("basic")}</CardTitle>
 					<CardDescription>{t("basicDesc")}</CardDescription>
 				</div>
-				<Button variant="outline" size="sm">
-					<Download className="mr-2 h-4 w-4" />
-					{t("export")}
-				</Button>
 			</CardHeader>
 			<CardContent className="space-y-4">
 				<StoryForm

@@ -53,8 +53,7 @@
 						"basic": "Základní informace",
 						"basicDesc": "Název a krátký popis příběhu.",
 						"name": "Název",
-						"description": "Popis",
-						"export": "Exportovat příběh"
+						"description": "Popis"
 					}
 				}
 			},

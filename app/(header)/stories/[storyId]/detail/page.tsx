@@ -55,10 +55,6 @@ export default async function Page({ params }: PageProps<"storyId">) {
 					</div>
 				)}
 
-			<Suspense fallback={<StoryInfoSkeleton />}>
-				<StoryInfo id={story.id} />
-			</Suspense>
-
 			<div className="grid gap-6 md:grid-cols-2">
 				<ChaptersCard
 					storyId={story.id}
@@ -69,6 +65,10 @@ export default async function Page({ params }: PageProps<"storyId">) {
 					count={story._count.characters}
 				/>
 			</div>
+
+			<Suspense fallback={<StoryInfoSkeleton />}>
+				<StoryInfo id={story.id} />
+			</Suspense>
 		</div>
 	)
 }

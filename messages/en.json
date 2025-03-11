@@ -57,8 +57,7 @@
 						"basic": "Basic information",
 						"basicDesc": "Title and short description of the story.",
 						"name": "Name",
-						"description": "Description",
-						"export": "Export story"
+						"description": "Description"
 					}
 				}
 			},
