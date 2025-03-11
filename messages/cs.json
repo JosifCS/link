@@ -36,62 +36,64 @@
 		"stories": "Příběhy",
 		"new": "Nový příběh",
 		"import": "Importovat",
-		"Detail": {
-			"Components": {
-				"ChaptersCard": {
-					"title": "Kapitoly",
-					"new": "Nová kapitola",
-					"description": "Celkem kapitol: {count}"
-				},
-				"CharactersCard": {
-					"title": "Postavy",
-					"description": "Celkem postav: {count}",
-					"new": "Nová postava"
-				},
-				"StoryForm": {
-					"basic": "Základní informace",
-					"basicDesc": "Název a krátký popis příběhu.",
-					"name": "Název",
-					"description": "Popis",
-					"export": "Exportovat příběh"
-				}
-			}
-		},
-		"Dialogs": {
-			"NewCharacter": {
-				"title": "Nová postava",
-				"description": "Příběh: {story}",
-				"name": "Jméno",
-				"create": "Vytvořit postavu"
-			},
-			"NewChapter": {
-				"title": "Nová kapitola",
-				"description": "Příběh: {story}",
-				"name": "Název",
-				"create": "Vytvořit kapitolu"
-			}
-		},
-		"Chapters": {
-			"Chapter": {
+		"Story": {
+			"Detail": {
 				"Components": {
-					"ChapterForm": {
-						"title": "Základní informace",
-						"description": "Popis",
+					"ChaptersCard": {
+						"title": "Kapitoly",
+						"new": "Nová kapitola",
+						"description": "Celkem kapitol: {count}"
+					},
+					"CharactersCard": {
+						"title": "Postavy",
+						"description": "Celkem postav: {count}",
+						"new": "Nová postava"
+					},
+					"StoryForm": {
+						"basic": "Základní informace",
+						"basicDesc": "Název a krátký popis příběhu.",
 						"name": "Název",
-						"subTitle": "Příběh: {story}"
+						"description": "Popis",
+						"export": "Exportovat příběh"
 					}
 				}
-			}
-		},
-		"Characters": {
-			"Characters": {
-				"Components": {
-					"CharacterForm": {
-						"title": "Základní informace",
-						"subTitle": "Příběh: {story}",
-						"name": "Jméno",
-						"description": "Popis"
+			},
+			"Chapters": {
+				"Chapter": {
+					"Components": {
+						"ChapterForm": {
+							"title": "Základní informace",
+							"description": "Popis",
+							"name": "Název",
+							"subTitle": "Příběh: {story}"
+						}
 					}
+				}
+			},
+			"Characters": {
+				"Characters": {
+					"Components": {
+						"CharacterForm": {
+							"title": "Základní informace",
+							"subTitle": "Příběh: {story}",
+							"name": "Jméno",
+							"description": "Popis"
+						}
+					}
+				}
+			},
+			"Dialogs": {
+				"NewCharacter": {
+					"title": "Nová postava",
+					"description": "Příběh: {story}",
+					"name": "Jméno",
+					"create": "Vytvořit postavu"
+				},
+				"NewChapter": {
+					"title": "Nová kapitola",
+					"description": "Příběh: {story}",
+					"name": "Název",
+					"create": "Vytvořit kapitolu"
 				}
 			}
 		}

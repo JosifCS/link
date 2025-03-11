@@ -15,7 +15,9 @@ type ChaptersCardProps = {
 }
 
 export async function ChaptersCard({ storyId, count }: ChaptersCardProps) {
-	const t = await getTranslations("Stories.Detail.Components.ChaptersCard")
+	const t = await getTranslations(
+		"Stories.Story.Detail.Components.ChaptersCard"
+	)
 
 	return (
 		<Card>

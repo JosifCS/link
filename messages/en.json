@@ -40,62 +40,64 @@
 		"stories": "Stories",
 		"new": "New story",
 		"import": "Import",
-		"Detail": {
-			"Components": {
-				"ChaptersCard": {
-					"title": "Chapters",
-					"new": "New chapter",
-					"description": "Total chapters: {count}"
-				},
-				"CharactersCard": {
-					"title": "Characters",
-					"description": "Total characters: {count}",
-					"new": "New character"
-				},
-				"StoryForm": {
-					"basic": "Basic information",
-					"basicDesc": "Title and short description of the story.",
-					"name": "Name",
-					"description": "Description",
-					"export": "Export story"
-				}
-			}
-		},
-		"Dialogs": {
-			"NewCharacter": {
-				"title": "New character",
-				"description": "Story: {story}",
-				"name": "Name",
-				"create": "Create a character"
-			},
-			"NewChapter": {
-				"title": "New chapter",
-				"description": "Story: {story}",
-				"name": "Name",
-				"create": "Create a chapter"
-			}
-		},
-		"Chapters": {
-			"Chapter": {
+		"Story": {
+			"Detail": {
 				"Components": {
-					"ChapterForm": {
-						"title": "Basic information",
+					"ChaptersCard": {
+						"title": "Chapters",
+						"new": "New chapter",
+						"description": "Total chapters: {count}"
+					},
+					"CharactersCard": {
+						"title": "Characters",
+						"description": "Total characters: {count}",
+						"new": "New character"
+					},
+					"StoryForm": {
+						"basic": "Basic information",
+						"basicDesc": "Title and short description of the story.",
+						"name": "Name",
 						"description": "Description",
-						"name": "Name",
-						"subTitle": "Story: {story}"
+						"export": "Export story"
 					}
 				}
-			}
-		},
-		"Characters": {
-			"Character": {
-				"Components": {
-					"CharacterForm": {
-						"title": "Basic information",
-						"subTitle": "Story: {story}",
-						"name": "Name",
-						"description": "Description"
+			},
+			"Chapters": {
+				"Chapter": {
+					"Components": {
+						"ChapterForm": {
+							"title": "Basic information",
+							"description": "Description",
+							"name": "Name",
+							"subTitle": "Story: {story}"
+						}
 					}
+				}
+			},
+			"Characters": {
+				"Character": {
+					"Components": {
+						"CharacterForm": {
+							"title": "Basic information",
+							"subTitle": "Story: {story}",
+							"name": "Name",
+							"description": "Description"
+						}
+					}
+				}
+			},
+			"Dialogs": {
+				"NewCharacter": {
+					"title": "New character",
+					"description": "Story: {story}",
+					"name": "Name",
+					"create": "Create a character"
+				},
+				"NewChapter": {
+					"title": "New chapter",
+					"description": "Story: {story}",
+					"name": "Name",
+					"create": "Create a chapter"
 				}
 			}
 		}

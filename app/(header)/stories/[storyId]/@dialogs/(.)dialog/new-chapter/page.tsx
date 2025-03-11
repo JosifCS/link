@@ -13,7 +13,7 @@ export default async function Page({ params }: PageProps<"storyId">) {
 
 	const story = await getStory(+storyId)
 
-	const t = await getTranslations("Stories.Dialogs.NewChapter")
+	const t = await getTranslations("Stories.Story.Dialogs.NewChapter")
 	return (
 		<Dialog
 			title={t("title")}
