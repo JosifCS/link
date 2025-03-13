@@ -1,5 +1,4 @@
 import { saveChapterForm } from "@/actions/chapter/save-chapter-form"
-import { getStory } from "@/actions/story/get-story"
 import { Dialog } from "@/components/dialog"
 import { Form } from "@/components/form"
 import { FormInput } from "@/components/form-input"
@@ -11,14 +10,9 @@ import { getTranslations } from "next-intl/server"
 export default async function Page({ params }: PageProps<"storyId">) {
 	const { storyId } = await params
 
-	const story = await getStory(+storyId)
-
 	const t = await getTranslations("Stories.Story.Dialogs.NewChapter")
 	return (
-		<Dialog
-			title={t("title")}
-			description={t("description", { story: story?.name })}
-		>
+		<Dialog title={t("title")}>
 			<Form action={saveChapterForm}>
 				<input type="number" name="id" defaultValue={0} hidden />
 				<input

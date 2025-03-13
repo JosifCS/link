@@ -90,13 +90,11 @@
 			"Dialogs": {
 				"NewCharacter": {
 					"title": "Nová postava",
-					"description": "Příběh: {story}",
 					"name": "Jméno",
 					"create": "Vytvořit postavu"
 				},
 				"NewChapter": {
 					"title": "Nová kapitola",
-					"description": "Příběh: {story}",
 					"name": "Název",
 					"create": "Vytvořit kapitolu"
 				}
