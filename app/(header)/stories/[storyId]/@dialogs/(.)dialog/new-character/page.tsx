@@ -22,7 +22,12 @@ export default async function Page({ params }: PageProps<"storyId">) {
 					hidden
 				/>
 
-				<FormInput title={t("name")} name="name" type="text" />
+				<FormInput
+					title={t("name")}
+					name="name"
+					type="text"
+					placeholder={t("placeholder")}
+				/>
 				<input type="text" name="description" defaultValue="" hidden />
 
 				<DialogFooter>

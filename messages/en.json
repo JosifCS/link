@@ -95,12 +95,14 @@
 				"NewCharacter": {
 					"title": "New character",
 					"name": "Name",
-					"create": "Create a character"
+					"create": "Create a character",
+					"placeholder": "Character name"
 				},
 				"NewChapter": {
 					"title": "New chapter",
 					"name": "Name",
-					"create": "Create a chapter"
+					"create": "Create a chapter",
+					"placeholder": "Chapter name"
 				}
 			},
 			"Componetns": {

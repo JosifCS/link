@@ -91,12 +91,14 @@
 				"NewCharacter": {
 					"title": "Nová postava",
 					"name": "Jméno",
-					"create": "Vytvořit postavu"
+					"create": "Vytvořit postavu",
+					"placeholder": "Jméno postavy"
 				},
 				"NewChapter": {
 					"title": "Nová kapitola",
 					"name": "Název",
-					"create": "Vytvořit kapitolu"
+					"create": "Vytvořit kapitolu",
+					"placeholder": "Název kapitoly"
 				}
 			},
 			"Componetns": {

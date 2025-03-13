@@ -6,6 +6,7 @@ import { PlusCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getTranslations } from "next-intl/server"
 import { Card } from "@/components/card"
+import Link from "next/link"
 
 export default async function Page({ params }: PageProps<"storyId">) {
 	const t = await getTranslations("Stories.Story.Characters")
@@ -21,9 +22,13 @@ export default async function Page({ params }: PageProps<"storyId">) {
 				<div className="rounded-xl border bg-card text-card-foreground shadow p-2">
 					<div className="flex items-center space-x-2">
 						<DetailTabs storyId={+storyId} value="characters" />
-						<Button variant="outline" size="sm">
-							<PlusCircle className="mr-2 h-4 w-4" />
-							{t("newCharacter")}
+						<Button variant="outline" size="sm" asChild>
+							<Link
+								href={`/stories/${storyId}/dialog/new-character`}
+							>
+								<PlusCircle className="mr-2 h-4 w-4" />
+								{t("newCharacter")}
+							</Link>
 						</Button>
 					</div>
 				</div>
