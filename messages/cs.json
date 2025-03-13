@@ -65,7 +65,8 @@
 							"description": "Popis",
 							"name": "Název"
 						}
-					}
+					},
+					"chapter": "Kapitola"
 				},
 				"chapters": "Kapitoly",
 				"newChapter": "Nová kapitola",
@@ -92,7 +93,8 @@
 							"name": "Jméno",
 							"description": "Popis"
 						}
-					}
+					},
+					"character": "Postava"
 				}
 			},
 			"Dialogs": {

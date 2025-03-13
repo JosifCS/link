@@ -69,7 +69,8 @@
 							"description": "Description",
 							"name": "Name"
 						}
-					}
+					},
+					"chapter": "Chapter"
 				},
 				"chapters": "Chapters",
 				"newChapter": "New chapter",
@@ -84,7 +85,8 @@
 							"name": "Name",
 							"description": "Description"
 						}
-					}
+					},
+					"character": "Character"
 				},
 				"characters": "Characters",
 				"story": "Story",
