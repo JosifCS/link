@@ -1,6 +1,7 @@
 "use client"
 
 import { GetStoriesQuery } from "@/actions/story/get-stories"
+import { ButtonLink } from "@/components/button-link"
 import { DataTable } from "@/components/data-table"
 import { Button } from "@/components/ui/button"
 import { ColumnDef } from "@tanstack/react-table"
@@ -15,12 +16,14 @@ export function StoriesTable({ data }: { data: GetStoriesQuery }) {
 			{
 				accessorKey: "id",
 				cell: ({ getValue }) => (
-					<Button variant="ghost" className="h-8 w-8 p-0" asChild>
-						<Link href={`/stories/${getValue()}/detail`}>
-							<span className="sr-only">Edit story</span>
-							<Edit />
-						</Link>
-					</Button>
+					<ButtonLink
+						variant="ghost"
+						className="h-8 w-8 p-0"
+						href={`/stories/${getValue()}/detail`}
+					>
+						<span className="sr-only">Edit story</span>
+						<Edit />
+					</ButtonLink>
 				),
 			},
 		],

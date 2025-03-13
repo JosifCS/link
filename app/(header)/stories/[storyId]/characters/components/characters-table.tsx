@@ -1,11 +1,10 @@
 "use client"
 
 import { GetCharactersQuery } from "@/actions/character/get-characters"
+import { ButtonLink } from "@/components/button-link"
 import { DataTable } from "@/components/data-table"
-import { Button } from "@/components/ui/button"
 import { ColumnDef } from "@tanstack/react-table"
 import { Edit } from "lucide-react"
-import Link from "next/link"
 import { useMemo } from "react"
 
 export function CharactersTable({
@@ -21,14 +20,14 @@ export function CharactersTable({
 			{
 				accessorKey: "id",
 				cell: ({ getValue }) => (
-					<Button variant="ghost" className="h-8 w-8 p-0" asChild>
-						<Link
-							href={`/stories/${storyId}/characters/${getValue()}`}
-						>
-							<span className="sr-only">Edit character</span>
-							<Edit />
-						</Link>
-					</Button>
+					<ButtonLink
+						variant="ghost"
+						className="h-8 w-8 p-0"
+						href={`/stories/${storyId}/characters/${getValue()}`}
+					>
+						<span className="sr-only">Edit character</span>
+						<Edit />
+					</ButtonLink>
 				),
 			},
 		],

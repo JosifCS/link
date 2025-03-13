@@ -3,9 +3,8 @@ import { ChapterInfo } from "./components/chapter-info"
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
+import { ButtonLink } from "@/components/button-link"
 
 export default async function Page({
 	params,
@@ -23,11 +22,13 @@ export default async function Page({
 		<div className="container mx-auto py-6 space-y-6">
 			<div className="flex items-center justify-between">
 				<div className="flex items-center gap-2">
-					<Button variant="outline" size="sm" asChild>
-						<Link href={`/stories/${storyId}/chapters`}>
-							<ChevronLeft className="h-4 w-4" />
-						</Link>
-					</Button>
+					<ButtonLink
+						variant="outline"
+						size="sm"
+						href={`/stories/${storyId}/chapters`}
+					>
+						<ChevronLeft className="h-4 w-4" />
+					</ButtonLink>
 					<h1 className="text-2xl font-bold">{t("chapter")}</h1>
 				</div>
 			</div>

@@ -1,4 +1,5 @@
 import { deleteStoryCookie } from "@/actions/story/story-cookies"
+import { ButtonLink } from "@/components/button-link"
 import { Button } from "@/components/ui/button"
 import {
 	Card,
@@ -65,12 +66,13 @@ export default async function TempStory({
 					<Trash className="h-4 w-4 mr-2" />
 					{t("remove")}
 				</Button>
-				<Button variant="default" asChild>
-					<Link href={`/stories/${story.id}/detail`}>
-						<Edit className="h-4 w-4 mr-2" />
-						{t("edit")}
-					</Link>
-				</Button>
+				<ButtonLink
+					variant="default"
+					href={`/stories/${story.id}/detail`}
+				>
+					<Edit className="h-4 w-4 mr-2" />
+					{t("edit")}
+				</ButtonLink>
 			</CardFooter>
 		</Card>
 	)

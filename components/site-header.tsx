@@ -1,9 +1,9 @@
 import { BookOpen, PenLine } from "lucide-react"
 import Link from "next/link"
-import { Button } from "./ui/button"
 import { getTranslations } from "next-intl/server"
 import { authorize } from "@/modules/auth"
 import { UserMenu } from "./user-menu"
+import { ButtonLink } from "./button-link"
 
 export async function SiteHeader() {
 	const { nickname } = await authorize(true)
@@ -22,17 +22,15 @@ export async function SiteHeader() {
 				</Link>
 				{nickname && (
 					<div className="flex">
-						<Button
+						<ButtonLink
 							variant="ghost"
 							size="sm"
 							className="gap-2"
-							asChild
+							href="/story"
 						>
-							<Link href="/story">
-								<BookOpen className="mr-2 h-4 w-4" />
-								<span>{t("stories")}</span>
-							</Link>
-						</Button>
+							<BookOpen className="mr-2 h-4 w-4" />
+							<span>{t("stories")}</span>
+						</ButtonLink>
 					</div>
 				)}
 				<UserMenu />

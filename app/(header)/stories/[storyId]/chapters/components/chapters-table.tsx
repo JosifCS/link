@@ -1,11 +1,10 @@
 "use client"
 
 import { GetChaptersQuery } from "@/actions/chapter/get-chapters"
+import { ButtonLink } from "@/components/button-link"
 import { DataTable } from "@/components/data-table"
-import { Button } from "@/components/ui/button"
 import { ColumnDef } from "@tanstack/react-table"
 import { Edit } from "lucide-react"
-import Link from "next/link"
 import { useMemo } from "react"
 
 export function ChaptersTable({
@@ -21,14 +20,14 @@ export function ChaptersTable({
 			{
 				accessorKey: "id",
 				cell: ({ getValue }) => (
-					<Button variant="ghost" className="h-8 w-8 p-0" asChild>
-						<Link
-							href={`/stories/${storyId}/chapters/${getValue()}`}
-						>
-							<span className="sr-only">Edit chapter</span>
-							<Edit />
-						</Link>
-					</Button>
+					<ButtonLink
+						variant="ghost"
+						className="h-8 w-8 p-0"
+						href={`/stories/${storyId}/chapters/${getValue()}`}
+					>
+						<span className="sr-only">Edit chapter</span>
+						<Edit />
+					</ButtonLink>
 				),
 			},
 		],

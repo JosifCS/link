@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { ButtonLink } from "@/components/button-link"
 import {
 	Card,
 	CardDescription,
@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/card"
 import { PlusCircle } from "lucide-react"
 import { getTranslations } from "next-intl/server"
-import Link from "next/link"
 
 type ChaptersCardProps = {
 	storyId: number
@@ -28,12 +27,13 @@ export async function ChaptersCard({ storyId, count }: ChaptersCardProps) {
 						{t("description", { count })}
 					</CardDescription>
 				</div>
-				<Button size="sm" asChild>
-					<Link href={`/stories/${storyId}/dialog/new-chapter`}>
-						<PlusCircle className="mr-2 h-4 w-4" />
-						{t("new")}
-					</Link>
-				</Button>
+				<ButtonLink
+					size="sm"
+					href={`/stories/${storyId}/dialog/new-chapter`}
+				>
+					<PlusCircle className="mr-2 h-4 w-4" />
+					{t("new")}
+				</ButtonLink>
 			</CardHeader>
 		</Card>
 	)

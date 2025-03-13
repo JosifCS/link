@@ -1,3 +1,4 @@
+import { ButtonLink } from "@/components/button-link"
 import { SiteHeader } from "@/components/site-header"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -20,14 +21,14 @@ export default async function Layout({
 					<p className="text-sm text-gray-500 dark:text-gray-400">
 						LINK –⁠⁠⁠⁠⁠⁠ Logika interakcí a navazujících konverzací
 						–⁠⁠⁠⁠⁠⁠{" "}
-						<Button variant={"link"} className="p-0" asChild>
-							<Link
-								href={"https://github.com/JosifCS/link"}
-								target="_blank"
-							>
-								GitHub
-							</Link>
-						</Button>
+						<ButtonLink
+							variant={"link"}
+							className="p-0"
+							href={"https://github.com/JosifCS/link"}
+							target="_blank"
+						>
+							GitHub
+						</ButtonLink>
 					</p>
 				</footer>
 			</div>

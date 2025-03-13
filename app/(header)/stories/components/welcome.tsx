@@ -1,8 +1,6 @@
-import { Button } from "@/components/ui/button"
+import { ButtonLink } from "@/components/button-link"
 import { PenLine, Upload } from "lucide-react"
 import { getTranslations } from "next-intl/server"
-import Link from "next/link"
-
 export async function Welcome() {
 	const t = await getTranslations("Stories.Components.Welcome")
 	return (
@@ -19,18 +17,21 @@ export async function Welcome() {
 							</p>
 						</div>
 						<div className="flex flex-col gap-2 min-[400px]:flex-row">
-							<Button className="gap-2" asChild>
-								<Link href="/dialog/new-story">
-									<PenLine className="h-4 w-4" />
-									<span>{t("create")}</span>
-								</Link>
-							</Button>
-							<Button variant="outline" className="gap-2" asChild>
-								<Link href={"/dialog/import-story"}>
-									<Upload className="h-4 w-4" />
-									<span>{t("import")}</span>
-								</Link>
-							</Button>
+							<ButtonLink
+								className="gap-2"
+								href="/dialog/new-story"
+							>
+								<PenLine className="h-4 w-4" />
+								<span>{t("create")}</span>
+							</ButtonLink>
+							<ButtonLink
+								variant="outline"
+								className="gap-2"
+								href={"/dialog/import-story"}
+							>
+								<Upload className="h-4 w-4" />
+								<span>{t("import")}</span>
+							</ButtonLink>
 						</div>
 					</div>
 				</div>
