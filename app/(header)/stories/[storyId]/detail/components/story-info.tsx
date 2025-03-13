@@ -1,17 +1,9 @@
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { getTranslations } from "next-intl/server"
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import { StoryForm } from "./story-form"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Button } from "@/components/ui/button"
-import { Download } from "lucide-react"
 
 type StoryInfoProps = {
 	id: number
@@ -31,7 +23,6 @@ export async function StoryInfo({ id }: StoryInfoProps) {
 			<CardHeader className="flex flex-row items-center justify-between">
 				<div className="space-y-1.5">
 					<CardTitle>{t("basic")}</CardTitle>
-					<CardDescription>{t("basicDesc")}</CardDescription>
 				</div>
 			</CardHeader>
 			<CardContent className="space-y-4">

@@ -55,11 +55,11 @@
 					},
 					"StoryForm": {
 						"basic": "Basic information",
-						"basicDesc": "Title and short description of the story.",
 						"name": "Name",
 						"description": "Description"
 					}
-				}
+				},
+				"export": "Export"
 			},
 			"Chapters": {
 				"Chapter": {
@@ -71,7 +71,10 @@
 							"subTitle": "Story: {story}"
 						}
 					}
-				}
+				},
+				"chapters": "Chapters",
+				"newChapter": "New chapter",
+				"sotry": "Story"
 			},
 			"Characters": {
 				"Character": {
@@ -83,7 +86,10 @@
 							"description": "Description"
 						}
 					}
-				}
+				},
+				"characters": "Characters",
+				"story": "Story",
+				"newCharacter": "New character"
 			},
 			"Dialogs": {
 				"NewCharacter": {
@@ -114,5 +120,6 @@
 			"title": "New story",
 			"create": "Create a story"
 		}
-	}
+	},
+	"story": "Story"
 }

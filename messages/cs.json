@@ -51,11 +51,11 @@
 					},
 					"StoryForm": {
 						"basic": "Základní informace",
-						"basicDesc": "Název a krátký popis příběhu.",
 						"name": "Název",
 						"description": "Popis"
 					}
-				}
+				},
+				"export": "Exportovat"
 			},
 			"Chapters": {
 				"Chapter": {
@@ -67,7 +67,10 @@
 							"subTitle": "Příběh: {story}"
 						}
 					}
-				}
+				},
+				"chapters": "Kapitoly",
+				"newChapter": "Nová kapitola",
+				"sotry": "Příběh"
 			},
 			"Characters": {
 				"Characters": {
@@ -79,7 +82,10 @@
 							"description": "Popis"
 						}
 					}
-				}
+				},
+				"characters": "Postavy",
+				"story": "Příběh",
+				"newCharacter": "Nová postava"
 			},
 			"Dialogs": {
 				"NewCharacter": {
@@ -110,5 +116,6 @@
 			"title": "Nový příběh",
 			"create": "Vytvořit příběh"
 		}
-	}
+	},
+	"story": "Příběh"
 }
