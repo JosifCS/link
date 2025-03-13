@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { getTranslations } from "next-intl/server"
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import { StoryForm } from "./story-form"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Card } from "@/components/card"
 
 type StoryInfoProps = {
 	id: number
@@ -19,32 +19,19 @@ export async function StoryInfo({ id }: StoryInfoProps) {
 	if (story == null) return notFound()
 
 	return (
-		<Card>
-			<CardHeader className="flex flex-row items-center justify-between">
-				<div className="space-y-1.5">
-					<CardTitle>{t("basic")}</CardTitle>
-				</div>
-			</CardHeader>
-			<CardContent className="space-y-4">
-				<StoryForm
-					t={{ name: t("name"), description: t("description") }}
-					value={story}
-				/>
-			</CardContent>
+		<Card title={t("basic")}>
+			<StoryForm
+				t={{ name: t("name"), description: t("description") }}
+				value={story}
+			/>
 		</Card>
 	)
 }
 
 export function StoryInfoSkeleton() {
 	return (
-		<Card>
-			<CardHeader>
-				<Skeleton className="h-6 w-44" />
-				<Skeleton className="h-5 w-52" />
-			</CardHeader>
-			<CardContent className="space-y-4">
-				<Skeleton className="w-full h-52" />
-			</CardContent>
+		<Card titleSkeleton>
+			<Skeleton className="w-full h-52" />
 		</Card>
 	)
 }
