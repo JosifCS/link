@@ -5,20 +5,34 @@ import {
 	CardTitle,
 	Card as UiCard,
 } from "./ui/card"
+import { Skeleton } from "./ui/skeleton"
 
 type CardProps = React.HTMLAttributes<HTMLDivElement> & {
-	label?: string
+	title?: string
 	description?: string
+	titleSkeleton?: boolean
+	desriptionSkeleton?: boolean
 }
 
-export function Card({ label, description, children, ...props }: CardProps) {
+export function Card({
+	title,
+	description,
+	titleSkeleton,
+	desriptionSkeleton,
+	children,
+	...props
+}: CardProps) {
 	return (
 		<UiCard {...props}>
-			{label || description ? (
+			{title || description || titleSkeleton || desriptionSkeleton ? (
 				<CardHeader>
-					{label ? <CardTitle>{label}</CardTitle> : null}
+					{title ? <CardTitle>{title}</CardTitle> : null}
+					{titleSkeleton ? <Skeleton className="h-6 w-44" /> : null}
 					{description ? (
 						<CardDescription>{description}</CardDescription>
+					) : null}
+					{desriptionSkeleton ? (
+						<Skeleton className="h-5 w-52" />
 					) : null}
 				</CardHeader>
 			) : null}

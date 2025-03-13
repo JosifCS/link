@@ -34,7 +34,7 @@ export default async function Page({ params }: PageProps<"storyId">) {
 				</div>
 			</div>
 
-			<Card label={t("characters")}>
+			<Card title={t("characters")}>
 				<CharactersTable storyId={+storyId} data={characters} />
 			</Card>
 		</div>
