@@ -12,7 +12,6 @@ import {
 import prisma from "@/lib/prisma"
 import { Clock, Edit, FileText, Trash, Users } from "lucide-react"
 import { getTranslations } from "next-intl/server"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 
 export default async function TempStory({

@@ -9,6 +9,10 @@
 		},
 		"SiteHeader": {
 			"stories": "Stories"
+		},
+		"TableRowMenu": {
+			"edit": "Edit",
+			"remove": "Delete"
 		}
 	},
 	"Index": {

@@ -9,6 +9,10 @@
 		},
 		"SiteHeader": {
 			"stories": "Příběhy"
+		},
+		"TableRowMenu": {
+			"edit": "Upravit",
+			"remove": "Smazat"
 		}
 	},
 	"Stories": {

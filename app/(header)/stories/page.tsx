@@ -7,6 +7,7 @@ import { getTranslations } from "next-intl/server"
 import TempStory from "./components/temp-story"
 import { getStoryCookie } from "@/actions/story/story-cookies"
 import { ButtonLink } from "@/components/button-link"
+import { tableRowMenuMessages } from "@/modules/messages"
 
 export default async function Page() {
 	const { id } = await authorize(true)
@@ -42,7 +43,10 @@ export default async function Page() {
 					</div>
 				</div>
 
-				<StoriesTable data={stories} />
+				<StoriesTable
+					data={stories}
+					tRowMenu={await tableRowMenuMessages()}
+				/>
 			</div>
 		)
 	}
