@@ -85,7 +85,16 @@
 				},
 				"characters": "Postavy",
 				"story": "Příběh",
-				"newCharacter": "Nová postava"
+				"newCharacter": "Nová postava",
+				"Character": {
+					"Components": {
+						"CharacterForm": {
+							"title": "Základní informace",
+							"name": "Jméno",
+							"description": "Popis"
+						}
+					}
+				}
 			},
 			"Dialogs": {
 				"NewCharacter": {
