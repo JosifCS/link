@@ -22,6 +22,7 @@ export function StoriesTable({
 					<TableRowMenu
 						t={tRowMenu}
 						editHref={`/stories/${getValue()}/detail`}
+						removeHref={`/dialog/remove-story?stroyId=${getValue()}`}
 					/>
 				),
 			},

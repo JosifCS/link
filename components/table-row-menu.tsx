@@ -10,13 +10,15 @@ import {
 	DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
 import { Button } from "./ui/button"
+import Link from "next/link"
 
 export type TableRowMenuProps = {
 	editHref?: string
+	removeHref?: string
 	t: Record<"edit" | "remove", string>
 }
 
-export function TableRowMenu({ editHref, t }: TableRowMenuProps) {
+export function TableRowMenu({ editHref, removeHref, t }: TableRowMenuProps) {
 	return (
 		<div className="flex">
 			{editHref && (
@@ -38,10 +40,14 @@ export function TableRowMenu({ editHref, t }: TableRowMenuProps) {
 				</DropdownMenuTrigger>
 				<DropdownMenuContent className="w-20" align="end">
 					<DropdownMenuGroup>
-						<DropdownMenuItem>
-							<Trash2 />
-							{t.remove}
-						</DropdownMenuItem>
+						{removeHref && (
+							<DropdownMenuItem asChild>
+								<Link href={removeHref}>
+									<Trash2 />
+									{t.remove}
+								</Link>
+							</DropdownMenuItem>
+						)}
 					</DropdownMenuGroup>
 				</DropdownMenuContent>
 			</DropdownMenu>
