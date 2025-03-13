@@ -63,8 +63,7 @@
 						"ChapterForm": {
 							"title": "Základní informace",
 							"description": "Popis",
-							"name": "Název",
-							"subTitle": "Příběh: {story}"
+							"name": "Název"
 						}
 					}
 				},

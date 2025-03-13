@@ -67,8 +67,7 @@
 						"ChapterForm": {
 							"title": "Basic information",
 							"description": "Description",
-							"name": "Name",
-							"subTitle": "Story: {story}"
+							"name": "Name"
 						}
 					}
 				},
