@@ -37,7 +37,12 @@ export function DialogsList({ dialogs, t }: DialogListProps) {
 						onChange={(e) => setSearch(e.target.value)}
 					/>
 				</div>
-				<Button type="button" className="px-3" title={t.new}>
+				<Button
+					type="button"
+					className="px-3"
+					title={t.new}
+					onClick={() => setDialog(0)}
+				>
 					<Plus />
 				</Button>
 			</div>
