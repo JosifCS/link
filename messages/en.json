@@ -82,6 +82,9 @@
 							"chapter": "Chapter editing",
 							"dialog": "Dialogue editing",
 							"sentence": "Sentence editing"
+						},
+						"RightCard": {
+							"backToStory": "Back to the story"
 						}
 					},
 					"chapter": "Chapter"

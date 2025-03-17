@@ -78,6 +78,9 @@
 							"chapter": "Editace kapitoly",
 							"dialog": "Editaace dialogu",
 							"sentence": "Editace věty"
+						},
+						"RightCard": {
+							"backToStory": "Zpět na příběh"
 						}
 					},
 					"chapter": "Kapitola"
