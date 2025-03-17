@@ -21,7 +21,7 @@ export default async function Page({
 		<div className="container mx-auto py-6 space-y-6 grow flex flex-col">
 			<div className="flex gap-2 grow items-stretch">
 				<LeftCard chapterId={+chapterId} />
-				<RightCard chapterId={+chapterId} />
+				<RightCard storyId={+storyId} chapterId={+chapterId} />
 			</div>
 		</div>
 	)

@@ -1,17 +1,23 @@
 "use client"
 
 import { useChapterState } from "@/states/chapter-state"
-import { DialogEdit } from "./dilaog-edit"
 import { ChapterForm, ChapterFormProps } from "./chapter-form"
+import { useEffect } from "react"
 
 export function RightCardClient({
 	chapterId,
+	storyId,
 	tChapter,
 }: {
 	chapterId: number
+	storyId: number
 	tChapter: ChapterFormProps["t"]
 }) {
-	const { level } = useChapterState()
+	const { level, setChapter } = useChapterState()
+
+	useEffect(() => {
+		setChapter()
+	}, [storyId, chapterId])
 
 	if (level() == "chapter")
 		return <ChapterForm chapterId={chapterId} t={tChapter} />
