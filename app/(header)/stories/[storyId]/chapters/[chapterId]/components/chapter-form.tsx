@@ -1,16 +1,26 @@
 "use client"
 
+import { getChapter, GetChapterQuery } from "@/actions/chapter/get-chapter"
 import { saveChapterForm } from "@/actions/chapter/save-chapter-form"
 import { Form } from "@/components/form"
 import { FormInput } from "@/components/form-input"
 import { FormTextArea } from "@/components/form-textarea"
+import { useEffect, useState } from "react"
 
-type ChapterFormProps = {
+export type ChapterFormProps = {
 	t: Record<"name" | "description", string>
-	value: { name: string; description: string; id: number; storyId: number }
+	chapterId: number
 }
 
-export function ChapterForm({ t, value }: ChapterFormProps) {
+export function ChapterForm({ t, chapterId }: ChapterFormProps) {
+	const [value, setValue] = useState<GetChapterQuery>()
+
+	useEffect(() => {
+		getChapter(chapterId).then(setValue)
+	}, [chapterId])
+
+	if (value == undefined) return "No data"
+
 	return (
 		<Form action={saveChapterForm} autoSave>
 			<input type="number" name="id" defaultValue={value.id} hidden />
