@@ -13,7 +13,11 @@ export const useChapterState = create<ChapterState>()((set, get) => ({
 	dialogId: null,
 	sentenceId: null,
 	level: () =>
-		get().sentenceId ? "sentence" : get().dialogId ? "dialog" : "chapter",
+		get().sentenceId != null
+			? "sentence"
+			: get().dialogId != null
+				? "dialog"
+				: "chapter",
 	setChapter: () => set((state) => ({ dialogId: null, sentenceId: null })),
 	setDialog: (dialogId) => set((state) => ({ dialogId, sentenceId: null })),
 	setSentence: (sentenceId) => set((state) => ({ sentenceId })),
