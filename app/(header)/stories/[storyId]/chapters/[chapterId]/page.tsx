@@ -1,10 +1,7 @@
 import { PageProps } from "@/types/global"
-import { ChapterInfo } from "./components/chapter-info"
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
-import { ChevronLeft } from "lucide-react"
-import { ButtonLink } from "@/components/button-link"
 import { LeftCard } from "./components/left-card"
 import { RightCard } from "./components/right-card"
 
