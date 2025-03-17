@@ -5,6 +5,8 @@ import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 import { ChevronLeft } from "lucide-react"
 import { ButtonLink } from "@/components/button-link"
+import { LeftCard } from "./components/left-card"
+import { RightCard } from "./components/right-card"
 
 export default async function Page({
 	params,
@@ -19,21 +21,11 @@ export default async function Page({
 	if (chapter == null) notFound()
 
 	return (
-		<div className="container mx-auto py-6 space-y-6">
-			<div className="flex items-center justify-between">
-				<div className="flex items-center gap-2">
-					<ButtonLink
-						variant="outline"
-						size="sm"
-						href={`/stories/${storyId}/chapters`}
-					>
-						<ChevronLeft className="h-4 w-4" />
-					</ButtonLink>
-					<h1 className="text-2xl font-bold">{t("chapter")}</h1>
-				</div>
+		<div className="container mx-auto py-6 space-y-6 grow flex flex-col">
+			<div className="flex gap-2 grow items-stretch">
+				<LeftCard chapterId={+chapterId} />
+				<RightCard />
 			</div>
-
-			<ChapterInfo chapterId={chapter.id} />
 		</div>
 	)
 }
