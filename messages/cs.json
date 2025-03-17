@@ -68,6 +68,12 @@
 							"title": "Základní informace",
 							"description": "Popis",
 							"name": "Název"
+						},
+						"DialogsList": {
+							"new": "Nový dialog",
+							"noDialogs": "Žádné dialogy",
+							"placeholder": "Hledat dialogy...",
+							"sentences": "vět"
 						}
 					},
 					"chapter": "Kapitola"

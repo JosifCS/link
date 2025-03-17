@@ -72,6 +72,12 @@
 							"title": "Basic information",
 							"description": "Description",
 							"name": "Name"
+						},
+						"DialogsList": {
+							"new": "New dialogue",
+							"noDialogs": "No dialogues",
+							"placeholder": "Search for dialogues...",
+							"sentences": "sentences"
 						}
 					},
 					"chapter": "Chapter"
