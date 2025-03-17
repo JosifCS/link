@@ -19,28 +19,28 @@ export function ChapterForm({ t, chapterId }: ChapterFormProps) {
 		getChapter(chapterId).then(setValue)
 	}, [chapterId])
 
-	if (value == undefined) return "No data"
-
 	return (
 		<Form action={saveChapterForm} autoSave>
-			<input type="number" name="id" defaultValue={value.id} hidden />
+			<input type="number" name="id" defaultValue={value?.id} hidden />
 			<input
 				type="number"
 				name="storyId"
-				defaultValue={value.storyId}
+				defaultValue={value?.storyId}
 				hidden
 			/>
 			<FormInput
 				type="text"
 				name="name"
 				label={t.name}
-				defaultValue={value.name}
+				defaultValue={value?.name}
+				skeleton={value == undefined}
 			/>
 			<FormTextArea
 				name="description"
 				label={t.description}
-				defaultValue={value.description}
+				defaultValue={value?.description}
 				rows={3}
+				skeleton={value == undefined}
 			/>
 		</Form>
 	)
