@@ -69,7 +69,6 @@
 				"Chapter": {
 					"Components": {
 						"ChapterForm": {
-							"title": "Basic information",
 							"description": "Description",
 							"name": "Name"
 						},
@@ -78,6 +77,11 @@
 							"noDialogs": "No dialogues",
 							"placeholder": "Search for dialogues...",
 							"sentences": "sentences"
+						},
+						"RightCardTitle": {
+							"chapter": "Chapter editing",
+							"dialog": "Dialogue editing",
+							"sentence": "Sentence editing"
 						}
 					},
 					"chapter": "Chapter"

@@ -65,7 +65,6 @@
 				"Chapter": {
 					"Components": {
 						"ChapterForm": {
-							"title": "Základní informace",
 							"description": "Popis",
 							"name": "Název"
 						},
@@ -74,6 +73,11 @@
 							"noDialogs": "Žádné dialogy",
 							"placeholder": "Hledat dialogy...",
 							"sentences": "vět"
+						},
+						"RightCardTitle": {
+							"chapter": "Editace kapitoly",
+							"dialog": "Editaace dialogu",
+							"sentence": "Editace věty"
 						}
 					},
 					"chapter": "Kapitola"
