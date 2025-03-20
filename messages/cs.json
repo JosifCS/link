@@ -73,17 +73,23 @@
 							"noDialogs": "Žádné dialogy",
 							"placeholder": "Hledat dialogy...",
 							"sentences": "vět"
-						},
-						"RightCardTitle": {
-							"chapter": "Editace kapitoly",
-							"dialog": "Editace dialogu",
-							"sentence": "Editace věty"
-						},
-						"RightCard": {
-							"backToStory": "Zpět na příběh"
 						}
 					},
-					"chapter": "Kapitola"
+					"chapter": "Kapitola",
+					"editChapter": "Editace kapitoly",
+					"Dialog": {
+						"editDialog": "Editace dialogu",
+						"Components": {
+							"DialogForm": {
+								"name": "Název",
+								"description": "Popis",
+								"character": "Postava",
+								"createDialog": "Vytvořit dialog"
+							}
+						},
+						"backToDialogs": "Zpět na dialogy"
+					},
+					"backToChapters": "Zpět na kapitoly"
 				},
 				"chapters": "Kapitoly",
 				"newChapter": "Nová kapitola",

@@ -1,10 +1,11 @@
 "use client"
 
 import { GetDialogsQuery } from "@/actions/chapter/get-dialogs"
-import { Button } from "@/components/ui/button"
+import { ButtonLink } from "@/components/button-link"
 import { Input } from "@/components/ui/input"
-import { useChapterState } from "@/states/chapter-state"
 import { Plus, Search } from "lucide-react"
+import Link from "next/link"
+import { useParams } from "next/navigation"
 import { useMemo, useState } from "react"
 
 export type DialogListProps = {
@@ -13,8 +14,11 @@ export type DialogListProps = {
 }
 
 export function DialogsList({ dialogs, t }: DialogListProps) {
+	const { storyId, chapterId } = useParams<{
+		storyId: string
+		chapterId: string
+	}>()
 	const [search, setSearch] = useState<string>("")
-	const { setDialog } = useChapterState()
 
 	const filteredDialogs = useMemo<GetDialogsQuery>(() => {
 		if (search.length) {
@@ -37,14 +41,14 @@ export function DialogsList({ dialogs, t }: DialogListProps) {
 						onChange={(e) => setSearch(e.target.value)}
 					/>
 				</div>
-				<Button
+				<ButtonLink
 					type="button"
 					className="px-3"
 					title={t.new}
-					onClick={() => setDialog(0)}
+					href={`/stories/${storyId}/chapters/${chapterId}/0`}
 				>
 					<Plus />
-				</Button>
+				</ButtonLink>
 			</div>
 
 			{filteredDialogs.length == 0 ? (
@@ -54,20 +58,24 @@ export function DialogsList({ dialogs, t }: DialogListProps) {
 			) : (
 				<div className="space-y-2 flex-1 overflow-auto">
 					{filteredDialogs.map((dialog) => (
-						<div
-							key={dialog.id}
-							className="p-3 rounded-md cursor-pointer hover:bg-muted"
-							onClick={() => setDialog(dialog.id)}
+						<Link
+							href={`/stories/10/chapters/2/${dialog.id}`}
+							passHref
 						>
-							<h3 className="font-medium">{dialog.name}</h3>
-							<div className="text-sm text-muted-foreground">
-								<span>
-									{dialog._count.sentences} {t.sentences}
-								</span>
-								<span className="mx-1">•</span>
-								<span>{dialog.character.name}</span>
+							<div
+								key={dialog.id}
+								className="p-3 rounded-md cursor-pointer hover:bg-muted"
+							>
+								<h3 className="font-medium">{dialog.name}</h3>
+								<div className="text-sm text-muted-foreground">
+									<span>
+										{dialog._count.sentences} {t.sentences}
+									</span>
+									<span className="mx-1">•</span>
+									<span>{dialog.character.name}</span>
+								</div>
 							</div>
-						</div>
+						</Link>
 					))}
 				</div>
 			)}

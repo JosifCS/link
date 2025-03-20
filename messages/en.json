@@ -77,17 +77,23 @@
 							"noDialogs": "No dialogues",
 							"placeholder": "Search for dialogues...",
 							"sentences": "sentences"
-						},
-						"RightCardTitle": {
-							"chapter": "Chapter editing",
-							"dialog": "Dialogue editing",
-							"sentence": "Sentence editing"
-						},
-						"RightCard": {
-							"backToStory": "Back to the story"
 						}
 					},
-					"chapter": "Chapter"
+					"chapter": "Chapter",
+					"editChapter": "Chapter editing",
+					"Dialog": {
+						"editDialog": "Editing the dialogue",
+						"Components": {
+							"DialogForm": {
+								"name": "Name",
+								"description": "Description",
+								"character": "Figure",
+								"createDialog": "Create a dialog"
+							}
+						},
+						"backToDialogs": "Back to dialogues"
+					},
+					"backToChapters": "Back to chapters"
 				},
 				"chapters": "Chapters",
 				"newChapter": "New chapter",

@@ -14,12 +14,14 @@ import { cn } from "@/lib/utils"
 import { toast } from "@/hooks/use-toast"
 import { useDebouncedCallback } from "use-debounce"
 import { SafeActionResult } from "@/modules/safe-action"
+import { Button } from "./ui/button"
 
 type FormWrapper = {
 	action: any
 	children: React.ReactNode
 	className?: string
 	autoSave?: boolean
+	submitLabel?: string
 }
 
 const FormContext = createContext<SafeActionResult & { onChange: () => void }>({
@@ -38,6 +40,7 @@ export function Form({
 	children,
 	className,
 	autoSave = false,
+	submitLabel = "Save",
 }: FormWrapper) {
 	const ref = useRef<HTMLFormElement>(null)
 	const router = useRouter()
@@ -125,7 +128,7 @@ export function Form({
 			>
 				{children}
 			</FormContext.Provider>
-			{autoSave && (
+			{autoSave ? (
 				<p className="text-sm text-muted-foreground text-end mb-0">
 					{isPending
 						? "Saving..."
@@ -133,6 +136,10 @@ export function Form({
 							? "Unsaved changes"
 							: "Saved"}
 				</p>
+			) : (
+				<div className="w-full flex justify-end">
+					<Button type="submit">{submitLabel}</Button>
+				</div>
 			)}
 		</form>
 	)
