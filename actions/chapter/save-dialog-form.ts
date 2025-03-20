@@ -6,10 +6,12 @@ import { z } from "zod"
 import prisma from "@/lib/prisma"
 import { authorize } from "@/modules/auth"
 import { actionResult } from "@/modules/actionResult"
+import { redirect } from "next/navigation"
 
 const schema = zfd.formData({
 	id: zfd.numeric(),
 	chapterId: zfd.numeric(),
+	characterId: zfd.numeric(),
 	name: z
 		.string()
 		.min(2, { message: "Name must be at least 2 characters long." })
@@ -18,24 +20,30 @@ const schema = zfd.formData({
 })
 export const saveDialogForm = safeAction(
 	schema,
-	async function ({ id, chapterId, description, name }) {
+	async function ({ id, chapterId, description, name, characterId }) {
 		await authorize(true)
 
 		if (id) {
 			await prisma.dialog.update({
 				where: { id: id },
-				data: { name, description },
+				data: { name, description, characterId },
 			})
 			return actionResult(true, "saved") // TODO localize
 		} else {
-			const chapter = await prisma.dialog.create({
-				data: { name, description, chapterId, characterId: 0 },
+			const dialog = await prisma.dialog.create({
+				data: { name, description, chapterId, characterId },
+				select: {
+					id: true,
+					chapterId: true,
+					chapter: { select: { storyId: true } },
+				},
 			})
 
-			return actionResult(
-				true,
-				"created" // TODO localize
+			redirect(
+				`/stories/${dialog.chapter.storyId}/chapters/${dialog.chapterId}/${dialog.id}`
 			)
+
+			return actionResult(true, "saved") // TODO localize
 		}
 	}
 )

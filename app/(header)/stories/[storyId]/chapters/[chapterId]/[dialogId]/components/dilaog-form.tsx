@@ -1,9 +1,12 @@
 import { getDialog } from "@/actions/chapter/get-dialog"
 import { saveChapterForm } from "@/actions/chapter/save-chapter-form"
+import { saveDialogForm } from "@/actions/chapter/save-dialog-form"
 import { Form } from "@/components/form"
 import { FormInput } from "@/components/form-input"
+import { FormSelect } from "@/components/form-select"
 import { FormSkeleton } from "@/components/form-skeleton"
 import { FormTextArea } from "@/components/form-textarea"
+import prisma from "@/lib/prisma"
 import { getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
 
@@ -30,9 +33,13 @@ export async function DialogForm({ dialogId, chapterId }: DialogFormProps) {
 
 	if (value == null) notFound()
 
+	const characters = await prisma.character.findMany({
+		select: { id: true, name: true },
+	})
+
 	return (
 		<Form
-			action={saveChapterForm}
+			action={saveDialogForm}
 			autoSave={(value?.id ?? 0) > 0}
 			submitLabel={t("createDialog")}
 		>
@@ -48,21 +55,21 @@ export async function DialogForm({ dialogId, chapterId }: DialogFormProps) {
 				name="name"
 				label={t("name")}
 				defaultValue={value?.name}
-				skeleton={value == undefined}
 			/>
 			<FormTextArea
 				type="text"
-				name="name"
+				name="description"
 				label={t("description")}
 				defaultValue={value?.description}
-				skeleton={value == undefined}
 			/>
-			<FormInput
-				type="text"
-				name="name"
+			<FormSelect
+				name="characterId"
 				label={t("character")}
-				defaultValue={value?.characterId}
-				skeleton={value == undefined}
+				options={characters.map((x) => ({
+					value: x.id.toString(),
+					label: x.name,
+				}))}
+				defaultValue={value?.characterId.toString()}
 			/>
 		</Form>
 	)

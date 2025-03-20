@@ -30,7 +30,7 @@ export function DialogsList({ dialogs, t }: DialogListProps) {
 
 	return (
 		<div className="flex flex-col grow">
-			<div className="flex gap-2 flex-row">
+			<div className="flex gap-2 flex-row mb-2">
 				<div className="relative grow">
 					<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
 					<Input
@@ -59,13 +59,11 @@ export function DialogsList({ dialogs, t }: DialogListProps) {
 				<div className="space-y-2 flex-1 overflow-auto">
 					{filteredDialogs.map((dialog) => (
 						<Link
+							key={dialog.id}
 							href={`/stories/10/chapters/2/${dialog.id}`}
 							passHref
 						>
-							<div
-								key={dialog.id}
-								className="p-3 rounded-md cursor-pointer hover:bg-muted"
-							>
+							<div className="p-3 rounded-md cursor-pointer hover:bg-muted">
 								<h3 className="font-medium">{dialog.name}</h3>
 								<div className="text-sm text-muted-foreground">
 									<span>
