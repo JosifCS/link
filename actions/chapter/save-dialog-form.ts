@@ -6,7 +6,6 @@ import { z } from "zod"
 import prisma from "@/lib/prisma"
 import { authorize } from "@/modules/auth"
 import { actionResult } from "@/modules/actionResult"
-import { redirect } from "next/navigation"
 
 const schema = zfd.formData({
 	id: zfd.numeric(),
@@ -39,11 +38,10 @@ export const saveDialogForm = safeAction(
 				},
 			})
 
-			redirect(
-				`/stories/${dialog.chapter.storyId}/chapters/${dialog.chapterId}/${dialog.id}`
-			)
-
-			return actionResult(true, "saved") // TODO localize
+			return actionResult(
+				`/stories/${dialog.chapter.storyId}/chapters/${dialog.chapterId}/${dialog.id}`,
+				"created"
+			) // TODO localize
 		}
 	}
 )
