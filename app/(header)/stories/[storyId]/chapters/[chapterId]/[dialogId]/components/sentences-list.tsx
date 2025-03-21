@@ -7,6 +7,7 @@ import { Plus, Search } from "lucide-react"
 import { useMemo, useState } from "react"
 import { BackButton } from "../../components/back-button"
 import { useParams } from "next/navigation"
+import Link from "next/link"
 
 export type DialogListProps = {
 	sentences: GetSentencesQuery
@@ -26,7 +27,6 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 			Record<"storyId" | "chapterId" | "sentenceId" | "dialogId", string>
 		>()
 	const [search, setSearch] = useState<string>("")
-	const [selectedSentenceId, setSelectedSentenceId] = useState<number>()
 
 	const filteredSentences = useMemo<GetSentencesQuery>(() => {
 		if (search.length) {
@@ -38,7 +38,7 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 
 	return (
 		<>
-			{+sentenceId ? (
+			{sentenceId != undefined ? (
 				<BackButton
 					label={t.backToDialog}
 					href={`/stories/${storyId}/chapters/${chapterId}/${dialogId}`}
@@ -65,7 +65,7 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 						type="button"
 						className="px-3"
 						title={t.new}
-						href="/"
+						href={`/stories/${storyId}/chapters/${chapterId}/${dialogId}/0`}
 					>
 						<Plus />
 					</ButtonLink>
@@ -78,16 +78,14 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 				) : (
 					<div className="space-y-2 flex-1 overflow-auto">
 						{filteredSentences?.map((sentence) => (
-							<div
+							<Link
 								key={sentence.id}
-								className={`p-3 rounded-md cursor-pointer ${
-									selectedSentenceId === sentence.id
+								className={`block p-3 rounded-md cursor-pointer ${
+									+sentenceId === sentence.id
 										? "bg-accent text-accent-foreground"
 										: "hover:bg-muted"
 								}`}
-								onClick={() =>
-									setSelectedSentenceId(sentence.id)
-								}
+								href={`/stories/${storyId}/chapters/${chapterId}/${dialogId}/${sentence.id}`}
 							>
 								<div className="font-medium line-clamp-2">
 									{sentence.text}
@@ -108,7 +106,7 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 										</ul>
 									</div>
 								)}
-							</div>
+							</Link>
 						))}
 					</div>
 				)}

@@ -60,18 +60,17 @@ export function DialogsList({ dialogs, t }: DialogListProps) {
 					{filteredDialogs.map((dialog) => (
 						<Link
 							key={dialog.id}
+							className="block p-3 rounded-md cursor-pointer hover:bg-muted"
 							href={`/stories/10/chapters/2/${dialog.id}`}
 							passHref
 						>
-							<div className="p-3 rounded-md cursor-pointer hover:bg-muted">
-								<h3 className="font-medium">{dialog.name}</h3>
-								<div className="text-sm text-muted-foreground">
-									<span>
-										{dialog._count.sentences} {t.sentences}
-									</span>
-									<span className="mx-1">•</span>
-									<span>{dialog.character.name}</span>
-								</div>
+							<h3 className="font-medium">{dialog.name}</h3>
+							<div className="text-sm text-muted-foreground">
+								<span>
+									{dialog._count.sentences} {t.sentences}
+								</span>
+								<span className="mx-1">•</span>
+								<span>{dialog.character.name}</span>
 							</div>
 						</Link>
 					))}
