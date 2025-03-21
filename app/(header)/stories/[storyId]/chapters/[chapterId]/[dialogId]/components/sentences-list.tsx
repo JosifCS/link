@@ -50,7 +50,7 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 				/>
 			)}
 			<div className="flex flex-col grow">
-				<div className="flex gap-2 flex-row">
+				<div className="flex gap-2 flex-row mb-2">
 					<div className="relative grow">
 						<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
 						<Input

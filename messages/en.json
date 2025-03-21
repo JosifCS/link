@@ -97,6 +97,15 @@
 								"backToDialogs": "Back to dialogues",
 								"backToDialog": "Back to dialogue"
 							}
+						},
+						"Sentence": {
+							"Components": {
+								"SentenceForm": {
+									"createSentence": "Create a sentence",
+									"text": "Text"
+								}
+							},
+							"editSentence": "Sentence editing"
 						}
 					},
 					"backToChapters": "Back to chapters"

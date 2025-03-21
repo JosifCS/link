@@ -1,7 +1,7 @@
 import { PageProps } from "@/types/global"
 import { getTranslations } from "next-intl/server"
 import { MainCardTitle } from "../components/main-card-title"
-import { DialogForm, DialogFormSkeleton } from "./components/dilaog-form"
+import { DialogForm, DialogFormSkeleton } from "./components/dialog-form"
 import { Suspense } from "react"
 
 export default async function Page({

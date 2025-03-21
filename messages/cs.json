@@ -93,6 +93,15 @@
 								"backToDialogs": "Zpět na dialogy",
 								"backToDialog": "Zpět na dialog"
 							}
+						},
+						"Sentence": {
+							"Components": {
+								"SentenceForm": {
+									"createSentence": "Vytvořit větu",
+									"text": "Text"
+								}
+							},
+							"editSentence": "Editace věty"
 						}
 					},
 					"backToChapters": "Zpět na kapitoly"

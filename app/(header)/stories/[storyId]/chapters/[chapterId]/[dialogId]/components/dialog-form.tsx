@@ -1,5 +1,3 @@
-import { getDialog } from "@/actions/chapter/get-dialog"
-import { saveChapterForm } from "@/actions/chapter/save-chapter-form"
 import { saveDialogForm } from "@/actions/chapter/save-dialog-form"
 import { Form } from "@/components/form"
 import { FormInput } from "@/components/form-input"
@@ -29,7 +27,9 @@ export async function DialogForm({ dialogId, chapterId }: DialogFormProps) {
 					characterId: 0,
 					description: "",
 				}
-			: await getDialog(dialogId)
+			: await prisma.dialog.findFirst({
+					where: { id: { equals: dialogId } },
+				})
 
 	if (value == null) notFound()
 
