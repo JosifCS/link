@@ -89,9 +89,15 @@
 								"description": "Description",
 								"character": "Figure",
 								"createDialog": "Create a dialog"
+							},
+							"SentencesList": {
+								"new": "New sentence",
+								"noSentences": "No sentences",
+								"placeholder": "Searching for a sentence...",
+								"backToDialogs": "Back to dialogues",
+								"backToDialog": "Back to dialogue"
 							}
-						},
-						"backToDialogs": "Back to dialogues"
+						}
 					},
 					"backToChapters": "Back to chapters"
 				},

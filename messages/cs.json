@@ -85,9 +85,15 @@
 								"description": "Popis",
 								"character": "Postava",
 								"createDialog": "Vytvořit dialog"
+							},
+							"SentencesList": {
+								"new": "Nová věta",
+								"noSentences": "Žádné věty",
+								"placeholder": "Hledání věty...",
+								"backToDialogs": "Zpět na dialogy",
+								"backToDialog": "Zpět na dialog"
 							}
-						},
-						"backToDialogs": "Zpět na dialogy"
+						}
 					},
 					"backToChapters": "Zpět na kapitoly"
 				},
