@@ -5,6 +5,7 @@ import { FormSkeleton } from "@/components/form-skeleton"
 import prisma from "@/lib/prisma"
 import { getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
+import { SentenceOptions } from "./sentence-options"
 
 export type SentenceFormProps = {
 	dialogId: number
@@ -19,41 +20,59 @@ export async function SentenceForm({
 		"Stories.Story.Chapters.Chapter.Dialog.Sentence.Components.SentenceForm"
 	)
 
-	const value =
+	const sentence =
 		sentenceId == 0
 			? {
 					id: 0,
 					text: "",
 					dialogId,
+					options: [],
 				}
 			: await prisma.sentence.findFirst({
 					where: { id: { equals: sentenceId } },
+					select: {
+						id: true,
+						text: true,
+						dialogId: true,
+						options: {
+							select: {
+								id: true,
+								nextId: true,
+								text: true,
+							},
+						},
+					},
 				})
 
-	if (value == null) notFound()
+	if (sentence == null) notFound()
 
-	const characters = await prisma.character.findMany({
-		select: { id: true, name: true },
-	})
+	const selectOptions = await (
+		await prisma.sentence.findMany()
+	).map((x) => ({ label: x.text, value: x.id.toString() }))
 
 	return (
 		<Form
 			action={saveSentenceForm}
-			autoSave={(value?.id ?? 0) > 0}
+			autoSave={(sentence?.id ?? 0) > 0}
 			submitLabel={t("createSentence")}
 		>
-			<input type="number" name="id" defaultValue={value.id} hidden />
+			<input type="number" name="id" defaultValue={sentence.id} hidden />
 			<input
 				type="number"
 				name="dialogId"
-				defaultValue={value.dialogId}
+				defaultValue={sentence.dialogId}
 				hidden
 			/>
 			<FormInput
 				type="text"
 				name="text"
 				label={t("text")}
-				defaultValue={value.text}
+				defaultValue={sentence.text}
+			/>
+
+			<SentenceOptions
+				defaultValue={sentence.options}
+				selectOptions={selectOptions}
 			/>
 		</Form>
 	)
