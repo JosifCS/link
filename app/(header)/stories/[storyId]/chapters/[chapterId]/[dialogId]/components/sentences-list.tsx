@@ -4,11 +4,11 @@ import { GetSentencesQuery } from "@/actions/chapter/get-sentences"
 import { ButtonLink } from "@/components/button-link"
 import { Input } from "@/components/ui/input"
 import { Plus, Search } from "lucide-react"
-import { useEffect, useMemo, useState } from "react"
 import { BackButton } from "../../components/back-button"
-import { useParams, useRouter } from "next/navigation"
+import { useParams } from "next/navigation"
 import Link from "next/link"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { useSearch } from "@/modules/useSearch"
 
 export type DialogListProps = {
 	sentences: GetSentencesQuery
@@ -23,33 +23,16 @@ export type DialogListProps = {
 }
 
 export function SentencesList({ sentences, t }: DialogListProps) {
-	const { push } = useRouter()
 	const { storyId, chapterId, sentenceId, dialogId } =
 		useParams<
 			Record<"storyId" | "chapterId" | "sentenceId" | "dialogId", string>
 		>()
-	const [search, setSearch] = useState<string>("")
 
-	const filteredSentences = useMemo<GetSentencesQuery>(() => {
-		if (search.length) {
-			const stl = search.toLowerCase()
-			return sentences.filter((x) => x.text.toLowerCase().includes(stl))
-		}
-
-		return sentences
-	}, [sentences, search])
-
-	useEffect(() => {
-		if (
-			search.length &&
-			filteredSentences.length &&
-			+sentenceId != filteredSentences[0].id
-		) {
-			push(
-				`/stories/${storyId}/chapters/${chapterId}/${dialogId}/${filteredSentences[0].id}`
-			)
-		}
-	}, [filteredSentences])
+	const { filtered, searchValue, setSearchValue } = useSearch({
+		options: sentences,
+		path: `/stories/${storyId}/chapters/${chapterId}/${dialogId}`,
+		selectedId: +sentenceId,
+	})
 
 	return (
 		<>
@@ -72,8 +55,8 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 							type="search"
 							placeholder={t.placeholder}
 							className="pl-8"
-							value={search}
-							onChange={(e) => setSearch(e.target.value)}
+							value={searchValue}
+							onChange={(e) => setSearchValue(e.target.value)}
 						/>
 					</div>
 					<ButtonLink
@@ -86,13 +69,13 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 					</ButtonLink>
 				</div>
 
-				{filteredSentences.length == 0 ? (
+				{filtered.length == 0 ? (
 					<div className="text-muted-foreground text-sm text-center mt-auto mb-auto">
 						{t.noSentences}
 					</div>
 				) : (
 					<ScrollArea className="space-y-1 flex-1 px-2">
-						{filteredSentences?.map((sentence) => (
+						{filtered.map((sentence) => (
 							<Link
 								key={sentence.id}
 								className={`block p-3 rounded-md cursor-pointer ${
