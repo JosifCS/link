@@ -6,7 +6,7 @@ export function BackButton({ href, label }: { href: string; label: string }) {
 		<ButtonLink
 			variant="ghost"
 			size="sm"
-			className="w-fit gap-1 px-2 mb-2"
+			className="w-fit gap-1 px-2"
 			href={href}
 		>
 			<ChevronLeft className="h-4 w-4" />

@@ -55,10 +55,10 @@ export function SentenceOptions({
 					{t.noAnswers}
 				</div>
 			) : (
-				<ScrollArea className="px-2">
+				<ScrollArea>
 					{options.map((option, i) => (
 						<div key={i}>
-							<div className="flex gap-2 items-end">
+							<div className="flex gap-2 items-end px-2">
 								<FormInput
 									type="text"
 									name={`answer[${i}]`}

@@ -8,6 +8,7 @@ import { useMemo, useState } from "react"
 import { BackButton } from "../../components/back-button"
 import { useParams } from "next/navigation"
 import Link from "next/link"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 export type DialogListProps = {
 	sentences: GetSentencesQuery
@@ -49,8 +50,8 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 					href={`/stories/${storyId}/chapters/${chapterId}`}
 				/>
 			)}
-			<div className="flex flex-col grow">
-				<div className="flex gap-2 flex-row mb-2">
+			<div className="flex flex-col grow min-h-0 -mx-2">
+				<div className="flex gap-2 flex-row mb-2 px-2">
 					<div className="relative grow">
 						<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
 						<Input
@@ -76,7 +77,7 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 						{t.noSentences}
 					</div>
 				) : (
-					<div className="space-y-1 flex-1 overflow-auto">
+					<ScrollArea className="space-y-1 flex-1 px-2">
 						{filteredSentences?.map((sentence) => (
 							<Link
 								key={sentence.id}
@@ -99,7 +100,7 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 								)}
 							</Link>
 						))}
-					</div>
+					</ScrollArea>
 				)}
 			</div>
 		</>
