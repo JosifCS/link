@@ -10,15 +10,15 @@ export function actionResult<T = undefined>(
 	success: boolean,
 	message?: string,
 	data?: T
-): ActionResult<T>
+): ActionResult<any>
 export function actionResult<T = undefined>(
 	options: ActionResult<T>
-): ActionResult<T>
+): ActionResult<any>
 export function actionResult<T = undefined>(
 	param1: string | boolean | ActionResult<T>,
 	param2?: string,
 	param3?: T
-): ActionResult<T> {
+): ActionResult<any> {
 	if (typeof param1 === "string")
 		return {
 			success: true,
