@@ -103,6 +103,14 @@
 								"SentenceForm": {
 									"createSentence": "Create a sentence",
 									"text": "Text"
+								},
+								"SentenceOptions": {
+									"answers": "Answers",
+									"answer": "Response",
+									"noAnswers": "This sentence has no answers.",
+									"addAnswer": "Add a reply",
+									"nextSentence": "The following sentence",
+									"removeAnswer": "Delete reply"
 								}
 							},
 							"editSentence": "Sentence editing"

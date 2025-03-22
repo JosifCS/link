@@ -14,16 +14,35 @@ const schema = zfd.formData({
 		.string()
 		.min(2, { message: "Text must be at least 2 characters long." })
 		.trim(),
+	answer: zfd.repeatableOfType(z.string()).optional(),
+	nextSentence: zfd.repeatableOfType(z.string()).optional(),
 })
 export const saveSentenceForm = safeAction(
 	schema,
-	async function ({ id, dialogId, text }) {
+	async function ({ id, dialogId, text, answer, nextSentence }) {
 		await authorize(true)
+
+		console.log(
+			"DATA",
+			answer,
+			nextSentence,
+			nextSentence?.map((x) => +x)
+		)
 
 		if (id) {
 			await prisma.sentence.update({
 				where: { id: id },
-				data: { dialogId, text },
+				data: {
+					dialogId,
+					text,
+					options: {
+						deleteMany: {},
+						create: answer?.map((x, i) => {
+							const n = +(nextSentence?.at(i) ?? "")
+							return { text: x, nextId: n ? n : null }
+						}),
+					},
+				},
 			})
 			return actionResult(true, "saved") // TODO localize
 		} else {

@@ -17,11 +17,21 @@ type SentenceOptionsProps = {
 		value: string
 		label?: string
 	}[]
+	t: Record<
+		| "answers"
+		| "noAnswers"
+		| "answer"
+		| "addAnswer"
+		| "removeAnswer"
+		| "nextSentence",
+		string
+	>
 }
 
 export function SentenceOptions({
 	defaultValue,
 	selectOptions,
+	t,
 }: SentenceOptionsProps) {
 	const [options, setOptions] =
 		useState<SentenceOptionsProps["defaultValue"]>(defaultValue)
@@ -35,13 +45,13 @@ export function SentenceOptions({
 			<div className="flex justify-between items-center">
 				<h3 className="font-medium">Odpovědi</h3>
 				<Button variant="outline" size="sm" onClick={handleAdd}>
-					Přidat odpověď_
+					{t.addAnswer}
 				</Button>
 			</div>
 
 			{options.length === 0 ? (
 				<div className="text-center py-4 text-muted-foreground text-sm">
-					Tato věta nemá žádné odpovědi._
+					{t.noAnswers}
 				</div>
 			) : (
 				<div className="space-y-3">
@@ -50,13 +60,13 @@ export function SentenceOptions({
 							<div className="flex gap-2 items-end">
 								<FormInput
 									type="text"
-									name="optionX"
-									label="Text_"
+									name={`answer[${i}]`}
+									label={t.answer}
 									defaultValue={option.text}
 								/>
 								<FormSelect
-									name="optionY"
-									label="Následující věta_"
+									name={`nextSentence[${i}]`}
+									label={t.nextSentence}
 									options={selectOptions}
 									defaultValue={option.nextId?.toString()}
 								/>
@@ -64,7 +74,7 @@ export function SentenceOptions({
 									type="button"
 									variant="destructive"
 									className="grow-0 px-3"
-									title="Odstranit odpověď_"
+									title={t.removeAnswer}
 								>
 									<Trash />
 								</Button>

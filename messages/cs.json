@@ -99,6 +99,14 @@
 								"SentenceForm": {
 									"createSentence": "Vytvořit větu",
 									"text": "Text"
+								},
+								"SentenceOptions": {
+									"answers": "Odpovědi",
+									"answer": "Odpověď",
+									"noAnswers": "Tato věta nemá žádné odpovědi.",
+									"addAnswer": "Přidat odpověď",
+									"nextSentence": "Následující věta",
+									"removeAnswer": "Odstranit odpověď"
 								}
 							},
 							"editSentence": "Editace věty"

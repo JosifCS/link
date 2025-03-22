@@ -17,7 +17,7 @@ export async function SentenceForm({
 	sentenceId,
 }: SentenceFormProps) {
 	const t = await getTranslations(
-		"Stories.Story.Chapters.Chapter.Dialog.Sentence.Components.SentenceForm"
+		"Stories.Story.Chapters.Chapter.Dialog.Sentence.Components"
 	)
 
 	const sentence =
@@ -54,7 +54,7 @@ export async function SentenceForm({
 		<Form
 			action={saveSentenceForm}
 			autoSave={(sentence?.id ?? 0) > 0}
-			submitLabel={t("createSentence")}
+			submitLabel={t("SentenceForm.createSentence")}
 		>
 			<input type="number" name="id" defaultValue={sentence.id} hidden />
 			<input
@@ -66,13 +66,21 @@ export async function SentenceForm({
 			<FormInput
 				type="text"
 				name="text"
-				label={t("text")}
+				label={t("SentenceForm.text")}
 				defaultValue={sentence.text}
 			/>
 
 			<SentenceOptions
 				defaultValue={sentence.options}
 				selectOptions={selectOptions}
+				t={{
+					answers: t("SentenceOptions.answers"),
+					answer: t("SentenceOptions.answer"),
+					noAnswers: t("SentenceOptions.noAnswers"),
+					addAnswer: t("SentenceOptions.addAnswer"),
+					nextSentence: t("SentenceOptions.nextSentence"),
+					removeAnswer: t("SentenceOptions.removeAnswer"),
+				}}
 			/>
 		</Form>
 	)
