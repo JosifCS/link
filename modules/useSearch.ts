@@ -1,14 +1,16 @@
 import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 
-export function useSearch<T extends { text: string; id: number }>({
+export function useSearch<T extends { id: number }>({
 	options,
 	selectedId,
 	path,
+	valueKey,
 }: {
 	options: T[]
 	selectedId: number
-	path: string
+	path?: string
+	valueKey: keyof T
 }) {
 	const { push } = useRouter()
 	const [searchValue, setSearchValue] = useState<string>("")
@@ -16,7 +18,9 @@ export function useSearch<T extends { text: string; id: number }>({
 	const filtered = useMemo<T[]>(() => {
 		if (searchValue.length) {
 			const stl = searchValue.toLowerCase()
-			return options.filter((x) => x.text.toLowerCase().includes(stl))
+			return options.filter((x) =>
+				(x[valueKey] as string).toLowerCase().includes(stl)
+			)
 		}
 
 		return options
@@ -24,6 +28,7 @@ export function useSearch<T extends { text: string; id: number }>({
 
 	useEffect(() => {
 		if (
+			path &&
 			searchValue.length &&
 			filtered.length &&
 			selectedId != filtered[0].id

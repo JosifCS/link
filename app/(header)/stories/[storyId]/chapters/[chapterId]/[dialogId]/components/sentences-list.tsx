@@ -32,6 +32,7 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 		options: sentences,
 		path: `/stories/${storyId}/chapters/${chapterId}/${dialogId}`,
 		selectedId: +sentenceId,
+		valueKey: "text",
 	})
 
 	return (

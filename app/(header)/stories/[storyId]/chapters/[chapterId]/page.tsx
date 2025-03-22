@@ -27,7 +27,7 @@ export default async function Page({
 	return (
 		<div className="container mx-auto py-6 space-y-6 grow flex flex-col">
 			<div className="flex gap-2 grow items-stretch">
-				<Card className="w-64 bg-muted/40 p-2 flex flex-col">
+				<Card className="w-64 bg-muted/40 p-2 flex flex-col gap-2">
 					<BackButton
 						label={t("backToChapters")}
 						href={`/stories/${storyId}/chapters`}
