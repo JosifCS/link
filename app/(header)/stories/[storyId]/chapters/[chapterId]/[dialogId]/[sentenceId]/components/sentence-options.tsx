@@ -64,7 +64,7 @@ export function SentenceOptions({
 									name={`answer[${i}]`}
 									label={t.answer}
 									defaultValue={option.text}
-									autoFocus
+									//autoFocus
 								/>
 								<FormSelect
 									name={`nextSentence[${i}]`}

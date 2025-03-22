@@ -4,9 +4,9 @@ import { GetSentencesQuery } from "@/actions/chapter/get-sentences"
 import { ButtonLink } from "@/components/button-link"
 import { Input } from "@/components/ui/input"
 import { Plus, Search } from "lucide-react"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { BackButton } from "../../components/back-button"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
@@ -23,6 +23,7 @@ export type DialogListProps = {
 }
 
 export function SentencesList({ sentences, t }: DialogListProps) {
+	const { push } = useRouter()
 	const { storyId, chapterId, sentenceId, dialogId } =
 		useParams<
 			Record<"storyId" | "chapterId" | "sentenceId" | "dialogId", string>
@@ -34,8 +35,21 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 			const stl = search.toLowerCase()
 			return sentences.filter((x) => x.text.toLowerCase().includes(stl))
 		}
+
 		return sentences
 	}, [sentences, search])
+
+	useEffect(() => {
+		if (
+			search.length &&
+			filteredSentences.length &&
+			+sentenceId != filteredSentences[0].id
+		) {
+			push(
+				`/stories/${storyId}/chapters/${chapterId}/${dialogId}/${filteredSentences[0].id}`
+			)
+		}
+	}, [filteredSentences])
 
 	return (
 		<>
