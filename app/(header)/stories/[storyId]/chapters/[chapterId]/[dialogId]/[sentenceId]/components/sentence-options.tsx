@@ -41,7 +41,7 @@ export function SentenceOptions({
 	}, [])
 
 	return (
-		<div className="space-y-3">
+		<div className="flex flex-col min-h-0">
 			<div className="flex justify-between items-center">
 				<h3 className="font-medium">Odpovědi</h3>
 				<Button variant="outline" size="sm" onClick={handleAdd}>
@@ -54,7 +54,7 @@ export function SentenceOptions({
 					{t.noAnswers}
 				</div>
 			) : (
-				<div className="space-y-3">
+				<div className="space-y-3 overflow-y-auto">
 					{options.map((option, i) => (
 						<div key={i}>
 							<div className="flex gap-2 items-end">
@@ -63,6 +63,7 @@ export function SentenceOptions({
 									name={`answer[${i}]`}
 									label={t.answer}
 									defaultValue={option.text}
+									autoFocus
 								/>
 								<FormSelect
 									name={`nextSentence[${i}]`}

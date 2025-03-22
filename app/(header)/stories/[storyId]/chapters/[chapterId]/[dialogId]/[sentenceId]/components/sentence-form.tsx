@@ -55,6 +55,7 @@ export async function SentenceForm({
 			action={saveSentenceForm}
 			autoSave={(sentence?.id ?? 0) > 0}
 			submitLabel={t("SentenceForm.createSentence")}
+			className="min-h-0"
 		>
 			<input type="number" name="id" defaultValue={sentence.id} hidden />
 			<input

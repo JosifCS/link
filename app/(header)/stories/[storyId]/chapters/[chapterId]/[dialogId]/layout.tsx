@@ -20,7 +20,7 @@ export default async function Layout({
 
 	return (
 		<div className="container mx-auto py-6 space-y-6 grow flex flex-col">
-			<div className="flex gap-2 grow items-stretch">
+			<div className="flex gap-2 grow items-stretch max-h-[calc(100vh-100px)]">
 				<Card className="w-64 bg-muted/40 p-2 flex flex-col">
 					<SentencesList
 						sentences={sentences}
@@ -41,7 +41,7 @@ export default async function Layout({
 						}}
 					/>
 				</Card>
-				<Card className="grow p-2">{children}</Card>
+				<Card className="grow p-2 flex flex-col">{children}</Card>
 			</div>
 		</div>
 	)

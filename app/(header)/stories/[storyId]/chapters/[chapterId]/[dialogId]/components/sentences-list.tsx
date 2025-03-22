@@ -76,7 +76,7 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 						{t.noSentences}
 					</div>
 				) : (
-					<div className="space-y-2 flex-1 overflow-auto">
+					<div className="space-y-1 flex-1 overflow-auto">
 						{filteredSentences?.map((sentence) => (
 							<Link
 								key={sentence.id}
@@ -91,20 +91,11 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 									{sentence.text}
 								</div>
 								{sentence.options.length > 0 && (
-									<div className="mt-2 text-sm text-muted-foreground">
-										<ul className="mt-1 space-y-1 pl-4">
-											{sentence.options.map(
-												(option, i) => (
-													<li
-														key={i}
-														className="line-clamp-1"
-													>
-														• {option.text}
-													</li>
-												)
-											)}
-										</ul>
-									</div>
+									<ul className="text-sm text-muted-foreground list-disc list-inside">
+										{sentence.options.map((option, i) => (
+											<li key={i}>{option.text}</li>
+										))}
+									</ul>
 								)}
 							</Link>
 						))}
