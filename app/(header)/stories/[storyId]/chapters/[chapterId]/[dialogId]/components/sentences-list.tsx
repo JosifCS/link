@@ -94,7 +94,9 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 								{sentence.options.length > 0 && (
 									<ul className="text-sm text-muted-foreground list-disc list-inside">
 										{sentence.options.map((option, i) => (
-											<li key={i}>{option.text}</li>
+											<li
+												key={i}
+											>{`${option.text}${option.nextId ? " ❒" : ""}`}</li>
 										))}
 									</ul>
 								)}

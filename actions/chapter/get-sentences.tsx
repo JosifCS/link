@@ -16,6 +16,7 @@ export async function getSentences(dialogId: number) {
 			options: {
 				select: {
 					text: true,
+					nextId: true,
 				},
 			},
 		},
