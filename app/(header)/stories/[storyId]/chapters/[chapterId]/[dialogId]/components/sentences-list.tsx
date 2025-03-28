@@ -49,26 +49,28 @@ export function SentencesList({ sentences, t }: DialogListProps) {
 				/>
 			)}
 			<div className="flex flex-col grow min-h-0 -mx-2">
-				<div className="flex gap-2 flex-row mb-2 px-2">
-					<div className="relative grow">
-						<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-						<Input
-							type="search"
-							placeholder={t.placeholder}
-							className="pl-8"
-							value={searchValue}
-							onChange={(e) => setSearchValue(e.target.value)}
-						/>
+				{+dialogId != 0 && (
+					<div className="flex gap-2 flex-row mb-2 px-2">
+						<div className="relative grow">
+							<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+							<Input
+								type="search"
+								placeholder={t.placeholder}
+								className="pl-8"
+								value={searchValue}
+								onChange={(e) => setSearchValue(e.target.value)}
+							/>
+						</div>
+						<ButtonLink
+							type="button"
+							className="px-3"
+							title={t.new}
+							href={`/stories/${storyId}/chapters/${chapterId}/${dialogId}/0`}
+						>
+							<Plus />
+						</ButtonLink>
 					</div>
-					<ButtonLink
-						type="button"
-						className="px-3"
-						title={t.new}
-						href={`/stories/${storyId}/chapters/${chapterId}/${dialogId}/0`}
-					>
-						<Plus />
-					</ButtonLink>
-				</div>
+				)}
 
 				{filtered.length == 0 ? (
 					<div className="text-muted-foreground text-sm text-center mt-auto mb-auto">
