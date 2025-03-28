@@ -81,6 +81,7 @@ export async function SentenceForm({
 					addAnswer: t("SentenceOptions.addAnswer"),
 					nextSentence: t("SentenceOptions.nextSentence"),
 					removeAnswer: t("SentenceOptions.removeAnswer"),
+					goToSentence: t("SentenceOptions.goToSentence"),
 				}}
 			/>
 		</Form>

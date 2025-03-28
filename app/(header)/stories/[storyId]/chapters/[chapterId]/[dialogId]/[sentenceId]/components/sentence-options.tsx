@@ -5,8 +5,9 @@ import { FormSelect } from "@/components/form-select"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import { Trash } from "lucide-react"
+import { ExternalLink, Trash } from "lucide-react"
 import { useCallback, useState } from "react"
+import { SentenceSelect } from "./sentence-select"
 
 type SentenceOptionsProps = {
 	defaultValue: {
@@ -24,6 +25,7 @@ type SentenceOptionsProps = {
 		| "answer"
 		| "addAnswer"
 		| "removeAnswer"
+		| "goToSentence"
 		| "nextSentence",
 		string
 	>
@@ -66,11 +68,13 @@ export function SentenceOptions({
 									defaultValue={option.text}
 									//autoFocus
 								/>
-								<FormSelect
-									name={`nextSentence[${i}]`}
-									label={t.nextSentence}
-									options={selectOptions}
-									defaultValue={option.nextId?.toString()}
+								<SentenceSelect
+									defaultValue={
+										option.nextId?.toString() ?? "0"
+									}
+									index={i}
+									selectOptions={selectOptions}
+									t={t}
 								/>
 								<Button
 									type="button"

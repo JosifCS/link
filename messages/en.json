@@ -88,7 +88,8 @@
 								"name": "Name",
 								"description": "Description",
 								"character": "Figure",
-								"createDialog": "Create a dialog"
+								"createDialog": "Create a dialog",
+								"newCharacter": "New character"
 							},
 							"SentencesList": {
 								"new": "New sentence",
@@ -110,7 +111,8 @@
 									"noAnswers": "This sentence has no answers.",
 									"addAnswer": "Add a reply",
 									"nextSentence": "The following sentence",
-									"removeAnswer": "Delete reply"
+									"removeAnswer": "Delete reply",
+									"goToSentence": "Go to sentence"
 								}
 							},
 							"editSentence": "Sentence editing"

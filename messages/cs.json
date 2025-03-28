@@ -84,7 +84,8 @@
 								"name": "Název",
 								"description": "Popis",
 								"character": "Postava",
-								"createDialog": "Vytvořit dialog"
+								"createDialog": "Vytvořit dialog",
+								"newCharacter": "Nová postava"
 							},
 							"SentencesList": {
 								"new": "Nová věta",
@@ -106,7 +107,8 @@
 									"noAnswers": "Tato věta nemá žádné odpovědi.",
 									"addAnswer": "Přidat odpověď",
 									"nextSentence": "Následující věta",
-									"removeAnswer": "Odstranit odpověď"
+									"removeAnswer": "Odstranit odpověď",
+									"goToSentence": "Přejít na větu"
 								}
 							},
 							"editSentence": "Editace věty"
