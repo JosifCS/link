@@ -112,7 +112,8 @@
 									"addAnswer": "Add a reply",
 									"nextSentence": "The following sentence",
 									"removeAnswer": "Delete reply",
-									"goToSentence": "Go to sentence"
+									"goToSentence": "Go to sentence",
+									"prevOption": "Previous answer"
 								}
 							},
 							"editSentence": "Sentence editing"

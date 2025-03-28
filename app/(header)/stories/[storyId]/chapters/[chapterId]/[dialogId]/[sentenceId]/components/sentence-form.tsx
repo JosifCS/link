@@ -6,6 +6,9 @@ import prisma from "@/lib/prisma"
 import { getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { SentenceOptions } from "./sentence-options"
+import { SentenceSelect } from "./sentence-select"
+import { Label } from "@radix-ui/react-dropdown-menu"
+import { PrevSelect } from "./prev-select"
 
 export type SentenceFormProps = {
 	dialogId: number
@@ -27,6 +30,7 @@ export async function SentenceForm({
 					text: "",
 					dialogId,
 					options: [],
+					nextOptions: [],
 				}
 			: await prisma.sentence.findFirst({
 					where: { id: { equals: sentenceId } },
@@ -34,6 +38,7 @@ export async function SentenceForm({
 						id: true,
 						text: true,
 						dialogId: true,
+						nextOptions: { select: { id: true } },
 						options: {
 							select: {
 								id: true,
@@ -46,9 +51,18 @@ export async function SentenceForm({
 
 	if (sentence == null) notFound()
 
-	const selectOptions = await (
+	const nextSentenceOptions = await (
 		await prisma.sentence.findMany()
 	).map((x) => ({ label: x.text, value: x.id.toString() }))
+
+	const prevOptionOptions = await prisma.sentenceOption.findMany({
+		select: {
+			id: true,
+			nextId: true,
+			sentence: { select: { text: true, id: true } },
+			text: true,
+		},
+	})
 
 	return (
 		<Form
@@ -64,26 +78,42 @@ export async function SentenceForm({
 				defaultValue={sentence.dialogId}
 				hidden
 			/>
+			{+sentenceId != 0 && (
+				<div className="flex gap-2 items-end">
+					<PrevSelect
+						defaultValue={
+							sentence.nextOptions.at(0)?.id?.toString() ?? "0"
+						}
+						name={`prevOption`}
+						selectOptions={prevOptionOptions}
+						t={{
+							prevOption: t("SentenceOptions.prevOption"),
+							goToSentence: t("SentenceOptions.goToSentence"),
+						}}
+					/>
+				</div>
+			)}
 			<FormInput
 				type="text"
 				name="text"
 				label={t("SentenceForm.text")}
 				defaultValue={sentence.text}
 			/>
-
-			<SentenceOptions
-				defaultValue={sentence.options}
-				selectOptions={selectOptions}
-				t={{
-					answers: t("SentenceOptions.answers"),
-					answer: t("SentenceOptions.answer"),
-					noAnswers: t("SentenceOptions.noAnswers"),
-					addAnswer: t("SentenceOptions.addAnswer"),
-					nextSentence: t("SentenceOptions.nextSentence"),
-					removeAnswer: t("SentenceOptions.removeAnswer"),
-					goToSentence: t("SentenceOptions.goToSentence"),
-				}}
-			/>
+			{+sentenceId != 0 && (
+				<SentenceOptions
+					defaultValue={sentence.options}
+					selectOptions={nextSentenceOptions}
+					t={{
+						answers: t("SentenceOptions.answers"),
+						answer: t("SentenceOptions.answer"),
+						noAnswers: t("SentenceOptions.noAnswers"),
+						addAnswer: t("SentenceOptions.addAnswer"),
+						nextSentence: t("SentenceOptions.nextSentence"),
+						removeAnswer: t("SentenceOptions.removeAnswer"),
+						goToSentence: t("SentenceOptions.goToSentence"),
+					}}
+				/>
+			)}
 		</Form>
 	)
 }

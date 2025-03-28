@@ -108,7 +108,8 @@
 									"addAnswer": "Přidat odpověď",
 									"nextSentence": "Následující věta",
 									"removeAnswer": "Odstranit odpověď",
-									"goToSentence": "Přejít na větu"
+									"goToSentence": "Přejít na větu",
+									"prevOption": "Předcházející odpověď"
 								}
 							},
 							"editSentence": "Editace věty"

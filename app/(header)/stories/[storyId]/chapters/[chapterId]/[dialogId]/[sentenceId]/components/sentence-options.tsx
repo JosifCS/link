@@ -72,7 +72,7 @@ export function SentenceOptions({
 									defaultValue={
 										option.nextId?.toString() ?? "0"
 									}
-									index={i}
+									name={`nextSentence[${i}]`}
 									selectOptions={selectOptions}
 									t={t}
 								/>
