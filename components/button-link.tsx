@@ -11,13 +11,23 @@ export function ButtonLink({
 	href,
 	children,
 	target,
+	disabled,
 	...props
 }: ButtonLinkProps) {
 	return (
-		<Button type="button" {...props} asChild>
-			<Link href={href} target={target}>
-				{children}
-			</Link>
+		<Button
+			type="button"
+			{...props}
+			asChild={!disabled}
+			disabled={disabled}
+		>
+			{disabled ? (
+				children
+			) : (
+				<Link href={href} target={target}>
+					{children}
+				</Link>
+			)}
 		</Button>
 	)
 }
