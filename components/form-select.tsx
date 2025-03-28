@@ -21,6 +21,7 @@ type FormSelectProps = {
 	placeholder?: string
 	className?: string
 	translations?: Translations
+	onChange?: (value: string) => void
 }
 
 export function FormSelect({
@@ -29,6 +30,7 @@ export function FormSelect({
 	placeholder,
 	translations: t,
 	name,
+	onChange,
 	...props
 }: FormSelectProps) {
 	const form = useFormContext()
@@ -37,7 +39,18 @@ export function FormSelect({
 	return (
 		<div className="grid w-full items-center gap-1.5">
 			{label && <Label htmlFor={id}>{label}</Label>}
-			<Select name={name} {...props}>
+			<Select
+				name={name}
+				onValueChange={
+					onChange
+						? (v) => {
+								form.onChange()
+								onChange(v)
+							}
+						: form.onChange
+				}
+				{...props}
+			>
 				<SelectTrigger>
 					<SelectValue placeholder={placeholder} />
 				</SelectTrigger>
