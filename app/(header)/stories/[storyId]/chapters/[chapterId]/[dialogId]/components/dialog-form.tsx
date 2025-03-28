@@ -1,19 +1,27 @@
 import { saveDialogForm } from "@/actions/chapter/save-dialog-form"
+import { ButtonLink } from "@/components/button-link"
 import { Form } from "@/components/form"
 import { FormInput } from "@/components/form-input"
 import { FormSelect } from "@/components/form-select"
 import { FormSkeleton } from "@/components/form-skeleton"
 import { FormTextArea } from "@/components/form-textarea"
 import prisma from "@/lib/prisma"
+import { urlSource } from "@/modules/urlSource"
+import { PlusCircle } from "lucide-react"
 import { getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
 
 export type DialogFormProps = {
 	dialogId: number
 	chapterId: number
+	storyId: number
 }
 
-export async function DialogForm({ dialogId, chapterId }: DialogFormProps) {
+export async function DialogForm({
+	dialogId,
+	chapterId,
+	storyId,
+}: DialogFormProps) {
 	const t = await getTranslations(
 		"Stories.Story.Chapters.Chapter.Dialog.Components.DialogForm"
 	)
@@ -62,15 +70,25 @@ export async function DialogForm({ dialogId, chapterId }: DialogFormProps) {
 				label={t("description")}
 				defaultValue={value?.description}
 			/>
-			<FormSelect
-				name="characterId"
-				label={t("character")}
-				options={characters.map((x) => ({
-					value: x.id.toString(),
-					label: x.name,
-				}))}
-				defaultValue={value?.characterId.toString()}
-			/>
+			<div className="flex gap-2 items-end">
+				<FormSelect
+					name="characterId"
+					label={t("character")}
+					options={characters.map((x) => ({
+						value: x.id.toString(),
+						label: x.name,
+					}))}
+					defaultValue={value?.characterId.toString()}
+				/>
+				<ButtonLink
+					href={`/stories/${storyId}/dialog/new-character?${urlSource(`/stories/${storyId}/chapters/${chapterId}/${dialogId}`)}`}
+					variant="outline"
+					className="grow-0 px-3"
+					title={t("newCharacter")}
+				>
+					<PlusCircle />
+				</ButtonLink>
+			</div>
 		</Form>
 	)
 }

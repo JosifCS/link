@@ -7,14 +7,18 @@ import { Suspense } from "react"
 export default async function Page({
 	params,
 }: PageProps<"storyId" | "chapterId" | "dialogId">) {
-	const { chapterId, dialogId } = await params
+	const { chapterId, dialogId, storyId } = await params
 	const t = await getTranslations("Stories.Story.Chapters.Chapter.Dialog")
 
 	return (
 		<>
 			<MainCardTitle title={t("editDialog")} />
 			<Suspense fallback={<DialogFormSkeleton />}>
-				<DialogForm chapterId={+chapterId} dialogId={+dialogId} />
+				<DialogForm
+					chapterId={+chapterId}
+					dialogId={+dialogId}
+					storyId={+storyId}
+				/>
 			</Suspense>
 		</>
 	)

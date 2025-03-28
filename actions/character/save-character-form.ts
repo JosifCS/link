@@ -8,6 +8,7 @@ import { authorize } from "@/modules/auth"
 import { actionResult } from "@/modules/actionResult"
 
 const schema = zfd.formData({
+	source: zfd.text().optional(),
 	id: zfd.numeric(),
 	storyId: zfd.numeric(),
 	name: z
@@ -18,7 +19,7 @@ const schema = zfd.formData({
 })
 export const saveCharacterForm = safeAction(
 	schema,
-	async function ({ id, storyId, description, name }) {
+	async function ({ id, storyId, description, name, source }) {
 		await authorize(true)
 
 		if (id) {
@@ -32,9 +33,9 @@ export const saveCharacterForm = safeAction(
 				data: { name, description, storyId },
 			})
 			return actionResult(
-				true,
-				"created", // TODO localize
-				`/stories/${character.storyId}/characters/${character.id}`
+				source ??
+					`/stories/${character.storyId}/characters/${character.id}`,
+				"created" // TODO localize
 			)
 		}
 	}
