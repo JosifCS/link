@@ -4,10 +4,11 @@ import { Form } from "@/components/form"
 import { FormInput } from "@/components/form-input"
 import { Button } from "@/components/ui/button"
 import { DialogFooter } from "@/components/ui/dialog"
-import { PageProps } from "@/types/global"
 import { getTranslations } from "next-intl/server"
 
-export default async function Page({ params }: PageProps<"storyId">) {
+export default async function Page({
+	params,
+}: PageProps<"/stories/[storyId]/dialog/new-chapter">) {
 	const { storyId } = await params
 
 	const t = await getTranslations("Stories.Story.Dialogs.NewChapter")

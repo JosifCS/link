@@ -2,15 +2,13 @@ import { saveCharacterForm } from "@/actions/character/save-character-form"
 import { Dialog } from "@/components/dialog"
 import { Form } from "@/components/form"
 import { FormInput } from "@/components/form-input"
-import { Button } from "@/components/ui/button"
-import { DialogFooter } from "@/components/ui/dialog"
-import { PageProps } from "@/types/global"
+
 import { getTranslations } from "next-intl/server"
 
 export default async function Page({
 	params,
 	searchParams,
-}: PageProps<"storyId">) {
+}: PageProps<"/stories/[storyId]/dialog/new-character">) {
 	const { storyId } = await params
 	const { source } = await searchParams
 
