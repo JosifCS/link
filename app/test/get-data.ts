@@ -1,4 +1,6 @@
-export async function getData(page: string) {
+import { cache } from "react"
+
+export const getData = cache(() => {
 	console.log("FETCH DATA")
-	return { date: new Date().toISOString(), page }
-}
+	return { date: new Date().toISOString() }
+})
