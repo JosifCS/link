@@ -1,6 +1,5 @@
 import { Suspense } from "react"
 import { Clock, Download } from "lucide-react"
-import { PageProps } from "@/types/global"
 import { getTranslations } from "next-intl/server"
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
@@ -11,7 +10,9 @@ import { StoryInfo, StoryInfoSkeleton } from "./components/story-info"
 import { ChaptersCard } from "./components/chapters-card"
 import { CharactersCard } from "./components/characters-card"
 
-export default async function Page({ params }: PageProps<"storyId">) {
+export default async function Page({
+	params,
+}: PageProps<"/stories/[storyId]/detail">) {
 	const { storyId } = await params
 
 	const t = await getTranslations()

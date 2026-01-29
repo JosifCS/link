@@ -1,14 +1,10 @@
 import { ButtonLink } from "@/components/button-link"
 import { SiteHeader } from "@/components/site-header"
-import { ReactNode } from "react"
 
 export default async function Layout({
 	children,
 	rootDialogs,
-}: Readonly<{
-	children: ReactNode
-	rootDialogs: ReactNode
-}>) {
+}: LayoutProps<"/">) {
 	return (
 		<>
 			<div className="flex flex-col min-h-screen">

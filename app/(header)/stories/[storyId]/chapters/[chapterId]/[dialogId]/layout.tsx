@@ -1,17 +1,15 @@
-import { PageProps } from "@/types/global"
 import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 import { Card } from "@/components/ui/card"
 import { getSentences } from "@/actions/chapter/get-sentences"
-import { ReactNode } from "react"
-import { BackButton } from "../components/back-button"
+
 import { SentencesList } from "./components/sentences-list"
 
 export default async function Layout({
 	children,
 	params,
-}: PageProps<"storyId" | "chapterId" | "dialogId"> & { children: ReactNode }) {
-	const { chapterId, storyId, dialogId } = await params
+}: LayoutProps<"/stories/[storyId]/chapters/[chapterId]/[dialogId]">) {
+	const { dialogId } = await params
 	const t = await getTranslations("Stories.Story.Chapters.Chapter.Dialog")
 
 	if (dialogId == null) notFound()
@@ -27,16 +25,16 @@ export default async function Layout({
 						t={{
 							new: t("Components.SentencesList.new"),
 							noSentences: t(
-								"Components.SentencesList.noSentences"
+								"Components.SentencesList.noSentences",
 							),
 							placeholder: t(
-								"Components.SentencesList.placeholder"
+								"Components.SentencesList.placeholder",
 							),
 							backToDialogs: t(
-								"Components.SentencesList.backToDialogs"
+								"Components.SentencesList.backToDialogs",
 							),
 							backToDialog: t(
-								"Components.SentencesList.backToDialog"
+								"Components.SentencesList.backToDialog",
 							),
 						}}
 					/>

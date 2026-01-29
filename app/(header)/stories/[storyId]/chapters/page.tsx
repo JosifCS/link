@@ -1,5 +1,4 @@
 import { getChapters } from "@/actions/chapter/get-chapters"
-import { PageProps } from "@/types/global"
 import { DetailTabs } from "../components/detail-tabs"
 import { PlusCircle } from "lucide-react"
 import { ChaptersTable } from "./components/chapters-table"
@@ -7,7 +6,9 @@ import { Card } from "@/components/card"
 import { getTranslations } from "next-intl/server"
 import { ButtonLink } from "@/components/button-link"
 
-export default async function Page({ params }: PageProps<"storyId">) {
+export default async function Page({
+	params,
+}: PageProps<"/stories/[storyId]/chapters">) {
 	const t = await getTranslations("Stories.Story.Chapters")
 	const { storyId } = await params
 

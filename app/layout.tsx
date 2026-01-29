@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
-import { getLocale } from "next-intl/server"
+// import { getLocale } from "next-intl/server"
 import { ReactNode } from "react"
 import { ClientProviders } from "@/components/client-providers"
 
@@ -27,12 +27,8 @@ export const metadata: Metadata = {
 	description: "Logika interakcí a navazujících konverzací",
 }
 
-export default async function RootLayout({
-	children,
-}: Readonly<{
-	children: ReactNode
-}>) {
-	const locale = await getLocale()
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+	const locale = "en" // await getLocale()
 
 	return (
 		<html lang={locale}>

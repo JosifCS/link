@@ -1,5 +1,4 @@
 import prisma from "@/lib/prisma"
-import { PageProps } from "@/types/global"
 import { notFound } from "next/navigation"
 import { CharacterInfo } from "./components/character-info"
 import { getTranslations } from "next-intl/server"
@@ -8,7 +7,7 @@ import { ButtonLink } from "@/components/button-link"
 
 export default async function Page({
 	params,
-}: PageProps<"storyId" | "characterId">) {
+}: PageProps<"/stories/[storyId]/characters/[characterId]">) {
 	const { storyId, characterId } = await params
 	const t = await getTranslations("Stories.Story.Characters.Character")
 

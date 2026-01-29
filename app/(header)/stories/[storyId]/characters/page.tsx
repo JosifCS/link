@@ -1,4 +1,3 @@
-import { PageProps } from "@/types/global"
 import { CharactersTable } from "./components/characters-table"
 import { getCharacters } from "@/actions/character/get-characters"
 import { DetailTabs } from "../components/detail-tabs"
@@ -7,7 +6,9 @@ import { getTranslations } from "next-intl/server"
 import { Card } from "@/components/card"
 import { ButtonLink } from "@/components/button-link"
 
-export default async function Page({ params }: PageProps<"storyId">) {
+export default async function Page({
+	params,
+}: PageProps<"/stories/[storyId]/characters">) {
 	const t = await getTranslations("Stories.Story.Characters")
 	const { storyId } = await params
 

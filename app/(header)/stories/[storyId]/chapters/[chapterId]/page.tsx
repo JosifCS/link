@@ -1,4 +1,3 @@
-import { PageProps } from "@/types/global"
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
@@ -12,7 +11,7 @@ import { Suspense } from "react"
 
 export default async function Page({
 	params,
-}: PageProps<"storyId" | "chapterId">) {
+}: PageProps<"/stories/[storyId]/chapters/[chapterId]">) {
 	const { chapterId, storyId } = await params
 	const t = await getTranslations("Stories.Story.Chapters.Chapter")
 
@@ -38,7 +37,7 @@ export default async function Page({
 							new: t("Components.DialogsList.new"),
 							noDialogs: t("Components.DialogsList.noDialogs"),
 							placeholder: t(
-								"Components.DialogsList.placeholder"
+								"Components.DialogsList.placeholder",
 							),
 							sentences: t("Components.DialogsList.sentences"),
 						}}

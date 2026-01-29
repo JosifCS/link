@@ -1,7 +1,7 @@
 import { Counter } from "./counter"
 import { getData } from "./get-data"
 
-export default async function Page() {
+export default async function Page({}: PageProps<"/test">) {
 	const data = await getData("page")
 	console.log("RENDER PAGE")
 	return (
