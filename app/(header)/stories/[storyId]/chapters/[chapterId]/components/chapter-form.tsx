@@ -1,4 +1,4 @@
-import { getChapter, GetChapterQuery } from "@/actions/chapter/get-chapter"
+import { getChapter } from "@/actions/chapter/get-chapter"
 import { saveChapterForm } from "@/actions/chapter/save-chapter-form"
 import { Form } from "@/components/form"
 import { FormInput } from "@/components/form-input"
@@ -6,7 +6,6 @@ import { FormSkeleton } from "@/components/form-skeleton"
 import { FormTextArea } from "@/components/form-textarea"
 import { getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
-import { useEffect, useState } from "react"
 
 export type ChapterFormProps = {
 	chapterId: number
@@ -14,7 +13,7 @@ export type ChapterFormProps = {
 
 export async function ChapterForm({ chapterId }: ChapterFormProps) {
 	const t = await getTranslations(
-		"Stories.Story.Chapters.Chapter.Components.ChapterForm"
+		"Stories.Story.Chapters.Chapter.Components.ChapterForm",
 	)
 
 	const chapter = await getChapter(chapterId)
@@ -48,7 +47,7 @@ export async function ChapterForm({ chapterId }: ChapterFormProps) {
 
 export async function ChapterFormSkeleton() {
 	const t = await getTranslations(
-		"Stories.Story.Chapters.Chapter.Components.ChapterForm"
+		"Stories.Story.Chapters.Chapter.Components.ChapterForm",
 	)
 
 	return (
