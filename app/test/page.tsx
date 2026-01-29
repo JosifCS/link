@@ -1,5 +1,5 @@
 import { Counter } from "./counter"
-import { getData } from "./layout"
+import { getData } from "./get-data"
 
 export default async function Page() {
 	const data = await getData("page")
